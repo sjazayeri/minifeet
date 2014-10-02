@@ -1,7 +1,7 @@
 class Player:
-    """Player(program_path) -> create object to run
-    and interface with player program"""
-    def __init__(self, ppath, team):
+    """Proxy(program_path) -> create proxy to run
+    and interface with program"""
+    def __init__(self, ppath):
         pass
 
     def send_state(self, state):
@@ -12,4 +12,4 @@ class Player:
         """returns the command for the current cycle""" 
         pass
 
-        
+    
