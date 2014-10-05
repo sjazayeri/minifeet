@@ -1,29 +1,29 @@
+from collections import defaultdict
+from geometry import Point
 import subprocess as sp
 import select
 import state
 
-def move_to(x, y):
-    pass
-
-def kick(x, y):
-    pass
-
-def translate(cmd):
-    pass
+max_read = 1024 #this is likely to change as soon as the state specs are in
 
 class Player:
-    """Player(program_path, team, number) -> create object to run
+    """Player(program_path, team, number, loc) -> create object to run
     and interface with player program"""
-    def __init__(self, ppath, team, number):
+    def __init__(self, ppath, team, number, init_loc):
         self.team = team
         self.number = number
-        self.cmd_list = []
+        self.loc = init_loc
+        self.goal = 'nop'
+        self.dic = defaultdict(lambda:lambda:'nop',
+                               {'kick': self.kick, 'move': self.move})
+        
         self.process = sp.Popen(ppath, stdin=sp.PIPE, stdout=sp.PIPE)
-        self.process.stdin.write(team+' '+number+'\n')
         self.poller = select.poll()
         self.poller.register(self.process.stdout, select.POLLIN)
+        self.process.stdin.write(' '.join(map(str, [team, number, x, y, '\n'])))
         
     def terminate(self):
+        """terminates the player process"""
         self.process.terminate()
         
     def send_state(self, state):
@@ -33,6 +33,22 @@ class Player:
     def get_command(self):
         """returns the command for the current cycle as a string"""
         buffer_content = []
-        while self.poller.poll(0):
-            buffer_content += self.process.read(1)
+        while self.poller.poll(0) and len(command) < max_read:
+            buffer_content += self.process.stdout.read(1)
         command = ''.join(buffer_content)
+        if command:
+            self.goal = command.split('\n')[-1]
+        return self.translate(self.goal)
+        
+    def translate(self, goal):
+        args = goal.split(' ')
+        try:
+            return self.dic[args[0]](*map(int, args[1:]))
+        except TypeError:
+            return 'nop'
+        
+    def kick(self, x, y):
+        pass
+
+    def move(self, x, y):
+        pass
