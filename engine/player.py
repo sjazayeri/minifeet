@@ -5,7 +5,7 @@ import select
 import state
 
 max_read = 1024 #this is likely to change as soon as the state specs are in
-
+# test
 class Player:
     """Player(program_path, team, number, loc) -> create object to run
     and interface with player program"""
