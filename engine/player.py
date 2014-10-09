@@ -1,5 +1,5 @@
 from collections import defaultdict
-from geometry import Point
+from geometry import Vector
 import subprocess as sp
 import select
 import state
