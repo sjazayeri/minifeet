@@ -1,5 +1,7 @@
 class State:
     """Holds the state of a game"""
+
+
 class Ground :
 	def __init__( self  , length = 0 , width =0 ) :
 		self.length = length
