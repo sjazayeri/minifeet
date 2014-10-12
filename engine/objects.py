@@ -7,10 +7,15 @@ max_read = 1024 #this is likely to change as soon as the state specs are in
 # test
 
 class MovingObj:
-	def __init__ (self , pos=Vector(0, 0) , vel = Vector(0, 0) ,   ground=None) :
+	def __init__ (self , pos=Vector(0, 0) , vel = 0, angel = 0 ,   ground=None ) :
 		self.ground = ground
+		self.pos=pos
+		self.vel=vel
+		self.angle=angel
 	def move (self) :
 		raise NotImplementedError ()
+	def distance_of(self,other):
+                return ((self.pos.x-other.pos.x)**2+(self.pos.y-other.pos.y)**2)**(.5)
 		
 
 class Player(MovingObj):
