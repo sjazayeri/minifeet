@@ -16,10 +16,10 @@ if __name__ =='__main__':
 	ppath = sys.argv
 	progs = [sys.argv[1], sys.argv[2]]
 	ground = Ground(glength , gwidth ,gfriction )
-	#State(ppath)
 	players=[]
 	for i in range(2):
 			for j in range(5):
 				players.append(Player( progs[i] , i+1 , j+1 , Vector( indexi[j]*gwidth/2  ,  indexj[j]*glength/2 *(-1)**(i) ) ))
 	ball = Ball()
-	State( players , ball )
+	state = State( players , ball )
+	state.send_data()
