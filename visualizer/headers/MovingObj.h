@@ -1,11 +1,12 @@
 #ifndef MOVING_OBJ_
 #define MOVING_OBJ_
+using namespace std;
 
 class MovingObj
 {
 public:
-	virtual MovingObj() = 0;
-	virtual ~MovingObj();
+	MovingObj();
+	~MovingObj();
 
 	void move();
 	virtual void setNewXY(int newX, int newY) = 0;

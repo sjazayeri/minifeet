@@ -1,6 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "MovingObj.h"
+#include "LTexture.h"
+#include <vector>
+#include <iostream>
+using namespace std;
 
 class Player : public MovingObj
 {
@@ -12,7 +16,7 @@ public:
 	string Name() { return name; }
 	
 private:
-	stirng name;
+	string name;
 
 	// renderers contains player PNG pictures
 	vector<LTexture*> mood;

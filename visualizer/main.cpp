@@ -1,10 +1,10 @@
 #include "./headers/Core.h"
-
+using namespace std;
 
 int main( int argc, char* args[] )
 {
 	//Start up SDL and create window
-	if( !init() )
+	if(!init())
 	{
 		printf( "Failed to initialize!\n" );
 	}

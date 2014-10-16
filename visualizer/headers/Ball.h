@@ -1,6 +1,8 @@
 #ifndef BALL_
 #define BALL_
 #include "MovingObj.h"
+#include "LTexture.h"
+using namespace std;
 
 class Ball : public MovingObj
 {
