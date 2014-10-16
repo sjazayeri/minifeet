@@ -5,9 +5,11 @@
 class Ball : public MovingObj
 {
 public: 
-	Ball();
-	~Ball();
-	
+	Ball(string _pngFile);
+
+private:
+	// renderer contains player PNG picture
+	LTexture* texture;
 };
 
 #endif
