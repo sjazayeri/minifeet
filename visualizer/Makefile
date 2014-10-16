@@ -1,12 +1,12 @@
 a.out : main.o 
-	g++ *.o   -lSDL2 -lSDL2_image
-main.o : main.cpp Core.o MovingObj.o
+	g++ ./headers/cpp/*.o   -lSDL2 -lSDL2_image
+main.o : main.cpp ./headers/cpp/Core.o ./headers/cpp/MovingObj.o
 	g++ main.cpp  -lSDL2 -lSDL2_image
-Core.o : Core.cpp Core.h 
+./headers/cpp/Core.o : ./headers/cpp/Core.cpp ./headers/Core.h 
 	g++ -c main.cpp -lSDL2 -lSDL2_image
-MovingObj.o : MovingObj.cpp MovingObj.h Ball.o Player.o 
-	g++ -c MovingObj.cpp -lSDL2 -lSDL2_image
-Ball.o : Ball.cpp Ball.h
-	g++ -c Ball.cpp -lSDL2 -lSDL2_image
-Player.o : Player.cpp Player.h
-	g++ -c Player.cpp -lSDL2 -lSDL2_image
+./headers/cpp/MovingObj.o : ./headers/cpp/MovingObj.cpp ./headers/MovingObj.h ./headers/cpp/Ball.o ./headers/cpp/Player.o 
+	g++ -c ./headers/cpp/MovingObj.cpp -lSDL2 -lSDL2_image
+./headers/cpp/Ball.o : ./headers/cpp/Ball.cpp ./headers/Ball.h
+	g++ -c ./headers/cpp/Ball.cpp -lSDL2 -lSDL2_image
+./headers/cpp/Player.o : ./headers/cpp/Player.cpp ./headers/Player.h
+	g++ -c ./headers/cpp/Player.cpp -lSDL2 -lSDL2_image

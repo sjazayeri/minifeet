@@ -1,4 +1,4 @@
-#include "Core.h"
+#include "../Core.h"
 
 // //Walking animation
 // const int WALKING_ANIMATION_FRAMES = 4;

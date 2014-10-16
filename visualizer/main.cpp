@@ -1,4 +1,4 @@
-#include "Core.h"
+#include "./headers/Core.h"
 
 
 int main( int argc, char* args[] )
