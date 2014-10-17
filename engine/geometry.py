@@ -1,6 +1,8 @@
 """This module contains functions and classes to facilitate geometrical
 calculations"""
 
+import math
+
 class Vector:
     """A vector in the cartesian plane
     Vector(x, y) -> creates a vector
@@ -30,3 +32,9 @@ class Vector:
 
     def __sub__(self, u):
         return Vector(self.x-u.x,self.y-u.y)
+
+    def angle(self):
+        return math.atan(self.x/self.y)
+
+    def len(self):
+        return math.sqrt(self.x**2+self.y**2)
