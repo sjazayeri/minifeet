@@ -18,11 +18,11 @@ class MovingObj:
 class Player(MovingObj):
     """Player(program_path, team, number, loc) -> create object to run
     and interface with player program"""
-    def __init__(self, ppath, team, number, init_loc):
+    def __init__(self, ppath, team, number, pos):
         self.ppath=ppath
         self.team=team
         self.number=number
-        self.init_loc=init_loc        
+        self.pos=pos        
 
     def move(self, x, y):
         pos+=vel
