@@ -11,7 +11,7 @@ class LTexture;
 class Player : public MovingObj
 {
 public:
-	Player(string _name, vector<string> _pngFiles);
+	Player(string _name, vector<LTexture*> _pngFiles);
 	
 	virtual void setNewXY(int newX, int newY) = 0;
 

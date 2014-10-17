@@ -62,6 +62,133 @@ bool loadMedia(SharedData* gData)
 	//Loading success flag
 	bool success = true;
 	LTexture soccerField(gData);
+
+
+	LTexture* temp = new LTexture(gData);
+	//loading png file of bolan 1
+	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-m.png"))
+	{
+		printf( "Failed to load b1-front-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan1.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-r.png"))
+	{
+		printf( "Failed to load b1-front-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan1.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-l.png"))
+	{
+		printf( "Failed to load b1-front-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan1.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-m.png"))
+	{
+		printf( "Failed to load b1-back-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan1.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-r.png"))
+	{
+		printf( "Failed to load b1-back-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan1.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-l.png"))
+	{
+		printf( "Failed to load b1-back-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan1.push_back(temp);
+	}
+	
+	//loading png file of bolan 2
+	temp = new LTexture(gData);
+		if( !temp->loadFromFile("./assets/characters/bolan/b2-front-m.png"))
+	{
+		printf( "Failed to load b2-front-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan2.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b2-front-r.png"))
+	{
+		printf( "Failed to load b2-front-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan2.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b2-front-l.png"))
+	{
+		printf( "Failed to load b2-front-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan2.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-m.png"))
+	{
+		printf( "Failed to load b2-back-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan2.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-r.png"))
+	{
+		printf( "Failed to load b2-back-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan2.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-l.png"))
+	{
+		printf( "Failed to load b2-back-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->bolan2.push_back(temp);
+	}
+
+
 	//Load sprite sheet texture
 	if( !soccerField.loadFromFile( "./assets/field1.jpg" ) )
 	{
@@ -71,6 +198,9 @@ bool loadMedia(SharedData* gData)
 	else
 	{	
 		soccerField.render(0,0);
+		gData->bolan2[3]->render(0,0);
+		gData->bolan2[1]->render(35,0);
+
 	}
 	
 	return success;

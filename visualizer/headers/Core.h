@@ -8,6 +8,7 @@
 #include <ctime>
 #include "Player.h"
 #include "Ball.h"
+#include <vector>
 
 typedef struct _SharedData
 {
@@ -28,6 +29,9 @@ typedef struct _SharedData
 
 	const unsigned int cycleLen = 20; //miliseconds
 	const unsigned int logicCycleLen = 100; // miliseconds
+
+	vector<LTexture*> bolan1;
+	vector<LTexture*> bolan2;
 } SharedData;
 
 
