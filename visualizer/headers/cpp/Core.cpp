@@ -65,7 +65,7 @@ bool loadMedia(SharedData* gData)
 
 
 	LTexture* temp = new LTexture(gData);
-	//loading png file of bolan 1
+	//loading png file of bolan
 	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-m.png"))
 	{
 		printf( "Failed to load b1-front-m.png!\n" );
