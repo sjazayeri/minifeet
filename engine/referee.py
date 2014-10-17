@@ -2,7 +2,7 @@ class Referee:
 	goal_1, goal_2 = 0, 0
 	
 	@staticmethod
-	is_goal(ball, ground):
+	def is_goal(ball, ground):
 		y1 = ball.pos.y - ball.vel.y
 		x1 = ball.pos.x - ball.vel.x
 		m = 1.0*(ball.pos.y-y1)/(ball.pos.x-x1)
