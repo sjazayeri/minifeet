@@ -1,5 +1,8 @@
 #/usr/bin/env python
 from geometry import Vector
+import random
+
+max_ball_dist = 10
 
 if __name__=='__main__':
     team, number = map(int, raw_input().split(' '))
@@ -10,4 +13,6 @@ if __name__=='__main__':
             playerps.append(Vector(x, y))
         selfpos = playerps[5*team+number]
         ballpos = Vector(*map(int, raw_input().split(' ')))
-        print 'move %d %d'%(ballpos.x, ballpos.y)
+        if (selfpos-ballpos).length() < max_ball_dist:
+            
+            

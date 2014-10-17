@@ -11,6 +11,10 @@ class Vector:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+    def __init__(self, v):
+        self.x = v.x
+        self.y = v.y
         
     def __add__(self, u):
         return Vector(self.x+u.x, self.y+u.y)
