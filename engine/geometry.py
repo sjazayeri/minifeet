@@ -26,7 +26,7 @@ class Vector:
         return self
 
     def __int__(self):
-        return (self.x-self.y)**(1/2)
+        return (self.x-self.y)**(1.0/2)
 
     def __sub__(self, u):
         return Vector(self.x-u.x,self.y-u.y)

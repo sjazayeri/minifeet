@@ -36,7 +36,7 @@ class Player(MovingObj):
             x=width/2
         if x<-(width/2) :
             x=-width/2
-
+#CHANGE
             
 class Ground :
     def __init__( self  , length = 0 , width =0 , friction = 0 ) :

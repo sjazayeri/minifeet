@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import math
 from geometry import Vector
+from objects import Ball , Player
 
 """a static class for performing each cycle tasks"""
 class Cycle:
@@ -16,10 +17,10 @@ class Cycle:
         _players=players
         _ball=ball
         for p in players:
-            ss=p.get_command().split(' ')
+            ss=p.comm.get_command().split(' ')
             commands[ss[0]](ss[1%len(ss)],p)
     def _kick(arg,p):
-        if (int)(p.pos-_ball.pos) <= MaxBallDis:
+        if (int)(p.pos-ball.pos) <= MaxBallDis:
             ball.vel=MaxBallVel
             ball.angel=arg
     def _turn(arg,p):
