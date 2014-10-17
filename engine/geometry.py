@@ -1,7 +1,8 @@
 """This module contains functions and classes to facilitate geometrical
 calculations"""
-
 import math
+
+epsilon = 0.01
 
 class Vector:
     """A vector in the cartesian plane
