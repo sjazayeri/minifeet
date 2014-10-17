@@ -18,7 +18,7 @@ class Player(MovingObj):
         self.ppath=ppath
         self.team=team
         self.number=number
-        self.pos=pos        
+        self.pos=pos
 ##
     def move(self, coefficient=1):
         pos+=(vel*coefficient)
