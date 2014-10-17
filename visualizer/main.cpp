@@ -1,12 +1,19 @@
+// AMiGH & mehdithreem Copyright(c)
+
 #include "./headers/Core.h"
+#include <ctime>
 using namespace std;
-//The window we'll be rendering to
 
 int main( int argc, char* args[] )
 {
 	SharedData globData;
 
-	//Start up SDL and create window
+	// ---> init game
+
+	// ---> set zero cycle data
+	// 		getting initial pos from logic
+
+	//Init Graphics: Start up SDL and create window
 	if(!init(&globData))
 	{
 		printf( "Failed to initialize!\n" );
@@ -20,24 +27,36 @@ int main( int argc, char* args[] )
 		return -1;
 	}
 	
-	//Main loop flag
-	bool quit = false;
-
-	//Event handler
+	//For X Button
 	SDL_Event e;
 	
-	//While application is running
-	while( !quit )
+	//Setting start time for further use
+	globData.startTime = time(NULL);
+	//Main Loop
+	while( !globData.quitFlag )
 	{
-		//Handle events on queue
+		//Handle X Button event
 		while( SDL_PollEvent( &e ) != 0 )
 		{
 			//User requests quit
 			if( e.type == SDL_QUIT )
 			{
-				quit = true;
+				globData.quitFlag = true;
 			}
 		}
+
+		// if ( globData.cycleNum % (globData.cycle))
+				// ---> get data from logic
+				//		only get them, DO NOT parse them to players, ball, etc
+
+				// ---> check for status
+				// ---> handle status events
+				//		if needed, terminate program
+				//		or render goal screen
+
+				// ---> send new data to players, ball and wherever they need them
+
+		// ---> calling move methods for all movingObjs
 
 		// //Clear screen
 		// SDL_SetRenderDrawColor( globData.gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );

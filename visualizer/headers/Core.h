@@ -24,11 +24,15 @@ typedef struct _SharedData
 	// Storages the number of next cycle
 	// use this to calculate when you have to change moods
 	unsigned int cycleNum = 1;
+	unsigned int logicCycleNum = 1;
 	// AMiGH: Remmember we should reset it, When? i don't know
 	// ps: i do NOT go to any english class :))
 
 	const unsigned int cycleLen = 20; //miliseconds
 	const unsigned int logicCycleLen = 100; // miliseconds
+
+	//Main loop flag
+	bool quitFlag = false;
 
 	vector<LTexture*> bolan1;
 	vector<LTexture*> bolan2;
