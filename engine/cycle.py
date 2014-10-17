@@ -18,13 +18,10 @@ class Cycle:
         _ball=ball
         for p in players:
             ss=p.comm.get_command().split(' ')
-            #commands[ss[0]](ss[1%len(ss)],p)
             commands[ss[0]](p,*map(int, ss[1:]))
     def _kick(p,angle,strength):
         if int(p.pos-ball.pos) <= MaxBallDis:
             ball.vel=BallVelUnit*strength
             ball.angel=angle
-    def _turn(p,angle):
-        p.angel=angle
-    def _move(p):
-        p.vel=PlayerVel
+    def _move(p,angle):
+        p.vel=Vector(PlayerVel*math.cos(angel),PlayerVel*math.sin(angel))
