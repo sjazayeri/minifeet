@@ -7,10 +7,8 @@ import select
 class Proxy:
     """Proxy(program_path, team, number) -> create communicator"""
     max_read = 1024
-    def __init__(self, ppath, team, number, init_loc):
-        self.team = team
-        self.number = number
-        #self.loc = init_loc
+    def __init__(self, ppath, player):
+        self.player = player
         self.goal = 'nop'
         self.dic = defaultdict(lambda:lambda:'nop',
                                {'kick': self.kick, 'move': self.move})
@@ -53,4 +51,4 @@ class Proxy:
         pass
 
     def move(self, x, y):
-        pass
+        
