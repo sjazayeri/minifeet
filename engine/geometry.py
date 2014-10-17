@@ -24,3 +24,9 @@ class Vector:
         self.x *= s
         self.y *= s
         return self
+
+    def __int__(self):
+        return (self.x-self.y)**(1/2)
+
+    def __sub__(self, u):
+        return Vector(self.x-u.x,self.y-u.y)
