@@ -4,9 +4,6 @@ from geometry import Vector
 import subprocess as sp
 import select
 
-# this is a change
-# yet another change
-
 class Proxy:
     """Proxy(program_path, team, number) -> create communicator"""
     max_read = 1024
@@ -29,7 +26,11 @@ class Proxy:
         
     def send_state(self, state):
         """sends the current state to the player"""
-        pass
+        for p in state.players:
+            self.process.stdin.write(' '.join([`p.pos.x`, `p.pos.y`]))
+        self.process.stdin.write(' '.join([`state.ball.x`,
+                                           `state.ball.y`]))
+        self.process.stdin.write(`game_state`)
 
     def get_command(self):
         """returns the command for the current cycle as a string"""
