@@ -51,4 +51,5 @@ class Proxy:
         pass
 
     def move(self, x, y):
-        
+        return 'move '+
+        `math.atan((x-self.player.pos.x)/(y-self.player.pos.y))`
