@@ -1,6 +1,6 @@
 """Defines a proxy class for communicating with bots"""
 from collections import defaultdict
-from geometry import Vector
+from geometry import Vector, epsilon
 import subprocess as sp
 import select
 
@@ -47,8 +47,15 @@ class Proxy:
         except TypeError:
             return 'nop'
         
-    def kick(self, x, y):
-        pass
+    def kick(self, force):
+        return 'kick '+`force`
+        self.goal = 'nop'
 
     def move(self, x, y):
-        
+        #return 'move '+
+        #`math.atan((x-self.player.pos.x)/(y-self.player.pos.y))`
+        dest = Vector(x, y)
+        if((dest-self.player.pos).len < epsilon):
+            self.goal = 'nop'
+            return 'nop'
+        return 'move '+`(dest-self.player.pos).angle()`
