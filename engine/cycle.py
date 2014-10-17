@@ -24,5 +24,6 @@ class Cycle:
         if int(p.pos-ball.pos) <= MaxBallDis:
             ball.vel=BallVelUnit*strength
             ball.angel=angle
-    def _move(p,angle):
-        p.vel=Vector(PlayerVel*math.cos(angel),PlayerVel*math.sin(angel))
+    def _move(p,angle,distance):
+        vel=min(distance,PlayerVel)
+        p.vel=Vector(vel*math.cos(angel),vel*math.sin(angel))
