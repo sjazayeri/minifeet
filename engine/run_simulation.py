@@ -22,7 +22,7 @@ class Simulator :
         self.players =[]
         for i in range(2):
             for j in range(5):
-                players.append(Player( progs[i] , i+1 , j+1 , Vector( indexi[j]*gwidth/2  ,  indexj[j]*glength/2 *(-1)**(i) ) )) 
+                players.append(Player( progs[i] , i , j , Vector( indexi[j]*gwidth/2  ,  indexj[j]*glength/2 *(-1)**(i) ) )) 
         self.ball = Ball(Vector(0,0) , Vector(0,0))
         self.state = State( players , ball )
 

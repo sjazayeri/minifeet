@@ -14,5 +14,4 @@ if __name__=='__main__':
         selfpos = playerps[5*team+number]
         ballpos = Vector(*map(int, raw_input().split(' ')))
         if (selfpos-ballpos).length() < max_ball_dist:
-            
-            
+            pass

@@ -47,9 +47,10 @@ class Proxy:
         except TypeError:
             return 'nop'
         
-    def kick(self, force):
-        return 'kick '+`force`
+    def kick(self, x, y, force):
+        angle = atan(
         self.goal = 'nop'
+        return 'kick '+`force`
 
     def move(self, x, y):
         #return 'move '+
