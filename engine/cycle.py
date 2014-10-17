@@ -20,7 +20,7 @@ class Cycle:
             ss=p.comm.get_command().split(' ')
             commands[ss[0]](ss[1%len(ss)],p)
     def _kick(arg,p):
-        if (int)(p.pos-ball.pos) <= MaxBallDis:
+        if int(p.pos-ball.pos) <= MaxBallDis:
             ball.vel=MaxBallVel
             ball.angel=arg
     def _turn(arg,p):

@@ -11,8 +11,6 @@ class MovingObj:
         self.angle=angel
     def move (self) :
         raise NotImplementedError ()
-    def distance_of(self,other):
-        return ((self.pos.x-other.pos.x)**2+(self.pos.y-other.pos.y)**2)**(.5)
         
 
 class Player(MovingObj):
