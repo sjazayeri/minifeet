@@ -7,7 +7,7 @@ import state
 import time
 
 cycle_length = 100
-game_duration = 1000
+game_duration = 18000
 
 gwidth = 90
 glength = 120
@@ -17,7 +17,6 @@ indexi = [0 , 1/3 , -1/3 , 2/3 , -2/3]
 indexj = [1 , 2/3 , 2/3 , 1/3 , 1/3 ]
 
 visualizer = sp.Popen(None, stdin=sp.PIPE)
-
 
 def send_data( state ) :
     for i in range(10):
