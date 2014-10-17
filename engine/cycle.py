@@ -3,8 +3,6 @@ import math
 from geometry import Vector
 from objects import Ball , Player
 
-#hjshdjahjda
-
 """a static class for performing each cycle tasks"""
 class Cycle:
     commands={'kick':_kick,'turn':_turn,'move':_move}
