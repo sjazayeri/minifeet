@@ -5,10 +5,11 @@
 #include <iostream>
 using namespace std;
 //The window we'll be rendering to
-SDL_Window* gWindow = NULL;
+static SDL_Window* gWindow = NULL;
 
 //The window renderer
-SDL_Renderer* gRenderer = NULL;
+static SDL_Renderer* gRenderer = NULL;
+
 //Texture wrapper class
 class LTexture
 {
