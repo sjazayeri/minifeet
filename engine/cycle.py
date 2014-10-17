@@ -13,6 +13,7 @@ class Cycle:
     PlayerVel=20
     """parses commands of players and updates
     the state of them and the ball"""
+    @classmethod
     def update_players(players,ball):
         _players=players
         _ball=ball
