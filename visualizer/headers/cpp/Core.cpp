@@ -73,7 +73,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan1.push_back(temp);
+		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-r.png"))
@@ -83,7 +83,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan1.push_back(temp);
+		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-l.png"))
@@ -93,7 +93,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan1.push_back(temp);
+		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-m.png"))
@@ -103,7 +103,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan1.push_back(temp);
+		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-r.png"))
@@ -113,7 +113,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan1.push_back(temp);
+		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-l.png"))
@@ -123,7 +123,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan1.push_back(temp);
+		gData->bolanYellow.push_back(temp);
 	}
 	
 	//loading png file of bolan 2
@@ -135,7 +135,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan2.push_back(temp);
+		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b2-front-r.png"))
@@ -145,7 +145,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan2.push_back(temp);
+		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b2-front-l.png"))
@@ -155,7 +155,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan2.push_back(temp);
+		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-m.png"))
@@ -165,7 +165,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan2.push_back(temp);
+		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-r.png"))
@@ -175,7 +175,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan2.push_back(temp);
+		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-l.png"))
@@ -185,7 +185,7 @@ bool loadMedia(SharedData* gData)
 	}
 	else
 	{	
-		gData->bolan2.push_back(temp);
+		gData->bolanRed.push_back(temp);
 	}
 
 
@@ -198,8 +198,8 @@ bool loadMedia(SharedData* gData)
 	else
 	{	
 		soccerField.render(0,0);
-		gData->bolan2[3]->render(0,0);
-		gData->bolan2[1]->render(35,0);
+		gData->bolanRed[3]->render(0,0);
+		gData->bolanRed[1]->render(35,0);
 
 	}
 	

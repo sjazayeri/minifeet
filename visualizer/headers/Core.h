@@ -34,8 +34,8 @@ typedef struct _SharedData
 	//Main loop flag
 	bool quitFlag = false;
 
-	vector<LTexture*> bolan1;
-	vector<LTexture*> bolan2;
+	vector<LTexture*> bolanYellow;
+	vector<LTexture*> bolanRed;
 } SharedData;
 
 
