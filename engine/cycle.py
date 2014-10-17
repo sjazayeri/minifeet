@@ -21,7 +21,7 @@ class Cycle:
             ss=p.comm.get_command().split(' ')
             commands[ss[0]](p,*map(int, ss[1:]))
     def _kick(p,angle,strength):
-        if int(p.pos-ball.pos) <= MaxBallDis:
+        if len(p.pos-ball.pos) <= MaxBallDis:
             ball.vel=BallVelUnit*strength
             ball.angel=angle
     def _move(p,angle,distance):
