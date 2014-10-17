@@ -6,6 +6,8 @@
 #include <iostream>
 using namespace std;
 
+class LTexture;
+
 class Player : public MovingObj
 {
 public:

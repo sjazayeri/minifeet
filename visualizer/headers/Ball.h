@@ -4,6 +4,8 @@
 #include "LTexture.h"
 using namespace std;
 
+class LTexture;
+
 class Ball : public MovingObj
 {
 public: 
