@@ -6,4 +6,3 @@ class State :
         self.ball = ball
         self.game_state = game_state
         self.situation = update() #judge
-  
