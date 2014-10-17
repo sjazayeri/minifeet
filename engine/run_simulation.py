@@ -34,63 +34,71 @@ class Simulator :
         visualizer.stdin.write(`state.ball.pos.y`+'\n')
         
     def player_move(self, i , coefficient=1.0/100):
-        players[i].move(coefficient)
+        self.players[i].move(coefficient)
          
     def ball_move(self , coefficient=1.0/100):
-        ball.move(coefficient)
+        self.ball.move(coefficient)
         
-        x = ball.pos.x 
-        y = ball.pos.y
-        width = ground.gwidth
-        length = ground.glength
+        x = self.ball.pos.x 
+        y = self.ball.pos.y
+        width = self.ground.gwidth
+        length = self.ground.glength
         
         if x>(width/2) :
-            self.vx= -vx
-            self.x= width-x
+            self.ball.vel.x= -vx
+            self.ball.pos.x= width-x
        
         if x<-(width/2) :
-            self.vx= -vx
-            self.x= -width-x
+            self.ball.vel.x= -vx
+            self.ball.pos.x= -width-x
             
         if y>(length/2) :
-            self.vy= -vy
-            self.y= length-y
-            Refree.is_goal(ball , ground)
+            self.ball.vel.y= -vy
+            self.ball.pos.y= length-y
+            self.state.update( Refree.is_goal(ball , ground) )
             
         if y<(-(length/2)) :
-            self.y= -length-y
-            self.vy=-vy
-            Refree.is_goal(ball , ground)          
+            self.ball.vel.y= -length-y
+            self.ball.pos.y=-vy
+            self.state.update( Refree.is_goal(ball , ground) )       
          
     def check_pos(self , coefficient=1.0/100):
         a = range(10)    
         random.shuffle(a)
         for i in a:
-            pos = players[i].pos
+            pos = self.players[i].pos
             for j in range(10):
-                if( (pos == players[j].pos) && (j!=i))
-                    players[i].move(-coefficient)
+                if( ( self.players[j].is_overlap(pos) ) && (j!=i))
+                    self.players[i].move(-coefficient)
                     break        
         
     def move(self):
         for j in xrange(100):
             for i in xrange(10):
-                player_move(i)
-            ball_move()
-            check_pos()
-        
-        
+                self.player_move(i)
+            self.ball_move()
+            self.check_pos()
+            
+    def simulate(self) :
+        for i in xrange(game_duration):
+            self.send_data(state , visualizer)
+            self.state.update(0)
+            for j in range(10):
+                self.players[j].comm.send_state(state)
+            time.sleep(cycle_length)
+            Cycle.update_players(state.players, state.ball)
+            self.move()
+            if(self.state.last_kicked != None)
+                pass
+       
 if __name__ =='__main__':
 
     ppath = sys.argv
     progs = [sys.argv[1], sys.argv[2]]
     sim = Simulator(progs) 
     visualizer = sp.Popen('rs_debug/dv.py', stdin=sp.PIPE)
-           
-    for i in xrange(game_duration):
-        sim.send_data(state , visualizer)
-        time.sleep(cycle_length)
-        Cycle.update_players(state.players, state.ball)
-        sim.move()
-       
+    sim.simulate()
     visualizer.terminate()
+    
+    
+    
