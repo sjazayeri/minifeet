@@ -19,7 +19,7 @@ typedef struct _SharedData
 	SDL_Renderer* gRenderer = NULL;
 
 	// When first cycle runs
-	time_t startTime;
+	Uint32 startTime;
 
 	// Storages the number of next cycle
 	// use this to calculate when you have to change moods
