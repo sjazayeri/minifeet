@@ -9,7 +9,7 @@ class Cycle:
     _players=[]
     _ball=None
     MaxBallDis=10
-    MaxBallVel=100
+    BallVelUnit=100
     PlayerVel=20
     """parses commands of players and updates
     the state of them and the ball"""
@@ -18,12 +18,13 @@ class Cycle:
         _ball=ball
         for p in players:
             ss=p.comm.get_command().split(' ')
-            commands[ss[0]](ss[1%len(ss)],p)
-    def _kick(arg,p):
+            #commands[ss[0]](ss[1%len(ss)],p)
+            commands[ss[0]](p,*map(int, ss[1:]))
+    def _kick(p,angle,strength):
         if int(p.pos-ball.pos) <= MaxBallDis:
-            ball.vel=MaxBallVel
-            ball.angel=arg
-    def _turn(arg,p):
-        p.angel=arg
-    def _move(arg,p):
+            ball.vel=BallVelUnit*strength
+            ball.angel=angle
+    def _turn(p,angle):
+        p.angel=angle
+    def _move(p):
         p.vel=PlayerVel
