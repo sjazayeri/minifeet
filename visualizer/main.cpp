@@ -1,4 +1,4 @@
-// AMiGH & mehdithreem Copyright(c)
+// AMiGH & MehDiThreeM Copyright(c)2013-2014
 
 #include "./headers/Core.h"
 #include <SDL2/SDL.h>
@@ -53,7 +53,8 @@ int main( int argc, char* args[] )
 			}
 		}
 
-		if ( globData.cycleNum % (globData.logicCycleLen/globData.cycleLen) == 0 ) {
+		if ( globData.cycleNum % (globData.logicCycleLen/globData.cycleLen) == 0 ) 
+		{
 				// ---> get data from logic
 				//		only get them, DO NOT parse them to players, ball, etc
 
