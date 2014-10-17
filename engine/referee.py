@@ -16,3 +16,37 @@ class Referee:
 			return 2
 		else:
 			return 0
+
+'''
+players = [[1,1],[4,2],[4,3],[4,4],[5,5],[1,2],[3,2],[3,1],[2,4],[2,1]]
+curr_player_number = 2
+last_player_number = 1
+
+if curr_player_number < 5:
+	if last_player_number >= 5 or last_player_number == curr_player_number or players[curr_player_number][0] <= 0 or players[curr_player_number][0] <= players[last_player_number][0]:
+		return 0
+
+	max1, max2 = -(float('inf')), -(float('inf'))
+	for i in range(5,10):
+		if players[i][0] > max2:
+			max2 = players[i][0]
+		if max2 > max1:
+			max1, max2 = max2, max1
+	if players[curr_player_number][0]>max2:
+		return 1
+	return 0
+
+elif curr_player_number > 5:
+	if last_player_number < 5 or last_player_number == curr_player_number or players[curr_player_number][0] >= 0 or players[curr_player_number][0] >= players[last_player_number][0]:
+		return 0
+
+	min1, min2 = float('inf'), float('inf')
+	for i in range(0,5):
+		if players[i][0] < min2:
+			min2 = players[i][0]
+		if min2 < min1:
+			min1, min2 = min2, min1
+	if players[curr_player_number][0]<min2:
+		return 2
+	return 0
+'''
