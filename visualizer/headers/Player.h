@@ -17,10 +17,8 @@ public:
 	
 private:
 	string name;
-
 	// renderers contains player PNG pictures
 	vector<LTexture*> mood;
-
 	// specifies player's direction when dy=0
 	bool direction;
 

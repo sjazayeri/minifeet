@@ -1,5 +1,6 @@
 #include "./headers/Core.h"
 using namespace std;
+//The window we'll be rendering to
 
 int main( int argc, char* args[] )
 {
@@ -45,8 +46,8 @@ int main( int argc, char* args[] )
 				// gSpriteSheetTexture.render( ( SCREEN_WIDTH - currentClip->w ) / 2, ( SCREEN_HEIGHT - currentClip->h ) / 2, currentClip );
 				// bolan[j/6].render(x,y);
 
-				// //Update screen
-				// SDL_RenderPresent( gRenderer );
+				//Update screen
+				SDL_RenderPresent( gRenderer );
 
 				// //Go to next frame
 				// ++frame;

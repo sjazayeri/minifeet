@@ -4,13 +4,16 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 using namespace std;
-//The window we'll be rendering to
 static SDL_Window* gWindow = NULL;
 
 //The window renderer
 static SDL_Renderer* gRenderer = NULL;
-
 //Texture wrapper class
+const int SCREEN_WIDTH = 540;
+const int SCREEN_HEIGHT = 720;
+
+bool init();
+
 class LTexture
 {
 public:
