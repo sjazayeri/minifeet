@@ -20,7 +20,7 @@ class Proxy:
         self.poller.register(self.process.stdout, select.POLLIN)
         self.process.stdin.write('%d %d\n'%(self.player.team,
                                           self.player.number))
-        print >>stderr, 'DONE WITH PLAYER %d, %d'%(self.player.team, self.player.number)
+        #print >>stderr, 'DONE WITH PLAYER %d, %d'%(self.player.team, self.player.number)
         
     def terminate(self):
         """terminates the player process"""
