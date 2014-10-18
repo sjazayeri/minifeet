@@ -4,6 +4,7 @@ from geometry import Vector, epsilon
 import subprocess as sp
 import select
 from math import atan
+from sys import stderr
 
 class Proxy:
     """Proxy(program_path, team, number) -> create communicator"""
@@ -17,19 +18,21 @@ class Proxy:
         self.process = sp.Popen(ppath, stdin=sp.PIPE, stdout=sp.PIPE, shell=True)
         self.poller = select.poll()
         self.poller.register(self.process.stdout, select.POLLIN)
-        self.process.stdin.write(' '.join([`team`, `number`, '\n']))
-
+        self.process.stdin.write('%d %d\n'%(self.player.team,
+                                          self.player.number))
+        print >>stderr, 'DONE WITH PLAYER %d, %d'%(self.player.team, self.player.number)
+        
     def terminate(self):
         """terminates the player process"""
         self.process.terminate()
 
     def send_state(self, state):
         """sends the current state to the player"""
+        #print >>stderr, 'SENDING DATA'
         for p in state.players:
-            self.process.stdin.write(' '.join([`p.pos.x`, `p.pos.y`]))
-        self.process.stdin.write(' '.join([`state.ball.x`,
-                                           `state.ball.y`]))
-        self.process.stdin.write(`game_state`)
+            self.process.stdin.write('%d %d\n'%(p.pos.x, p.pos.y))
+        self.process.stdin.write('%d %d\n'%(ball.pos.x, ball.pos.y))
+        self.process.stdin.write(`game_state`+'\n')
 
     def get_command(self):
         """returns the command for the current cycle as a string"""
