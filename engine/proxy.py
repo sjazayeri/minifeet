@@ -37,8 +37,15 @@ class Proxy:
     def get_command(self):
         """returns the command for the current cycle as a string"""
         buffer_content = []
-        while self.poller.poll(0) and len(command) < max_read:
+        t = self.poller.poll(0)
+        s=0
+        while t and s!=16 and len(buffer_content) < self.max_read:
             buffer_content += self.process.stdout.read(1)
+            print >>stderr, self.poller.poll()
+            t = self.poller.poll(0)
+            if t:
+                s = t[0][1]
+            
         command = ''.join(buffer_content)
         if command:
             self.goal = command.split('\n')[-1]
