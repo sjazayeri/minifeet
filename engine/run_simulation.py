@@ -24,16 +24,16 @@ class Simulator :
         for i in range(2):
             for j in range(5):
                 self.players.append(Player(progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))     
-        self.ball = Ball(Vector(0,0) , Vector(0,0))
+        self.ball = Ball()
         self.state = State(self.players , self.ball)
         self.visualizer = visualizer
 
     def send_data(self, state , visualizer ) :
         for i in range(10):
-            self.visualizer.stdin.write(`state.players[i].pos.x`+' ') 
-            self.visualizer.stdin.write(`state.players[i].pos.y`+'\n') 
-        self.visualizer.stdin.write(`state.ball.pos.x`+' ') 
-        self.visualizer.stdin.write(`state.ball.pos.y`+'\n')
+            self.visualizer.stdin.write(`self.state.players[i].pos.x`+' ') 
+            self.visualizer.stdin.write(`self.state.players[i].pos.y`+'\n') 
+        self.visualizer.stdin.write(`self.state.ball.pos.x`+' ') 
+        self.visualizer.stdin.write(`self.state.ball.pos.y`+'\n')
         
     def player_move(self, i , coefficient=1.0/100):
         self.players[i].move(coefficient)
@@ -82,14 +82,13 @@ class Simulator :
             self.check_pos()
             
     def simulate(self) :
-        print >>sys.stderr, 'SIMULATINGGGGGGGGGGGGGG'
         for i in xrange(game_duration):
-            self.send_data(state , visualizer)
+            self.send_data(self.state , visualizer)
             self.state.update(0)
             for j in range(10):
-                self.players[j].comm.send_state(state)
+                self.players[j].comm.send_state(self.state)
             time.sleep(cycle_length)
-            self.cycle.update_players(state.players, state.ball)
+            self.cycle.update_players(self.state.players, self.state.ball)
             self.move()
             if(self.state.last_kicked != None):
                 pass
@@ -99,7 +98,6 @@ if __name__ =='__main__':
     progs = [sys.argv[1], sys.argv[2]]
     visualizer = sp.Popen('rs_debug/dv.py', stdin=sp.PIPE)
     sim = Simulator(progs, visualizer)
-    print >>sys.stderr, 'NEXT LINE'
     sim.simulate()
     visualizer.terminate()
     

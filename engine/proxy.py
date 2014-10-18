@@ -14,13 +14,13 @@ class Proxy:
         self.goal = 'nop'
         self.dic = defaultdict(lambda:lambda:'nop',
                                {'kick': self.kick, 'move': self.move})
-        
-        self.process = sp.Popen(ppath, stdin=sp.PIPE, stdout=sp.PIPE, shell=True)
+
+        print >>stderr, ppath
+        self.process = sp.Popen(ppath, stdin=sp.PIPE, stdout=sp.PIPE)
         self.poller = select.poll()
         self.poller.register(self.process.stdout, select.POLLIN)
         self.process.stdin.write('%d %d\n'%(self.player.team,
                                           self.player.number))
-        #print >>stderr, 'DONE WITH PLAYER %d, %d'%(self.player.team, self.player.number)
         
     def terminate(self):
         """terminates the player process"""
@@ -28,11 +28,11 @@ class Proxy:
 
     def send_state(self, state):
         """sends the current state to the player"""
-        #print >>stderr, 'SENDING DATA'
         for p in state.players:
             self.process.stdin.write('%d %d\n'%(p.pos.x, p.pos.y))
-        self.process.stdin.write('%d %d\n'%(ball.pos.x, ball.pos.y))
-        self.process.stdin.write(`game_state`+'\n')
+        self.process.stdin.write('%d %d\n'%(state.ball.pos.x,
+                                            state.ball.pos.y))
+        self.process.stdin.write(`state.game_state`+'\n')
 
     def get_command(self):
         """returns the command for the current cycle as a string"""
@@ -57,8 +57,6 @@ class Proxy:
         return 'kick %d %d' % (angle, force)
 
     def move(self, x, y):
-        #return 'move '+
-        #`math.atan((x-self.player.pos.x)/(y-self.player.pos.y))`
         dest = Vector(x, y)
         if((dest-self.player.pos).len < epsilon):
             self.goal = 'nop'
