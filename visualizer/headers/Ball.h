@@ -4,11 +4,13 @@
 #include "LTexture.h"
 using namespace std;
 
+class LTexture;
+
 class Ball : public MovingObj
 {
 public: 
 	Ball(string _pngFile);
-
+	virtual void setNewXY(int _newX, int _newY);
 private:
 	// renderer contains player PNG picture
 	LTexture* texture;

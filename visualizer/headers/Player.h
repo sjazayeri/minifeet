@@ -6,21 +6,21 @@
 #include <iostream>
 using namespace std;
 
+class LTexture;
+
 class Player : public MovingObj
 {
 public:
-	Player(string _name, vector<string> _pngFiles);
+	Player(string _name, vector<LTexture*> _pngFiles);
 	
-	virtual void setNewXY(int newX, int newY) = 0;
+	virtual void setNewXY(int _newX, int _newY);
 
 	string Name() { return name; }
 	
 private:
 	string name;
-
 	// renderers contains player PNG pictures
 	vector<LTexture*> mood;
-
 	// specifies player's direction when dy=0
 	bool direction;
 

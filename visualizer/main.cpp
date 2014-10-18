@@ -1,70 +1,102 @@
+// AMiGH & MehDiThreeM Copyright(c)2013-2014
+
 #include "./headers/Core.h"
+#include <SDL2/SDL.h>
+#include <iostream>
 using namespace std;
 
 int main( int argc, char* args[] )
 {
-	//Start up SDL and create window
-	if(!init())
+	SharedData globData;
+
+	// ---> init game
+
+	// ---> set zero cycle data
+	// 		getting initial pos from logic
+
+	//Init Graphics: Start up SDL and create window
+	if(!init(&globData))
 	{
 		printf( "Failed to initialize!\n" );
+		return -1;
 	}
-	else
+
+	//Load media
+	if( !loadMedia(&globData) )
 	{
-		//Load media
-		if( !loadMedia() )
+		printf( "Failed to load media!\n" );
+		return -1;
+	}
+	
+	//For X Button
+	SDL_Event e;
+
+	// For calculating loop duration
+	Uint32 loopStartTime, loopEndTime, loopLen;
+	
+	//Setting start time for further use
+	globData.startTime = SDL_GetTicks();
+
+	//Main Loop
+	while( !globData.quitFlag )
+	{
+		// starting timer
+		loopStartTime = SDL_GetTicks();
+
+		//Handle X Button event
+		while( SDL_PollEvent( &e ) != 0 )
 		{
-			printf( "Failed to load media!\n" );
-		}
-		else
-		{	
-			//Main loop flag
-			bool quit = false;
-
-			//Event handler
-			SDL_Event e;
-			
-			//While application is running
-			while( !quit )
+			//User requests quit
+			if( e.type == SDL_QUIT )
 			{
-				//Handle events on queue
-				while( SDL_PollEvent( &e ) != 0 )
-				{
-					//User requests quit
-					if( e.type == SDL_QUIT )
-					{
-						quit = true;
-					}
-				}
-
-				// //Clear screen
-				// SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-				// SDL_RenderClear(gRenderer);
-
-				// //Render current frame
-				// SDL_Rect* currentClip = &gSpriteClips[ frame / 4 ];
-				// gSpriteSheetTexture.render( ( SCREEN_WIDTH - currentClip->w ) / 2, ( SCREEN_HEIGHT - currentClip->h ) / 2, currentClip );
-				// bolan[j/6].render(x,y);
-
-				// //Update screen
-				// SDL_RenderPresent( gRenderer );
-
-				// //Go to next frame
-				// ++frame;
-				// ++j;
-				// x++;
-				// y+=2;
-				// if ( x>200)
-				// 	x=0;
-				// //Cycle animation
-				// if( j / 6 >= 2 )
-				// {
-				// 	j=0;
-				// }
-				// if( frame / 4 >= WALKING_ANIMATION_FRAMES )
-				// {
-				// 	frame = 0;
-				// }
+				globData.quitFlag = true;
 			}
+		}
+
+		if ( globData.cycleNum % (globData.logicCycleLen/globData.cycleLen) == 0 ) 
+		{
+				// ---> get data from logic
+				//		only get them, DO NOT parse them to players, ball, etc
+
+				// ---> check for status
+				// ---> handle status events
+				//		if needed, terminate program
+				//		or render goal screen
+
+				// ---> send new data to players, ball and wherever they need them
+		}
+
+		// ---> calling move methods for all movingObjs
+		// ---> calling set mood methods for players
+
+		// ---> Clear screen and setting render color
+		//		probably this way:
+		// SDL_SetRenderDrawColor( globData.gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+		// SDL_RenderClear(globData.gRenderer);
+
+		// ---> render field
+		// ---> render players and balls in this order
+		//		priority1: less Y renders first
+		//		priority2: less X renders first
+		//		(optional)priority3: ball
+		//		(optional)priority4: player whom is his face is NOT shown
+		//		(optional)priority5: Red team
+
+		//Update screen
+		SDL_RenderPresent( globData.gRenderer );
+
+		// stoping timer
+		loopEndTime = SDL_GetTicks();
+
+		// calculating delay
+		loopLen = loopEndTime - loopStartTime;
+		if (loopLen < 0) {
+			// if hardware can not handle programm
+			cerr << "FATAL ERROR" << endl;
+			globData.quitFlag = true;
+		}
+		else {
+			SDL_Delay( globData.cycleLen - loopLen );
 		}
 	}
 
