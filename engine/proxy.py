@@ -3,6 +3,7 @@ from collections import defaultdict
 from geometry import Vector, epsilon
 import subprocess as sp
 import select
+from math import atan
 
 class Proxy:
     """Proxy(program_path, team, number) -> create communicator"""
@@ -13,7 +14,7 @@ class Proxy:
         self.dic = defaultdict(lambda:lambda:'nop',
                                {'kick': self.kick, 'move': self.move})
         
-        self.process = sp.Popen(ppath, stdin=sp.PIPE, stdout=sp.PIPE)
+        self.process = sp.Popen(ppath, stdin=sp.PIPE, stdout=sp.PIPE, shell=True)
         self.poller = select.poll()
         self.poller.register(self.process.stdout, select.POLLIN)
         self.process.stdin.write(' '.join([`team`, `number`, '\n']))
@@ -21,7 +22,7 @@ class Proxy:
     def terminate(self):
         """terminates the player process"""
         self.process.terminate()
-        
+
     def send_state(self, state):
         """sends the current state to the player"""
         for p in state.players:
@@ -40,7 +41,7 @@ class Proxy:
             self.goal = command.split('\n')[-1]
         return self.translate(self.goal)
 
-     def translate(self, goal):
+    def translate(self, goal):
         args = goal.split(' ')
         try:
             return self.dic[args[0]](*map(int, args[1:]))
@@ -48,9 +49,9 @@ class Proxy:
             return 'nop'
         
     def kick(self, x, y, force):
-        angle = atan(
+        angle = atan((x - self.pos.x) / (y - self.pos.y))
         self.goal = 'nop'
-        return 'kick '+`force`
+        return 'kick %d %d' % (angle, force)
 
     def move(self, x, y):
         #return 'move '+

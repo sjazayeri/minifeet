@@ -5,7 +5,8 @@ from objects import Ground ,Ball , Player
 from geometry import Vector
 import time
 import subprocess as sp
-from refree import Refree
+from referee import Referee
+from state import State
 from cycle import Cycle
 import random
 
@@ -18,13 +19,14 @@ indexj = [1 , 2/3 , 2/3 , 1/3 , 1/3 ]
 class Simulator :
 
     def __init__(self ,progs , gwidth = 90 , glength = 120 , gfriction = 1):
+        self.cycle = Cycle()
         self.ground = Ground(glength , gwidth ,gfriction )
         self.players =[]
         for i in range(2):
             for j in range(5):
-                players.append(Player( progs[i] , i , j , Vector( indexi[j]*gwidth/2  ,  indexj[j]*glength/2 *(-1)**(i) ) )) 
+                self.players.append(Player(progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))
         self.ball = Ball(Vector(0,0) , Vector(0,0))
-        self.state = State( players , ball )
+        self.state = State(self.players , self.ball)
 
     def send_data(self, state , visualizer ) :
         for i in range(10):
@@ -68,7 +70,7 @@ class Simulator :
         for i in a:
             pos = self.players[i].pos
             for j in range(10):
-                if( ( self.players[j].is_overlap(pos) ) && (j!=i))
+                if( ( self.players[j].is_overlap(pos) ) and (j!=i)):
                     self.players[i].move(-coefficient)
                     break        
         
@@ -86,9 +88,9 @@ class Simulator :
             for j in range(10):
                 self.players[j].comm.send_state(state)
             time.sleep(cycle_length)
-            Cycle.update_players(state.players, state.ball)
+            self.cycle.update_players(state.players, state.ball)
             self.move()
-            if(self.state.last_kicked != None)
+            if(self.state.last_kicked != None):
                 pass
        
 if __name__ =='__main__':
