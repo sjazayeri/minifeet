@@ -55,15 +55,20 @@ int main( int argc, char* args[] )
 
 		if ( globData.cycleNum % (globData.logicCycleLen/globData.cycleLen) == 0 ) 
 		{
-				// ---> get data from logic
-				//		only get them, DO NOT parse them to players, ball, etc
-
-				// ---> check for status
+			// ---> get data from logic
+			//		only get them, DO NOT parse them to players, ball, etc
+			if( !getInputs(&globData))
+			{
+				printf( "Failed to get postions or state!\n" );
+				return -1;
+			}
+			// ---> check for state
 				// ---> handle status events
 				//		if needed, terminate program
 				//		or render goal screen
-
+			handleState(globData.gameState);
 				// ---> send new data to players, ball and wherever they need them
+			setNewData(&globData);
 		}
 
 		// ---> calling move methods for all movingObjs

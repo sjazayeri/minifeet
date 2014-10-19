@@ -1,5 +1,8 @@
 #include "../Player.h"
 
+Player::Player()
+{}
+
 Player::Player(string _name, vector<LTexture*> _pngFiles)
 {
 	name = _name;
@@ -20,5 +23,4 @@ void Player::setNewXY(int _newX, int _newY)
 		direction = 0;
 	else if (direction =0 && dy<0)
 		direction = 1;
-
 }

@@ -11,3 +11,12 @@ void Ball::setNewXY(int _newX, int _newY)
 	dx = (newX-oldX)/CYCLEPROP;
 	dy = (newY-oldY)/CYCLEPROP;
 }
+
+// Ball::Ball(string _pngFile)
+// {
+
+// }
+// Ball::Ball()
+// {
+
+// }

@@ -9,6 +9,10 @@
 #include "Player.h"
 #include "Ball.h"
 #include <vector>
+#include <utility>
+
+class Ball;
+class Player;
 
 typedef struct _SharedData
 {
@@ -34,18 +38,35 @@ typedef struct _SharedData
 	//Main loop flag
 	bool quitFlag = false;
 
+	//vector of playerPositons in pair format
+	vector< pair<int,int> > playersPos;
+	//ball position in pair format
+	pair<int,int> ballPos;
+	//game state in int
+	int gameState;
+
+	vector<Player*> gPlayers;
+	Ball* gBall;
+
 	vector<LTexture*> bolanYellow;
 	vector<LTexture*> bolanRed;
+
+	_SharedData() :gPlayers(10) {}
 } SharedData;
 
 
 //Starts up SDL and creates window
-bool init(SharedData* globalData);
+bool init(SharedData* gData);
 //Loads media
-bool loadMedia(SharedData* globalData);
+bool loadMedia(SharedData* gData);
 //Frees media and shuts down SDL
 void close();
 
+bool getInputs(SharedData* gData);
+
+void handleState(int state);
+
+void setNewData(SharedData* gData);
 
 // //The window we'll be rendering to
 // SDL_Window* gWindow = NULL;

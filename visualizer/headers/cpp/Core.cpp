@@ -65,7 +65,7 @@ bool loadMedia(SharedData* gData)
 
 
 	LTexture* temp = new LTexture(gData);
-	//loading png file of bolan
+	//loading png file of bolanYellow
 	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-m.png"))
 	{
 		printf( "Failed to load b1-front-m.png!\n" );
@@ -126,9 +126,9 @@ bool loadMedia(SharedData* gData)
 		gData->bolanYellow.push_back(temp);
 	}
 	
-	//loading png file of bolan 2
+	//loading png file of bolanRed
 	temp = new LTexture(gData);
-		if( !temp->loadFromFile("./assets/characters/bolan/b2-front-m.png"))
+	if( !temp->loadFromFile("./assets/characters/bolan/b2-front-m.png"))
 	{
 		printf( "Failed to load b2-front-m.png!\n" );
 		success = false;
@@ -189,7 +189,7 @@ bool loadMedia(SharedData* gData)
 	}
 
 
-	//Load sprite sheet texture
+	//Load field
 	if( !soccerField.loadFromFile( "./assets/field1.jpg" ) )
 	{
 		printf( "Failed to load field!\n" );
@@ -214,6 +214,53 @@ void close()
 	SDL_Quit();
 }
 
+bool getInputs(SharedData* gData)
+{
+	pair<int,int> temPos;
+	int _x,_y;
+	for(int i=0; i<10;i++)
+	{
+		cin >>_x >>_y;
+		temPos = make_pair (_x,_y);
+		gData->playersPos.push_back(temPos);
+	}
+	cin >> _x >> _y;
+	gData->ballPos = make_pair(_x,_y);
+	cin >> gData->gameState ;
+}
+
+void handleState(int state)
+{
+	if (state == 0)
+	{
+		//defualt 
+	}
+	else if (state == 1)
+	{
+		// team1_goal
+	}
+	else if (state == 2)
+	{
+		// team2_goal
+	}
+	else if (state == 3)
+	{
+		// offside
+	}
+	else if (state == 4)
+	{
+		// kickoff
+	}
+}
+
+void setNewData(SharedData* gData)
+{
+	for(int i=0 ; i<10;i++)
+	{
+		gData->gPlayers[i]->setNewXY(gData->playersPos[i].first,gData->playersPos[i].second);
+	}
+	gData->gBall->setNewXY(gData->ballPos.first,gData->ballPos.second);
+}
 // bool init_game()
 // {
 

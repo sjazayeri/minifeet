@@ -12,7 +12,7 @@ class Player : public MovingObj
 {
 public:
 	Player(string _name, vector<LTexture*> _pngFiles);
-	
+	Player();
 	virtual void setNewXY(int _newX, int _newY);
 
 	string Name() { return name; }
