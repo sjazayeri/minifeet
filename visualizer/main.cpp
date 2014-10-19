@@ -9,11 +9,6 @@ int main( int argc, char* args[] )
 {
 	SharedData globData;
 
-	// ---> init game
-
-	// ---> set zero cycle data
-	// 		getting initial pos from logic
-
 	//Init Graphics: Start up SDL and create window
 	if(!init(&globData))
 	{
@@ -27,6 +22,11 @@ int main( int argc, char* args[] )
 		printf( "Failed to load media!\n" );
 		return -1;
 	}
+
+	// ---> init game
+
+	// ---> set zero cycle data
+	// 		getting initial pos from logic
 	
 	//For X Button
 	SDL_Event e;
@@ -62,24 +62,26 @@ int main( int argc, char* args[] )
 				printf( "Failed to get postions or state!\n" );
 				return -1;
 			}
+
 			// ---> check for state
 				// ---> handle status events
 				//		if needed, terminate program
 				//		or render goal screen
 			handleState(globData.gameState);
-				// ---> send new data to players, ball and wherever they need them
+			
+			// Sending new data to players and ball
 			setNewData(&globData);
 		}
 
 		// ---> calling move methods for all movingObjs
-		// ---> calling set mood methods for players
 
 		// ---> Clear screen and setting render color
 		//		probably this way:
-		// SDL_SetRenderDrawColor( globData.gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-		// SDL_RenderClear(globData.gRenderer);
+		SDL_SetRenderDrawColor( globData.gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+		SDL_RenderClear(globData.gRenderer);
 
 		// ---> render field
+		
 		// ---> render players and balls in this order
 		//		priority1: less Y renders first
 		//		priority2: less X renders first

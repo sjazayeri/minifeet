@@ -12,11 +12,13 @@ void Ball::setNewXY(int _newX, int _newY)
 	dy = (newY-oldY)/CYCLEPROP;
 }
 
-// Ball::Ball(string _pngFile)
-// {
+Ball::Ball(Ltexture* _pngFile)
+{
+	name = "ballony";
+	texture = _pngFile;
+}
 
-// }
-// Ball::Ball()
-// {
-
-// }
+Ball::render(unsigned int cycleNum)
+{
+	texture.render(x, y);
+}

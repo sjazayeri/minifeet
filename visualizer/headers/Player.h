@@ -12,13 +12,11 @@ class Player : public MovingObj
 {
 public:
 	Player(string _name, vector<LTexture*> _pngFiles);
-	Player();
+	
 	virtual void setNewXY(int _newX, int _newY);
-
-	string Name() { return name; }
+	virtual void render(unsigned int graphicalCycleNum);
 	
 private:
-	string name;
 	// renderers contains player PNG pictures
 	vector<LTexture*> mood;
 	// specifies player's direction when dy=0
