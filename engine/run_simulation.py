@@ -44,8 +44,8 @@ class Simulator(object):
         
         x = self.ball.pos.x 
         y = self.ball.pos.y
-        width = self.ground.gwidth
-        length = self.ground.glength
+        width = self.ground.width
+        length = self.ground.length
         
         if x>(width/2) :
             self.ball.vel.x= -self.ball.vel.x
