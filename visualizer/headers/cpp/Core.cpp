@@ -199,7 +199,7 @@ bool loadMedia(SharedData* gData)
 	else
 	{	
 		gData->field = temp;
-		gData->field->render(0,0);
+		// gData->field->render(0,0);
 		// gData->bolanRed[3]->render(0,0);
 		// gData->bolanRed[1]->render(35,0);
 
@@ -223,6 +223,11 @@ bool getInputs(SharedData* gData)
 	for(int i=0; i<10;i++)
 	{
 		cin >>_x >>_y;
+		//converting positions
+		//I wish that works
+		_x = 6*_x +270;
+		_y = -6*_y +360;
+		//end of correcting positions
 		temPos = make_pair (_x,_y);
 		gData->playersPos.push_back(temPos);
 	}
@@ -281,6 +286,7 @@ bool initGame(SharedData* gData)
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
-
+	getInputs(gData);
+	setNewData(gData);
 	return true;
 }
