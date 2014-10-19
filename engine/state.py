@@ -7,7 +7,8 @@ offside = 3
 kickoff = 4
 
 class State :
-    def __init__(self, players, ball, team1_goal=0 ,team2_goal=0 ,game_state = 0 , last_kicked =None):
+    def __init__(self, players, ball, team1_goal=0,
+                 team2_goal=0 , game_state=0, last_kicked =None):
         self.players = players
         self.ball = ball
         self.game_state = game_state   
