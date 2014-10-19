@@ -35,7 +35,14 @@ class Vector:
         return Vector(self.x-u.x,self.y-u.y)
 
     def angle(self):
-        return math.atan(1.0*self.x/self.y)
+        rv = 0
+        if self.y==0:
+            rv = 0
+        else:
+            rv = math.atan(1.0*self.x/self.y)
+        if self.x < 0:
+            rv += math.pi
+        return rv
 
     def len(self):
         return math.sqrt(self.x**2+self.y**2)

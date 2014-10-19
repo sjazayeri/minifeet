@@ -11,7 +11,7 @@ from cycle import Cycle
 import random
 
 cycle_length = 0.1
-game_duration = 1000
+game_duration = 2
 
 indexi = [0 , 1/3 , -1/3 , 2/3 , -2/3]
 indexj = [1 , 2/3 , 2/3 , 1/3 , 1/3 ]
@@ -87,8 +87,9 @@ class Simulator(object):
         for i in xrange(game_duration):
             self.send_data()
             self.state.update(0)
-            for j in range(10):
+            for j in xrange(10):
                 self.players[j].comm.send_state(self.state)
+            print >>sys.stderr, 'DOOOOOOOOOOOOOOOOOOOOOOONE SENDING DATA AT %f'%(time.time())
             time.sleep(cycle_length)
             self.cycle.update_players(self.state)
             self.move()

@@ -5,6 +5,7 @@ import subprocess as sp
 import select
 from math import atan
 from sys import stderr
+import time
 
 class Proxy:
     """Proxy(program_path, team, number) -> create communicator"""
@@ -32,13 +33,16 @@ class Proxy:
         self.process.stdin.write('%d %d\n'%(state.ball.pos.x,
                                             state.ball.pos.y))
         self.process.stdin.write(`state.game_state`+'\n')
-
+        #self.process.stdin.flush()
+        
     def get_command(self):
         """returns the command for the current cycle as a string"""
+        print >>stderr, 'GC CALLED AT %f'%(time.time())
         buffer_content = []
         while self.poller.poll(0) and len(buffer_content) < self.max_read:
             buffer_content += self.process.stdout.read(1)
-            
+
+        print >>stderr, buffer_content
         command = ''.join(buffer_content).rstrip()
         if command:
             self.goal = command
@@ -47,6 +51,7 @@ class Proxy:
     def translate(self, goal):
         args = goal.split(' ')
         try:
+            #print >>stderr, args
             return self.dic[args[0]](*map(float, args[1:]))
         except TypeError:
             return 'nop'
