@@ -8,7 +8,7 @@ from proxy import Proxy
 player_size = 3
 
 class MovingObj(object):
-    def __init__(self,  ground):
+    def __init__(self, ground):
         self.pos = Vector(0, 0)
         self.vel = Vector(0 , 0)
         self.ground = ground

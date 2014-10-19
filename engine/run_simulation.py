@@ -94,7 +94,7 @@ class Simulator(object):
             self.move()
             if(self.state.last_kicked != None):
                 pass
-       
+        
 if __name__ =='__main__':
     ppath = sys.argv
     progs = [sys.argv[1], sys.argv[2]]

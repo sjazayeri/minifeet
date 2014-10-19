@@ -8,7 +8,6 @@ from sys import stderr
 
 class Proxy:
     """Proxy(program_path, team, number) -> create communicator"""
-    max_read = 1024
     def __init__(self, ppath, player):
         self.player = player
         self.goal = 'nop'
@@ -21,6 +20,7 @@ class Proxy:
         self.poller.register(self.process.stdout, select.POLLIN)
         self.process.stdin.write('%d %d\n'%(self.player.team,
                                           self.player.number))
+        self.max_read = 1024
         
     def terminate(self):
         """terminates the player process"""
@@ -28,6 +28,7 @@ class Proxy:
 
     def send_state(self, state):
         """sends the current state to the player"""
+        #print >>stderr, len(state.players)
         for p in state.players:
             self.process.stdin.write('%d %d\n'%(p.pos.x, p.pos.y))
         self.process.stdin.write('%d %d\n'%(state.ball.pos.x,
@@ -37,16 +38,15 @@ class Proxy:
     def get_command(self):
         """returns the command for the current cycle as a string"""
         buffer_content = []
-        t = self.poller.poll(0)
-        s=0
-        while t and s!=16 and len(buffer_content) < self.max_read:
+        print >>stderr, 'func'
+        print >>stderr, self.poller.poll(0)
+        while self.poller.poll(0) and len(buffer_content) < self.max_read:
+            print >>stderr, 'inside'
             buffer_content += self.process.stdout.read(1)
-            print >>stderr, self.poller.poll()
-            t = self.poller.poll(0)
-            if t:
-                s = t[0][1]
+            print >>stderr, self.poller.poll(0), buffer_content
             
         command = ''.join(buffer_content)
+        #print >>stderr, command
         if command:
             self.goal = command.split('\n')[-1]
         return self.translate(self.goal)
@@ -54,7 +54,7 @@ class Proxy:
     def translate(self, goal):
         args = goal.split(' ')
         try:
-            return self.dic[args[0]](*map(int, args[1:]))
+            return self.dic[args[0]](*map(float, args[1:]))
         except TypeError:
             return 'nop'
         
