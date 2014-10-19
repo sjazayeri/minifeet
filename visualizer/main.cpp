@@ -23,7 +23,11 @@ int main( int argc, char* args[] )
 		return -1;
 	}
 
-	// ---> init game
+	if(!initGame(&globData))
+	{
+		printf( "Failed to initialize Game!\n" );
+		return -1;
+	}
 
 	// ---> set zero cycle data
 	// 		getting initial pos from logic
@@ -90,6 +94,7 @@ int main( int argc, char* args[] )
 		//		(optional)priority5: Red team
 
 		//Update screen
+		// globData.field->render(0,0);
 		SDL_RenderPresent( globData.gRenderer );
 
 		// stoping timer

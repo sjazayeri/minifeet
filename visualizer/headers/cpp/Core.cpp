@@ -61,7 +61,7 @@ bool loadMedia(SharedData* gData)
 {
 	//Loading success flag
 	bool success = true;
-	LTexture soccerField(gData);
+	// LTexture soccerField(gData);
 
 
 	LTexture* temp = new LTexture(gData);
@@ -190,16 +190,18 @@ bool loadMedia(SharedData* gData)
 
 
 	//Load field
-	if( !soccerField.loadFromFile( "./assets/field1.jpg" ) )
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile( "./assets/field1.jpg" ))
 	{
 		printf( "Failed to load field!\n" );
 		success = false;
 	}
 	else
 	{	
-		soccerField.render(0,0);
-		gData->bolanRed[3]->render(0,0);
-		gData->bolanRed[1]->render(35,0);
+		gData->field = temp;
+		gData->field->render(0,0);
+		// gData->bolanRed[3]->render(0,0);
+		// gData->bolanRed[1]->render(35,0);
 
 	}
 	
@@ -255,13 +257,30 @@ void handleState(int state)
 
 void setNewData(SharedData* gData)
 {
-	for(int i=0 ; i<10;i++)
+	for(int i=1 ; i<11;i++)
 	{
-		gData->gPlayers[i]->setNewXY(gData->playersPos[i].first,gData->playersPos[i].second);
+		gData->movingObjs[i]->setNewXY(gData->playersPos[i-1].first,gData->playersPos[i-1].second);
 	}
-	gData->gBall->setNewXY(gData->ballPos.first,gData->ballPos.second);
+	gData->movingObjs[0]->setNewXY(gData->ballPos.first,gData->ballPos.second);
 }
-// bool init_game()
-// {
 
-// }
+bool initGame(SharedData* gData)
+{
+	//I think it should be loaded in loading media but ...
+	LTexture* temp = new LTexture(gData);
+	temp->loadFromFile("./assets/ball.png");
+	//
+	gData->movingObjs.push_back(new Ball(temp));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
+
+	return true;
+}

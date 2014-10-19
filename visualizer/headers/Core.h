@@ -32,7 +32,7 @@ typedef struct _SharedData
 	// AMiGH: Remmember we should reset it, When? i don't know
 	// ps: i do NOT go to any english class :))
 
-	const unsigned int cycleLen = 20; //miliseconds
+	const unsigned int cycleLen = 20;       //miliseconds
 	const unsigned int logicCycleLen = 100; // miliseconds
 
 	//Main loop flag
@@ -45,13 +45,11 @@ typedef struct _SharedData
 	//game state in int
 	int gameState;
 
-	vector<Player*> gPlayers;
-	Ball* gBall;
-
+	vector<MovingObj*> movingObjs;
 	vector<LTexture*> bolanYellow;
 	vector<LTexture*> bolanRed;
+	LTexture* field;
 
-	_SharedData() :gPlayers(10) {}
 } SharedData;
 
 
@@ -68,10 +66,6 @@ void handleState(int state);
 
 void setNewData(SharedData* gData);
 
-// //The window we'll be rendering to
-// SDL_Window* gWindow = NULL;
-
-// //The window renderer
-// SDL_Renderer* gRenderer = NULL;
+bool initGame(SharedData* gData);
 
 #endif
