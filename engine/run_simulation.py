@@ -24,8 +24,8 @@ class Simulator(object):
         self.players =[]
         for i in range(2):
             for j in range(5):
-                self.players.append(Player(progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))     
-        self.ball = Ball()
+                self.players.append(Player(self.ground, progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))     
+        self.ball = Ball(self.ground)
         self.state = State(self.players , self.ball)
         self.visualizer = visualizer
 
