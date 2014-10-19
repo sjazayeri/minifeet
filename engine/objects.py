@@ -2,13 +2,16 @@ from collections import defaultdict
 from geometry import Vector
 import subprocess as sp
 import select
+import math
 from proxy import Proxy
 
+player_size = 3
+
 class MovingObj:
-    def __init__ (self , pos=Vector(0, 0) , vel = Vector(0 , 0),   ground=None ) :
-        self.ground = ground
-        self.pos=pos
-        self.vel=vel
+    def __init__ (self ) :
+        self.pos = Vector(0, 0)
+        self.vel = Vector(0 , 0)
+        self.ground = None
     def move (self) :
         raise NotImplementedError ()
 
@@ -19,35 +22,37 @@ class Player(MovingObj):
         self.ppath=ppath
         self.team=team
         self.number=number
-        self.pos=pos   
+        self.pos=pos
         self.comm = Proxy(ppath, self)     
         
     def move(self, coefficient=1):
-        pos+=(vel*coefficient)
+        self.pos += (self.vel * coefficient)
         length = self.ground.length
         width = self.ground.width
-        if y>(length/2) :
-            y=length/2
-        if y<-(length/2) :
-            y=-length/2
-        if x>(width/2) :
-            x=width/2
-        if x<-(width/2) :
-            x=-width/2
+        if self.pos.y>(length/2) :
+            self.pos.y=length/2
+        if self.pos.y<-(length/2) :
+            self.pos.y=-length/2
+        if self.pos.x>(width/2) :
+            self.pos.x=width/2
+        if self.pos.x<-(width/2) :
+            self.pos.x=-width/2
             
     def is_overlap(self , pos2):
-        diff = pos2 - pos
-        if( diff.len() < 0.2 )
+        global player_size
+        diff = pos2 - self.pos
+        if( diff.len() < player_size ):
             return True
         return False
             
 class Ball (MovingObj) :
     def move ( self ,coefficient=1):
-        if(ground.friction.len() >= (vel.len()*coefficient) )
-            vel=Vector(0 , 0)
+        if(self.ground.friction.len() >= (self.vel.len() * coefficient)):
+            self.vel=Vector(0 , 0)
             return
             
-        pos = pos+(vel*coefficient)+ground.friction
+        self.pos.x = self.pos.x + (self.vel.x * coefficient) + math.copysign(self.ground.friction.x , self.vel.x )
+        self.pos.y = self.pos.y + (self.vel.y * coefficient) + math.copysign(self.ground.friction.y , self.vel.y )
 
 class Ground :
     def __init__( self  , length = 0 , width =0 , friction = 0 , gate_length=0 ) :

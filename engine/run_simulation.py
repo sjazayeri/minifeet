@@ -5,33 +5,36 @@ from objects import Ground ,Ball , Player
 from geometry import Vector
 import time
 import subprocess as sp
-from refree import Refree
+from referee import Referee
+from state import State
 from cycle import Cycle
 import random
 
-cycle_length = 100
+cycle_length = 0.1
 game_duration = 1000
 
 indexi = [0 , 1/3 , -1/3 , 2/3 , -2/3]
 indexj = [1 , 2/3 , 2/3 , 1/3 , 1/3 ]
 
 class Simulator :
-
-    def __init__(self ,progs , gwidth = 90 , glength = 120 , gfriction = 1):
+    def __init__(self ,progs, visualizer,gwidth = 90 , glength = 120 , gfriction = 1):
+        self.cycle = Cycle()
+        self.referee = Referee()
         self.ground = Ground(glength , gwidth ,gfriction )
         self.players =[]
         for i in range(2):
             for j in range(5):
-                players.append(Player( progs[i] , i , j , Vector( indexi[j]*gwidth/2  ,  indexj[j]*glength/2 *(-1)**(i) ) )) 
-        self.ball = Ball(Vector(0,0) , Vector(0,0))
-        self.state = State( players , ball )
+                self.players.append(Player(progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))     
+        self.ball = Ball()
+        self.state = State(self.players , self.ball)
+        self.visualizer = visualizer
 
-    def send_data(self, state , visualizer ) :
+    def send_data(self) :
         for i in range(10):
-            visualizer.stdin.write(`state.players[i].pos.x`+' ') 
-            visualizer.stdin.write(`state.players[i].pos.y`+'\n') 
-        visualizer.stdin.write(`state.ball.pos.x`+' ') 
-        visualizer.stdin.write(`state.ball.pos.y`+'\n')
+            self.visualizer.stdin.write(`self.state.players[i].pos.x`+' ') 
+            self.visualizer.stdin.write(`self.state.players[i].pos.y`+'\n') 
+        self.visualizer.stdin.write(`self.state.ball.pos.x`+' ') 
+        self.visualizer.stdin.write(`self.state.ball.pos.y`+'\n')
         
     def player_move(self, i , coefficient=1.0/100):
         self.players[i].move(coefficient)
@@ -45,30 +48,30 @@ class Simulator :
         length = self.ground.glength
         
         if x>(width/2) :
-            self.ball.vel.x= -vx
+            self.ball.vel.x= -self.ball.vel.x
             self.ball.pos.x= width-x
        
         if x<-(width/2) :
-            self.ball.vel.x= -vx
+            self.ball.vel.x= -self.ball.vel.x
             self.ball.pos.x= -width-x
             
         if y>(length/2) :
-            self.ball.vel.y= -vy
+            self.state.update( self.referee.is_goal(ball , ground) )
+            self.ball.vel.y= -self.ball.vel.y
             self.ball.pos.y= length-y
-            self.state.update( Refree.is_goal(ball , ground) )
             
         if y<(-(length/2)) :
+            self.state.update( self.referee.is_goal(ball , ground) )
             self.ball.vel.y= -length-y
-            self.ball.pos.y=-vy
-            self.state.update( Refree.is_goal(ball , ground) )       
+            self.ball.pos.y=-self.ball.vel.y       
          
     def check_pos(self , coefficient=1.0/100):
         a = range(10)    
         random.shuffle(a)
         for i in a:
-            pos = self.players[i].pos
+            temp_pos = self.players[i].pos
             for j in range(10):
-                if( ( self.players[j].is_overlap(pos) ) && (j!=i))
+                if( ( self.players[j].is_overlap(temp_pos) ) and (j!=i)):
                     self.players[i].move(-coefficient)
                     break        
         
@@ -80,23 +83,24 @@ class Simulator :
             self.check_pos()
             
     def simulate(self) :
+        global cycle_length
         for i in xrange(game_duration):
-            self.send_data(state , visualizer)
+            self.send_data()
             self.state.update(0)
             for j in range(10):
-                self.players[j].comm.send_state(state)
+                self.players[j].comm.send_state(self.state)
             time.sleep(cycle_length)
-            Cycle.update_players(state.players, state.ball)
+            self.cycle.update_players(self.state.players, self.state.ball, self.state)
             self.move()
-            if(self.state.last_kicked != None)
+            if(self.state.last_kicked != None):
                 pass
        
 if __name__ =='__main__':
-
     ppath = sys.argv
     progs = [sys.argv[1], sys.argv[2]]
-    sim = Simulator(progs) 
+    #progs = ['1' , '2']
     visualizer = sp.Popen('rs_debug/dv.py', stdin=sp.PIPE)
+    sim = Simulator(progs, visualizer)
     sim.simulate()
     visualizer.terminate()
     

@@ -3,6 +3,8 @@ from collections import defaultdict
 from geometry import Vector, epsilon
 import subprocess as sp
 import select
+from math import atan
+from sys import stderr
 
 class Proxy:
     """Proxy(program_path, team, number) -> create communicator"""
@@ -12,35 +14,44 @@ class Proxy:
         self.goal = 'nop'
         self.dic = defaultdict(lambda:lambda:'nop',
                                {'kick': self.kick, 'move': self.move})
-        
+
+        print >>stderr, ppath
         self.process = sp.Popen(ppath, stdin=sp.PIPE, stdout=sp.PIPE)
         self.poller = select.poll()
         self.poller.register(self.process.stdout, select.POLLIN)
-        self.process.stdin.write(' '.join([`team`, `number`, '\n']))
-
+        self.process.stdin.write('%d %d\n'%(self.player.team,
+                                          self.player.number))
+        
     def terminate(self):
         """terminates the player process"""
         self.process.terminate()
-        
+
     def send_state(self, state):
         """sends the current state to the player"""
         for p in state.players:
-            self.process.stdin.write(' '.join([`p.pos.x`, `p.pos.y`]))
-        self.process.stdin.write(' '.join([`state.ball.x`,
-                                           `state.ball.y`]))
-        self.process.stdin.write(`game_state`)
+            self.process.stdin.write('%d %d\n'%(p.pos.x, p.pos.y))
+        self.process.stdin.write('%d %d\n'%(state.ball.pos.x,
+                                            state.ball.pos.y))
+        self.process.stdin.write(`state.game_state`+'\n')
 
     def get_command(self):
         """returns the command for the current cycle as a string"""
         buffer_content = []
-        while self.poller.poll(0) and len(command) < max_read:
+        t = self.poller.poll(0)
+        s=0
+        while t and s!=16 and len(buffer_content) < self.max_read:
             buffer_content += self.process.stdout.read(1)
+            print >>stderr, self.poller.poll()
+            t = self.poller.poll(0)
+            if t:
+                s = t[0][1]
+            
         command = ''.join(buffer_content)
         if command:
             self.goal = command.split('\n')[-1]
         return self.translate(self.goal)
 
-     def translate(self, goal):
+    def translate(self, goal):
         args = goal.split(' ')
         try:
             return self.dic[args[0]](*map(int, args[1:]))
@@ -48,13 +59,11 @@ class Proxy:
             return 'nop'
         
     def kick(self, x, y, force):
-        angle = atan(
+        angle = atan((x - self.pos.x) / (y - self.pos.y))
         self.goal = 'nop'
-        return 'kick '+`force`
+        return 'kick %d %d' % (angle, force)
 
     def move(self, x, y):
-        #return 'move '+
-        #`math.atan((x-self.player.pos.x)/(y-self.player.pos.y))`
         dest = Vector(x, y)
         if((dest-self.player.pos).len < epsilon):
             self.goal = 'nop'
