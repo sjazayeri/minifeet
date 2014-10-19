@@ -1,6 +1,10 @@
 class Referee:
-	goal_1, goal_2 = 0, 0
-	def is_goal(self,ball, ground):
+	def __init__(self):
+		self.goal1, self.goal2 = 0, 0
+		self.players = []
+		self.last_player_kicked = ()
+
+	def is_goal(self, ball, ground):
 		y1 = ball.pos.y - ball.vel.y
 		x1 = ball.pos.x - ball.vel.x
 		m = 1.0*(ball.pos.y-y1)/(ball.pos.x-x1)
@@ -15,36 +19,44 @@ class Referee:
 		else:
 			return 0
 
-'''
-players = [[1,1],[4,2],[4,3],[4,4],[5,5],[1,2],[3,2],[3,1],[2,4],[2,1]]
-curr_player_number = 2
-last_player_number = 1
+	'''players=>a list with binary tuples of player and vector and player is a similar binary tuple'''	
+	def update(self,players,last_player_kicked):
+		self.players=players
+		self.last_player_kciked=last_player_kicked
 
-if curr_player_number < 5:
-	if last_player_number >= 5 or last_player_number == curr_player_number or players[curr_player_number][0] <= 0 or players[curr_player_number][0] <= players[last_player_number][0]:
-		return 0
+	def is_offside(self, player):
+		player_last_pos = None
+		for p in players:
+			if p[0]==player:
+				player_last_pos=p[1]
+				break
 
-	max1, max2 = -(float('inf')), -(float('inf'))
-	for i in range(5,10):
-		if players[i][0] > max2:
-			max2 = players[i][0]
-		if max2 > max1:
-			max1, max2 = max2, max1
-	if players[curr_player_number][0]>max2:
-		return 1
-	return 0
+		if player.team == 0:
+			if self.last_player_kicked[0].team == 1 or self.last_player_kicked[0] == player or player_last_pos.y <= 0 or player_last_pos.y <= last_player_kicked[1].y:
+				return 0
 
-elif curr_player_number > 5:
-	if last_player_number < 5 or last_player_number == curr_player_number or players[curr_player_number][0] >= 0 or players[curr_player_number][0] >= players[last_player_number][0]:
-		return 0
+			max1, max2 = -(float('inf')), -(float('inf'))
+			for p in players:
+				if p.team == 0:
+					continue
+				if p[1].y > max2:
+					max2 = players[1].y
+				if max2 > max1:
+					max1, max2 = max2, max1
+			if player_last_pos.y > max2:
+				return 3
+			return 0
 
-	min1, min2 = float('inf'), float('inf')
-	for i in range(0,5):
-		if players[i][0] < min2:
-			min2 = players[i][0]
-		if min2 < min1:
-			min1, min2 = min2, min1
-	if players[curr_player_number][0]<min2:
-		return 2
-	return 0
-'''
+		elif player.team == 1:
+			if self.last_player_kicked[0].team == 0 or self.last_player_kicked[0] == player or player_last_pos.y >= 0 or player_last_pos.y >= last_player_kicked[1].y:
+				return 0
+
+			min1, min2 = float('inf'), float('inf')
+			for p in players:
+				if p.team == 1:
+					continue
+				if min2 < min1:
+					min1, min2 = min2, min1
+			if player_last_pos.y < min2:
+				return 4
+			return 0
