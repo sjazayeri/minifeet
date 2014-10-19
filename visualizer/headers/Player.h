@@ -16,6 +16,8 @@ public:
 	virtual void setNewXY(int _newX, int _newY);
 	virtual void render(unsigned int graphicalCycleNum);
 	
+	LTexture* setMood(unsigned int cycleNum);
+
 private:
 	// renderers contains player PNG pictures
 	vector<LTexture*> mood;

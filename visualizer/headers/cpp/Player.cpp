@@ -28,30 +28,30 @@ void Player::render(unsigned int cycleNum)
 
 	texture = setMood(cycleNum);
 
-	texture.render(x, y);
+	texture->render(x, y);
 }
 
 LTexture* Player::setMood(unsigned int cycleNum)
 {
-	int mood = cycleNum % 4;
+	int state = cycleNum % 4;
 	LTexture* returnTexture = NULL;
 
 	// if his face was visible
 	if (direction)
-		if ( mood == 0 || mood == 2)
+		if ( state == 0 || state == 2)
 			returnTexture = mood[0];
-		if ( mood == 1 )
+		if ( state == 1 )
 			returnTexture = mood[1];
-		if ( mood == 3 )
+		if ( state == 3 )
 			returnTexture = mood[2];
 
 	// if his back was visible
 	if (!direction)
-		if ( mood == 0 || mood == 2)
+		if ( state == 0 || state == 2)
 			returnTexture = mood[3];
-		if ( mood == 1 )
+		if ( state == 1 )
 			returnTexture = mood[4];
-		if ( mood == 3 )
+		if ( state == 3 )
 			returnTexture = mood[5];
 
 	return returnTexture;

@@ -1,5 +1,6 @@
 #ifndef MOVING_OBJ_
 #define MOVING_OBJ_
+#include <iostream>
 using namespace std;
 
 #define CYCLEPROP 5

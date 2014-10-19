@@ -1,5 +1,11 @@
 #include "../Ball.h"
 
+Ball::Ball(LTexture* _pngFile)
+{
+	name = "ballony";
+	texture = _pngFile;
+}
+
 void Ball::setNewXY(int _newX, int _newY)
 {
 	oldX = newX;
@@ -12,13 +18,7 @@ void Ball::setNewXY(int _newX, int _newY)
 	dy = (newY-oldY)/CYCLEPROP;
 }
 
-Ball::Ball(Ltexture* _pngFile)
+void Ball::render(unsigned int cycleNum)
 {
-	name = "ballony";
-	texture = _pngFile;
-}
-
-Ball::render(unsigned int cycleNum)
-{
-	texture.render(x, y);
+	texture->render(x, y);
 }
