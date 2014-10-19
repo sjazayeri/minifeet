@@ -208,8 +208,17 @@ bool loadMedia(SharedData* gData)
 	return success;
 }
 
-void close()
+void close(SharedData* gData)
 {
+	
+	for(int i=0; i<11; i++)
+		delete gData->movingObjs[i];
+	for(int j=0; j<6; j++)
+	{
+		delete gData->bolanYellow[j];
+		delete gData->bolanRed[j];
+	}
+	delete gData->field;
 	
 	//Quit SDL subsystems
 	IMG_Quit();

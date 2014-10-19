@@ -58,7 +58,7 @@ bool init(SharedData* gData);
 //Loads media
 bool loadMedia(SharedData* gData);
 //Frees media and shuts down SDL
-void close();
+void close(SharedData* gData);
 
 bool getInputs(SharedData* gData);
 

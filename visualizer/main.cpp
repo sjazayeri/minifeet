@@ -116,7 +116,7 @@ int main( int argc, char* args[] )
 	}
 
 	//Free resources and close SDL
-	close();
+	close(&globData);
 
 	return 0;
 }
