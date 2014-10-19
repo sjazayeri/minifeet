@@ -7,18 +7,19 @@ from proxy import Proxy
 
 player_size = 3
 
-class MovingObj:
-    def __init__ (self ) :
+class MovingObj(object):
+    def __init__(self,  ground):
         self.pos = Vector(0, 0)
         self.vel = Vector(0 , 0)
-        self.ground = None
+        self.ground = ground
     def move (self) :
         raise NotImplementedError ()
 
 class Player(MovingObj):
     """Player(program_path, team, number, loc) -> create object to run
     and interface with player program"""
-    def __init__(self, ppath, team, number, pos):
+    def __init__(self, ground, ppath, team, number, pos):
+        super(Player, self).__init__(ground)
         self.ppath=ppath
         self.team=team
         self.number=number
@@ -46,7 +47,7 @@ class Player(MovingObj):
         return False
             
 class Ball (MovingObj) :
-    def move ( self ,coefficient=1):
+    def move (self,coefficient=1):
         if(self.ground.friction.len() >= (self.vel.len() * coefficient)):
             self.vel=Vector(0 , 0)
             return
@@ -54,8 +55,8 @@ class Ball (MovingObj) :
         self.pos.x = self.pos.x + (self.vel.x * coefficient) + math.copysign(self.ground.friction.x , self.vel.x )
         self.pos.y = self.pos.y + (self.vel.y * coefficient) + math.copysign(self.ground.friction.y , self.vel.y )
 
-class Ground :
-    def __init__( self  , length = 0 , width =0 , friction = 0 , gate_length=0 ) :
+class Ground(object):
+    def __init__(self, length=0, width =0, friction=0, gate_length=0):
         self.length = length
         self.width = width
         self.friction = Vector(friction ,friction )

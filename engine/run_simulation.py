@@ -16,7 +16,7 @@ game_duration = 1000
 indexi = [0 , 1/3 , -1/3 , 2/3 , -2/3]
 indexj = [1 , 2/3 , 2/3 , 1/3 , 1/3 ]
 
-class Simulator :
+class Simulator(object):
     def __init__(self ,progs, visualizer,gwidth = 90 , glength = 120 , gfriction = 1):
         self.cycle = Cycle()
         self.referee = Referee()
@@ -24,12 +24,12 @@ class Simulator :
         self.players =[]
         for i in range(2):
             for j in range(5):
-                self.players.append(Player(progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))     
-        self.ball = Ball()
+                self.players.append(Player(self.ground, progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))     
+        self.ball = Ball(self.ground)
         self.state = State(self.players , self.ball)
         self.visualizer = visualizer
 
-    def send_data(self) :
+    def send_data(self):
         for i in range(10):
             self.visualizer.stdin.write(`self.state.players[i].pos.x`+' ') 
             self.visualizer.stdin.write(`self.state.players[i].pos.y`+'\n') 
@@ -44,8 +44,8 @@ class Simulator :
         
         x = self.ball.pos.x 
         y = self.ball.pos.y
-        width = self.ground.gwidth
-        length = self.ground.glength
+        width = self.ground.width
+        length = self.ground.length
         
         if x>(width/2) :
             self.ball.vel.x= -self.ball.vel.x
@@ -90,7 +90,7 @@ class Simulator :
             for j in range(10):
                 self.players[j].comm.send_state(self.state)
             time.sleep(cycle_length)
-            self.cycle.update_players(self.state.players, self.state.ball, self.state)
+            self.cycle.update_players(self.state)
             self.move()
             if(self.state.last_kicked != None):
                 pass
