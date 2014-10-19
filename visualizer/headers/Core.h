@@ -68,4 +68,6 @@ void setNewData(SharedData* gData);
 
 bool initGame(SharedData* gData);
 
+void renderAll(SharedData* gData);
+
 #endif

@@ -286,7 +286,42 @@ bool initGame(SharedData* gData)
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
-	getInputs(gData);
-	setNewData(gData);
+	// getInputs(gData);
+	// setNewData(gData);
 	return true;
+}
+
+void renderAll(SharedData* gData)
+{
+	vector<int> sortedObjs;
+
+	//sorting players and ball
+	vector<int> mvIndex;
+	for (int i = 0; i < gData->movingObjs.size(); i++)
+		mvIndex.push_back(i);
+
+	while ( mvIndex.size() != 0 ) {\
+		int i = 0;
+		int min = mvIndex[i];
+
+		for (int j = 0; j < mvIndex.size(); j++) {
+			if (gData->movingObjs[mvIndex[j]]->y < gData->movingObjs[mvIndex[i]]->y)
+				min = mvIndex[j];
+			else if (gData->movingObjs[mvIndex[j]]->y == gData->movingObjs[mvIndex[i]]->y)
+				if (gData->movingObjs[mvIndex[j]]->x < gData->movingObjs[mvIndex[i]]->x)
+					min = mvIndex[j];
+				else if (gData->movingObjs[mvIndex[j]]->x == gData->movingObjs[mvIndex[i]]->x)
+					if (gData->movingObjs[mvIndex[j]]->name == "ballony")
+						min = mvIndex[j];
+		}
+
+		sortedObjs.push_back(min);
+		mvIndex.erase(mvIndex.begin() + min);
+	}
+
+	// rendering all
+	for (int i = 0; i < sortedObjs.size(); i++)
+		gData->movingObjs[sortedObjs[i]]->render(gData->cycleNum);
+
+	return;
 }

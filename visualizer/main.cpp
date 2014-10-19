@@ -29,8 +29,8 @@ int main( int argc, char* args[] )
 		return -1;
 	}
 
-	// ---> set zero cycle data
-	// 		getting initial pos from logic
+	// initial game logic and read zero cycle data
+	initGame(&globData);
 	
 	//For X Button
 	SDL_Event e;
@@ -59,8 +59,7 @@ int main( int argc, char* args[] )
 
 		if ( globData.cycleNum % (globData.logicCycleLen/globData.cycleLen) == 0 ) 
 		{
-			// ---> get data from logic
-			//		only get them, DO NOT parse them to players, ball, etc
+			// reading positions and states from logic
 			if( !getInputs(&globData))
 			{
 				printf( "Failed to get postions or state!\n" );
@@ -77,24 +76,28 @@ int main( int argc, char* args[] )
 			setNewData(&globData);
 		}
 
-		// ---> calling move methods for all movingObjs
+		// Moving movable objects!
+		for (int i = 0; i < globData.movingObjs.size(); i++)
+			globData.movingObjs[i]->move();
 
-		// ---> Clear screen and setting render color
-		//		probably this way:
+		// Clear Screen
 		SDL_SetRenderDrawColor( globData.gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
 		SDL_RenderClear(globData.gRenderer);
 
-		// ---> render field
+		// Rendering Green Field
+		globData.field->render(0,0);
 		
-		// ---> render players and balls in this order
-		//		priority1: less Y renders first
-		//		priority2: less X renders first
-		//		(optional)priority3: ball
-		//		(optional)priority4: player whom is his face is NOT shown
-		//		(optional)priority5: Red team
+		// Rendering all other elements on gRenderer
+		// renderAll(&globData);
+
+		// Setting graphical cycle number
+		globData.cycleNum++;
+		if (globData.cycleNum == 20000) {
+			globData.cycleNum = 0;
+			clog << "Graphical Cycle Counter Reset" << endl;
+		}
 
 		//Update screen
-		// globData.field->render(0,0);
 		SDL_RenderPresent( globData.gRenderer );
 
 		// stoping timer
