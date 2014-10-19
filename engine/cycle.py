@@ -21,7 +21,8 @@ class Cycle:
         state.last_kicked=None
         for p in state.players:
             ss=p.comm.get_command().split(' ')
-            self.commands[ss[0]](p,*map(int, ss[1:]))
+            #print >>stderr, ss
+            self.commands[ss[0]](p,*map(float, ss[1:]))
     def _kick(self,p,angle,strength):
         if len(p.pos-ball.pos) <= self.MaxBallDis:
             _state.last_kicked=p

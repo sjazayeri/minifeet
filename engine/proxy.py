@@ -14,7 +14,6 @@ class Proxy:
         self.dic = defaultdict(lambda:lambda:'nop',
                                {'kick': self.kick, 'move': self.move})
 
-        print >>stderr, ppath
         self.process = sp.Popen(ppath, stdin=sp.PIPE, stdout=sp.PIPE)
         self.poller = select.poll()
         self.poller.register(self.process.stdout, select.POLLIN)
@@ -28,7 +27,6 @@ class Proxy:
 
     def send_state(self, state):
         """sends the current state to the player"""
-        #print >>stderr, len(state.players)
         for p in state.players:
             self.process.stdin.write('%d %d\n'%(p.pos.x, p.pos.y))
         self.process.stdin.write('%d %d\n'%(state.ball.pos.x,
@@ -38,17 +36,12 @@ class Proxy:
     def get_command(self):
         """returns the command for the current cycle as a string"""
         buffer_content = []
-        print >>stderr, 'func'
-        print >>stderr, self.poller.poll(0)
         while self.poller.poll(0) and len(buffer_content) < self.max_read:
-            print >>stderr, 'inside'
             buffer_content += self.process.stdout.read(1)
-            print >>stderr, self.poller.poll(0), buffer_content
             
-        command = ''.join(buffer_content)
-        #print >>stderr, command
+        command = ''.join(buffer_content).rstrip()
         if command:
-            self.goal = command.split('\n')[-1]
+            self.goal = command
         return self.translate(self.goal)
 
     def translate(self, goal):
@@ -65,7 +58,9 @@ class Proxy:
 
     def move(self, x, y):
         dest = Vector(x, y)
-        if((dest-self.player.pos).len < epsilon):
+        if((dest-self.player.pos).len() < epsilon):
             self.goal = 'nop'
             return 'nop'
-        return 'move '+`(dest-self.player.pos).angle()`
+        #rv = 'move '+`(dest-self.player.pos).angle()`+
+        rv = 'move %f %f'%((dest-self.player.pos).angle(), (dest-self.player.pos).len())
+        return rv
