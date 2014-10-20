@@ -51,7 +51,6 @@ class Ball (MovingObj) :
         if(self.ground.friction.len() >= (self.vel.len() * coefficient)):
             self.vel=Vector(0 , 0)
             return
-            
         self.pos.x = self.pos.x + (self.vel.x * coefficient) + math.copysign(self.ground.friction.x , self.vel.x )
         self.pos.y = self.pos.y + (self.vel.y * coefficient) + math.copysign(self.ground.friction.y , self.vel.y )
 

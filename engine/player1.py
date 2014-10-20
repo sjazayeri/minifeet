@@ -14,7 +14,7 @@ if __name__=='__main__':
         selfpos = players[5*team+number]
         ballpos = Vector(*map(float, raw_input().split(' ')))
         game_state = int(raw_input())
-        print >>stderr, 'GOT DATA AT %f'%(time.time())
+        #print >>stderr, 'GOT DATA AT %f'%(time.time())
         print 'move %d %d'%(ballpos.x, ballpos.y)
         stdout.flush()
-        print >>stderr, 'SENT COMMAND AT %f'%(time.time())
+       # print >>stderr, 'SENT COMMAND AT %f'%(time.time())

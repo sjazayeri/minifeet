@@ -11,7 +11,7 @@ from cycle import Cycle
 import random
 
 cycle_length = 0.1
-game_duration = 2
+game_duration = 2000
 
 indexi = [0 , 1/3 , -1/3 , 2/3 , -2/3]
 indexj = [1 , 2/3 , 2/3 , 1/3 , 1/3 ]
@@ -91,16 +91,19 @@ class Simulator(object):
                 self.players[j].comm.send_state(self.state)
             print >>sys.stderr, 'DOOOOOOOOOOOOOOOOOOOOOOONE SENDING DATA AT %f'%(time.time())
             time.sleep(cycle_length)
+            #try:
             self.cycle.update_players(self.state)
+            #except 
             self.move()
             if(self.state.last_kicked != None):
                 pass
+        for i in xrange(10):
+            self.players[i].comm.terminate()
         
 if __name__ =='__main__':
     ppath = sys.argv
     progs = [sys.argv[1], sys.argv[2]]
-    #progs = ['1' , '2']
-    visualizer = sp.Popen('rs_debug/dv.py', stdin=sp.PIPE)
+    visualizer = sp.Popen('./dv.py', stdin=sp.PIPE)
     sim = Simulator(progs, visualizer)
     sim.simulate()
     visualizer.terminate()

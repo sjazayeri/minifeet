@@ -37,7 +37,7 @@ class Proxy:
         
     def get_command(self):
         """returns the command for the current cycle as a string"""
-        print >>stderr, 'GC CALLED AT %f'%(time.time())
+        #print >>stderr, 'GC CALLED AT %f'%(time.time())
         buffer_content = []
         while self.poller.poll(0) and len(buffer_content) < self.max_read:
             buffer_content += self.process.stdout.read(1)
