@@ -25,7 +25,7 @@ class Simulator(object):
         for i in range(2):
             for j in range(5):
                 self.players.append(Player(self.ground, progs[i] , i , j , Vector( ((1.0*indexi[j]) * (gwidth / 2))  , (1.0*indexj[j]) * (glength / 2) * ((-1) ** (i)) ) ))
-                print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(i, j, self.players[j].pos.x, self.players[j].pos.y)
+                #print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(i, j, self.players[j].pos.x, self.players[j].pos.y)
                 #print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(i, j, indexi[j] * gwidth / 2, indexj[j] * glength / 2 * (-1) ** (i))
                 self.ball = Ball(self.ground)
         self.state = State(self.players , self.ball)
@@ -91,7 +91,7 @@ class Simulator(object):
             self.state.update(0)
             for j in xrange(10):
                 self.players[j].comm.send_state(self.state)
-            print >>sys.stderr, 'DOOOOOOOOOOOOOOOOOOOOOOONE SENDING DATA AT %f'%(time.time())
+            #print >>sys.stderr, 'DOOOOOOOOOOOOOOOOOOOOOOONE SENDING DATA AT %f'%(time.time())
             time.sleep(cycle_length)
             #try:
             self.cycle.update_players(self.state)
@@ -105,7 +105,7 @@ class Simulator(object):
 if __name__ =='__main__':
     ppath = sys.argv
     progs = [sys.argv[1], sys.argv[2]]
-    visualizer = sp.Popen('./dv.py', stdin=sp.PIPE)
+    visualizer = sp.Popen('../visualizer/a.out', stdin=sp.PIPE)
     sim = Simulator(progs, visualizer)
     sim.simulate()
     visualizer.terminate()

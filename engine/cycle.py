@@ -30,4 +30,5 @@ class Cycle:
             _state.ball.angel=angle
     def _move(self,p,angle,distance):
         vel=min(distance,self.PlayerVel)
+        #print >>stderr, 'PLAYER %d, %d: %f, %f'
         p.vel=Vector(vel*math.cos(angle),vel*math.sin(angle))

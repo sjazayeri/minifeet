@@ -71,8 +71,8 @@ class Proxy:
             return 'nop'
         #rv = 'move '+`(dest-self.player.pos).angle()`+
         rv = 'move %f %f'%((dest-self.player.pos).angle(), (dest-self.player.pos).len())
-        print >>stderr, 'PLAYER %d, %d AT %f %f: '%(self.player.team,
-                                                    self.player.number,
-                                                    self.player.pos.x,
-                                                    self.player.pos.y)+rv
+        #print >>stderr, 'PLAYER %d, %d AT %f %f: '%(self.player.team,
+        #                                            self.player.number,
+        #                                            self.player.pos.x,
+        #                                            self.player.pos.y)+rv
         return rv
