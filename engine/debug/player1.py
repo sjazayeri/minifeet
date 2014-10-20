@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from geometry import Vector, epsilon
+from geometry import Vector
 from sys import stderr, stdout, exit
 import time
 

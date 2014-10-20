@@ -1,0 +1,1486 @@
+end of initial data
+Traceback (most recent call last):
+  File "./run_simulation.py", line 110, in <module>
+    sim.simulate()
+  File "./run_simulation.py", line 99, in simulate
+    self.move()
+  File "./run_simulation.py", line 86, in move
+    self.ball_move()
+  File "./run_simulation.py", line 63, in ball_move
+    self.state.update( self.referee.is_goal(ball , ground) )
+NameError: global name 'ball' is not defined
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+        x, y = map(float, raw_input().split(' '))
+EOFError: EOF when: EOF when reading a line
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+        x, y = map(float, raw_input().split(' '))
+EOFError: EOF when reading a line
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+    x, y = map(float, raw_input().split(' '))
+EOFError: EOF when reading a line
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+    x, y = map(float, raw_input().split(' '))
+EOFError: EOF when reading a line
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+    x, y = map(float, raw_input().split(' '))
+EOFError: EOF when reading a line
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+    x, y = map(float, raw_input().split(' '))
+EOFError: EOF when reading a line
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+    x, y = map(float, raw_input().split(' '))
+EOFError: EOF when reading a line
+Traceback (most recent call last):
+  File "./player2.py", line 13, in <module>
+    x, y = map(float, raw_input().split(' '))
+EOFError: EOF when reading a line
+0GET:: 0-60
+1GET:: 15-40
+2GET:: -15-40
+3GET:: 30-20
+4GET:: -30-20
+5GET:: 0--60
+6GET:: 15--40
+7GET:: -15--40
+8GET:: 30--20
+9GET:: -30--20
+BALL:: 0-0
+STATE:: 0
+CYCLE:: 0
+handle state
+SET:::oldX--newX0270270
+SET:::oldX--newX0360360
+SET:::oldX--newX0180180
+SET:::oldX--newX0450450
+SET:::oldX--newX09090
+SET:::oldX--newX0270270
+SET:::oldX--newX0360360
+SET:::oldX--newX0180180
+SET:::oldX--newX0450450
+SET:::oldX--newX09090
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: 0-55
+1GET:: 13-35
+2GET:: -13-35
+3GET:: 25-17
+4GET:: -25-17
+5GET:: 0--55
+6GET:: 13--35
+7GET:: -13--35
+8GET:: 25--17
+9GET:: -25--17
+BALL:: 0-0
+STATE:: 0
+CYCLE:: 5
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX360348348
+SET:::oldX--newX180192192
+SET:::oldX--newX450420420
+SET:::oldX--newX90120120
+SET:::oldX--newX270270270
+SET:::oldX--newX360348348
+SET:::oldX--newX180192192
+SET:::oldX--newX450420420
+SET:::oldX--newX90120120
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: 0-50
+1GET:: 11-30
+2GET:: -11-30
+3GET:: 21-14
+4GET:: -21-14
+5GET:: 0--50
+6GET:: 11--30
+7GET:: -11--30
+8GET:: 21--14
+9GET:: -21--14
+BALL:: 0-0
+STATE:: 0
+CYCLE:: 10
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX348336336
+SET:::oldX--newX192204204
+SET:::oldX--newX420396396
+SET:::oldX--newX120144144
+SET:::oldX--newX270270270
+SET:::oldX--newX348336336
+SET:::oldX--newX192204204
+SET:::oldX--newX420396396
+SET:::oldX--newX120144144
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: 0-45
+1GET:: 9-25
+2GET:: -9-25
+3GET:: 17-11
+4GET:: -17-11
+5GET:: 0--45
+6GET:: 9--25
+7GET:: -9--25
+8GET:: 17--11
+9GET:: -17--11
+BALL:: 0-0
+STATE:: 0
+CYCLE:: 15
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX336324324
+SET:::oldX--newX204216216
+SET:::oldX--newX396372372
+SET:::oldX--newX144168168
+SET:::oldX--newX270270270
+SET:::oldX--newX336324324
+SET:::oldX--newX204216216
+SET:::oldX--newX396372372
+SET:::oldX--newX144168168
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: 0-40
+1GET:: 7-21
+2GET:: -7-21
+3GET:: 13-8
+4GET:: -13-8
+5GET:: 0--40
+6GET:: 7--21
+7GET:: -7--21
+8GET:: 13--8
+9GET:: -13--8
+BALL:: 0-0
+STATE:: 0
+CYCLE:: 20
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX324312312
+SET:::oldX--newX216228228
+SET:::oldX--newX372348348
+SET:::oldX--newX168192192
+SET:::oldX--newX270270270
+SET:::oldX--newX324312312
+SET:::oldX--newX216228228
+SET:::oldX--newX372348348
+SET:::oldX--newX168192192
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: 0-35
+1GET:: 6-16
+2GET:: -6-16
+3GET:: 9-6
+4GET:: -9-6
+5GET:: 0--35
+6GET:: 6--16
+7GET:: -6--16
+8GET:: 9--6
+9GET:: -9--6
+BALL:: 0-0
+STATE:: 0
+CYCLE:: 25
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX312306306
+SET:::oldX--newX228234234
+SET:::oldX--newX348324324
+SET:::oldX--newX192216216
+SET:::oldX--newX270270270
+SET:::oldX--newX312306306
+SET:::oldX--newX228234234
+SET:::oldX--newX348324324
+SET:::oldX--newX192216216
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: 0-30
+1GET:: 4-11
+2GET:: -4-11
+3GET:: 5-3
+4GET:: -5-3
+5GET:: 0--30
+6GET:: 4--11
+7GET:: -4--11
+8GET:: 5--3
+9GET:: -5--3
+BALL:: 0-0
+STATE:: 0
+CYCLE:: 30
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX306294294
+SET:::oldX--newX234246246
+SET:::oldX--newX324300300
+SET:::oldX--newX216240240
+SET:::oldX--newX270270270
+SET:::oldX--newX306294294
+SET:::oldX--newX234246246
+SET:::oldX--newX324300300
+SET:::oldX--newX216240240
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: 0-25
+1GET:: 2-7
+2GET:: -2-7
+3GET:: 0-0
+4GET:: 0-0
+5GET:: 0--25
+6GET:: 2--7
+7GET:: -2--7
+8GET:: 0-0
+9GET:: 0-0
+BALL:: 0-0
+STATE:: 0
+CYCLE:: 35
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX294282282
+SET:::oldX--newX246258258
+SET:::oldX--newX300270270
+SET:::oldX--newX240270270
+SET:::oldX--newX270270270
+SET:::oldX--newX294282282
+SET:::oldX--newX246258258
+SET:::oldX--newX300270270
+SET:::oldX--newX240270270
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 40
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX28218901890
+SET:::oldX--newX2581161011610
+SET:::oldX--newX2706993069930
+SET:::oldX--newX270419850419850
+SET:::oldX--newX27025193702519370
+SET:::oldX--newX2821511649015116490
+SET:::oldX--newX2589069921090699210
+SET:::oldX--newX270544195530544195530
+SET:::oldX--newX270-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 45
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 50
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 55
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 60
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 65
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 70
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 75
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 80
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 85
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 90
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 95
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 100
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 105
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 110
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 115
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 120
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 125
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 130
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 135
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 140
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 145
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 150
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 155
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 160
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 165
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 170
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+0GET:: -6.07907e-42--1.06947e-41
+1GET:: 270-360
+2GET:: 1890--1800
+3GET:: 11610-11160
+4GET:: 69930--66600
+5GET:: 419850-399960
+6GET:: 2.51937e+06--2.3994e+06
+7GET:: 1.51165e+07-1.43968e+07
+8GET:: 9.06992e+07--8.63802e+07
+9GET:: 5.44196e+08-5.18282e+08
+BALL:: 3.26517e+09--3.10969e+09
+STATE:: 0
+CYCLE:: 175
+handle state
+SET:::oldX--newX270270270
+SET:::oldX--newX189018901890
+SET:::oldX--newX116101161011610
+SET:::oldX--newX699306993069930
+SET:::oldX--newX419850419850419850
+SET:::oldX--newX251937025193702519370
+SET:::oldX--newX151164901511649015116490
+SET:::oldX--newX906992109069921090699210
+SET:::oldX--newX544195530544195530544195530
+SET:::oldX--newX-2147483648-2147483648-2147483648
+setNewData
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll
+move
+start renderAll
+renderAll

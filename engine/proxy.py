@@ -53,16 +53,16 @@ class Proxy:
     def translate(self, goal):
         args = goal.split(' ')
         try:
-            #print >>stderr, args
             return self.dic[args[0]](*map(float, args[1:]))
         except TypeError:
             return 'nop'
         
     def kick(self, x, y, force):
         #angle = atan((x - self.pos.x) / (y - self.pos.y))
-        angle = (Vector(x, y)-self.pos).angle()
+        angle = (Vector(x, y)-self.player.pos).angle()
+        print 'kick %f %f'%(angle, force)
         self.goal = 'nop'
-        return 'kick %d %d' % (angle, force)
+        return 'kick %f %f' % (angle, force)
 
     def move(self, x, y):
         dest = Vector(x, y)

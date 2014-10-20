@@ -3,32 +3,34 @@ import math
 from referee import Referee
 from geometry import Vector
 from objects import Ball , Player
-from sys import stderr
+from sys import stderr, stdout
 
 class Cycle:
     def __init__(self):
-        self.commands = {'kick':self._kick, 'move':self._move,
+        self.commands = {'kick':self.kick, 'move':self.move,
                          'nop':lambda s:None}
-        self._state = None
-        self.MaxBallDis = 10
-        self.BallVelUnit = 100
+        self.state = None
+        self.max_ball_dist = 2
+        self.BallVelUnit = 10
         self.PlayerVel = 5
         
     def update_players(self,state):
         """parses commands of players and updates
         the state of them and the ball"""
-        self._state=state
-        state.last_kicked=None
-        for p in state.players:
+        self.state=state
+        self.state.last_kicked=None
+        for p in self.state.players:
             ss=p.comm.get_command().split(' ')
-            #print >>stderr, ss
             self.commands[ss[0]](p,*map(float, ss[1:]))
-    def _kick(self,p,angle,strength):
-        if len(p.pos-ball.pos) <= self.MaxBallDis:
-            _state.last_kicked=p
-            _state.ball.vel=self.BallVelUnit*strength
-            _state.ball.angel=angle
-    def _move(self,p,angle,distance):
+    def kick(self,p,angle,force):
+        if math.fabs((p.pos-self.state.ball.pos).len()-self.max_ball_dist) > 0:
+            print 'PLAYER %d, %d KICKED TO %f, WITH FORCE %f'%(p.team, p.number, angle, force)
+            #state.last_kicked=p
+            #state.ball.vel=self.BallVelUnit*strength
+            #state.ball.angle=angle
+            force = max(force, 1)
+            self.state.ball.vel += Vector(self.BallVelUnit*force*math.cos(angle), self.BallVelUnit*force*math.sin(angle))
+    def move(self,p,angle,distance):
         vel=min(distance,self.PlayerVel)
         #print >>stderr, 'PLAYER %d, %d: %f, %f'
         p.vel=Vector(vel*math.cos(angle),vel*math.sin(angle))

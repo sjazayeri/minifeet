@@ -35,7 +35,7 @@ class Simulator(object):
         for i in range(10):
             self.visualizer.stdin.write(`int(self.state.players[i].pos.x)`+'\n') 
             self.visualizer.stdin.write(`int(self.state.players[i].pos.y)`+'\n')
-            print >>sys.stderr, 'THIS IS RS, PLAYER %d: %d, %d'%(i, int(self.state.players[i].pos.x), int(self.state.players[i].pos.y)) 
+            #print >>sys.stderr, 'THIS IS RS, PLAYER %d: %d, %d'%(i, int(self.state.players[i].pos.x), int(self.state.players[i].pos.y)) 
         self.visualizer.stdin.write(`int(self.state.ball.pos.x)`+'\n') 
         self.visualizer.stdin.write(`int(self.state.ball.pos.y)`+'\n')
         self.visualizer.stdin.write(`self.state.game_state `+'\n') 
@@ -95,9 +95,7 @@ class Simulator(object):
                 self.players[j].comm.send_state(self.state)
             #print >>sys.stderr, 'DOOOOOOOOOOOOOOOOOOOOOOONE SENDING DATA AT %f'%(time.time())
             time.sleep(cycle_length)
-            #try:
             self.cycle.update_players(self.state)
-            #except 
             self.move()
             if(self.state.last_kicked != None):
                 pass
