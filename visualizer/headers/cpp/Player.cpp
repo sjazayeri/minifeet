@@ -33,26 +33,53 @@ void Player::render(unsigned int cycleNum)
 
 LTexture* Player::setMood(unsigned int cycleNum)
 {
-	int state = cycleNum % 4;
+	int state = cycleNum % 12;
 	LTexture* returnTexture = NULL;
 
 	// if his face was visible
 	if (direction)
-		if ( state == 0 || state == 2)
-			returnTexture = mood[0];
-		if ( state == 1 )
-			returnTexture = mood[1];
-		if ( state == 3 )
-			returnTexture = mood[2];
+		switch (state) {
+			case 0:
+			case 1:
+			case 2:
+			case 6:
+			case 7:
+			case 8:
+				returnTexture = mood[0];
+				break;
+			case 3:
+			case 4:
+			case 5:
+				returnTexture = mood[1];
+				break;
+			case 9:
+			case 10:
+			case 11:
+				returnTexture = mood[2];
+				break;
+		}
 
 	// if his back was visible
 	if (!direction)
-		if ( state == 0 || state == 2)
-			returnTexture = mood[3];
-		if ( state == 1 )
-			returnTexture = mood[4];
-		if ( state == 3 )
-			returnTexture = mood[5];
-
+		switch (state) {
+			case 0:
+			case 1:
+			case 2:
+			case 6:
+			case 7:
+			case 8:
+				returnTexture = mood[3];
+				break;
+			case 3:
+			case 4:
+			case 5:
+				returnTexture = mood[4];
+				break;
+			case 9:
+			case 10:
+			case 11:
+				returnTexture = mood[5];
+				break;
+		}
 	return returnTexture;
 }
