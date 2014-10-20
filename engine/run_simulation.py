@@ -11,10 +11,10 @@ from cycle import Cycle
 import random
 
 cycle_length = 0.1
-game_duration = 2
+game_duration = 200
 
-indexi = [0 , 1/3 , -1/3 , 2/3 , -2/3]
-indexj = [1 , 2/3 , 2/3 , 1/3 , 1/3 ]
+indexi = [0 , 1.0/3 , -1.0/3 , 2.0/3 , -2.0/3]
+indexj = [1 , 2.0/3 , 2.0/3 , 1.0/3 , 1.0/3 ]
 
 class Simulator(object):
     def __init__(self ,progs, visualizer,gwidth = 90 , glength = 120 , gfriction = 1):
@@ -24,8 +24,9 @@ class Simulator(object):
         self.players =[]
         for i in range(2):
             for j in range(5):
-                self.players.append(Player(self.ground, progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))
-                print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(i, j, self.players[-1].pos.x, self.players[-1].pos.y)
+                self.players.append(Player(self.ground, progs[i] , i , j , Vector( ((1.0*indexi[j]) * (gwidth / 2))  , (1.0*indexj[j]) * (glength / 2) * ((-1) ** (i)) ) ))
+                print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(i, j, self.players[j].pos.x, self.players[j].pos.y)
+                #print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(i, j, indexi[j] * gwidth / 2, indexj[j] * glength / 2 * (-1) ** (i))
                 self.ball = Ball(self.ground)
         self.state = State(self.players , self.ball)
         self.visualizer = visualizer
