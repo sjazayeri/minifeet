@@ -107,7 +107,7 @@ class Simulator(object):
 if __name__ =='__main__':
     ppath = sys.argv
     progs = [sys.argv[1], sys.argv[2]]
-    visualizer = sp.Popen('../visualizer/a.out', stdin=sp.PIPE)
+    visualizer = sp.Popen('./dv.py', stdin=sp.PIPE)
     sim = Simulator(progs, visualizer)
     sim.simulate()
     visualizer.terminate()

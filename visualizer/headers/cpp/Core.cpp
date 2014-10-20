@@ -343,6 +343,6 @@ void renderAll(SharedData* gData)
 
 	// return;
 
-	// for (int i = 0; i < gData->movingObjs.size(); i++)
-		gData->movingObjs[1]->render(gData->cycleNum);
+	for (int i = 0; i < gData->movingObjs.size(); i++)
+		gData->movingObjs[i]->render(gData->cycleNum);
 }

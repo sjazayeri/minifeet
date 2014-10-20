@@ -19,9 +19,9 @@ void Player::setNewXY(int _newX, int _newY)
 	dy = (newY-oldY)/CYCLEPROP;
 	cerr << "SET:::oldX--newX" << oldX << newX << _newX << endl;
 	cerr << "SET:::dx--dy" << dx << dy << endl;
-	if(direction == 1 && dy>0)
+	if(dy>0)
 		direction = 0;
-	else if (direction == 0 && dy<0)
+	else if (dy<0)
 		direction = 1;
 }
 
