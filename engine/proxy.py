@@ -42,8 +42,10 @@ class Proxy:
         while self.poller.poll(0) and len(buffer_content) < self.max_read:
             buffer_content += self.process.stdout.read(1)
 
-        print >>stderr, buffer_content
+        #print >>stderr, buffer_content
         command = ''.join(buffer_content).rstrip()
+        print >>stderr, 'PLAYER: %d, %d: '%(self.player.team,
+                                            self.player.number)+command
         if command:
             self.goal = command
         return self.translate(self.goal)
@@ -57,7 +59,8 @@ class Proxy:
             return 'nop'
         
     def kick(self, x, y, force):
-        angle = atan((x - self.pos.x) / (y - self.pos.y))
+        #angle = atan((x - self.pos.x) / (y - self.pos.y))
+        angle = (Vector(x, y)-self.pos).angle()
         self.goal = 'nop'
         return 'kick %d %d' % (angle, force)
 
@@ -68,4 +71,8 @@ class Proxy:
             return 'nop'
         #rv = 'move '+`(dest-self.player.pos).angle()`+
         rv = 'move %f %f'%((dest-self.player.pos).angle(), (dest-self.player.pos).len())
+        print >>stderr, 'PLAYER %d, %d AT %f %f: '%(self.player.team,
+                                                    self.player.number,
+                                                    self.player.pos.x,
+                                                    self.player.pos.y)+rv
         return rv

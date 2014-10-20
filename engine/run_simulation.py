@@ -11,7 +11,7 @@ from cycle import Cycle
 import random
 
 cycle_length = 0.1
-game_duration = 2000
+game_duration = 2
 
 indexi = [0 , 1/3 , -1/3 , 2/3 , -2/3]
 indexj = [1 , 2/3 , 2/3 , 1/3 , 1/3 ]
@@ -24,8 +24,9 @@ class Simulator(object):
         self.players =[]
         for i in range(2):
             for j in range(5):
-                self.players.append(Player(self.ground, progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))     
-        self.ball = Ball(self.ground)
+                self.players.append(Player(self.ground, progs[i] , i , j , Vector(indexi[j] * gwidth / 2  , indexj[j] * glength / 2 * (-1) ** (i))))
+                print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(i, j, self.players[-1].pos.x, self.players[-1].pos.y)
+                self.ball = Ball(self.ground)
         self.state = State(self.players , self.ball)
         self.visualizer = visualizer
 
