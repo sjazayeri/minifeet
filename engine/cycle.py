@@ -12,7 +12,7 @@ class Cycle:
         self._state = None
         self.MaxBallDis = 10
         self.BallVelUnit = 100
-        self.PlayerVel = 20
+        self.PlayerVel = 5
         
     def update_players(self,state):
         """parses commands of players and updates

@@ -14,9 +14,12 @@ public:
 	virtual void render(unsigned int graphicalCycleNum) = 0;
 
 	string name;
-	int x, y;
-	int newX,newY;
-	int oldX, oldY;
+	int x = 0;
+	int y = 0;
+	int newX = 0;
+	int newY = 0;
+	int oldX = 0;
+	int oldY = 0;
 	double dx, dy;
 };
 

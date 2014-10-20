@@ -20,9 +20,9 @@ void Player::setNewXY(int _newX, int _newY)
 	cerr << "SET:::oldX--newX" << oldX << newX << _newX << endl;
 	// cerr << "SET:::dx--dy" << dx << dy << endl;
 	if(dy>0)
-		direction = 0;
-	else if (dy<0)
 		direction = 1;
+	else if (dy<0)
+		direction = 0;
 }
 
 void Player::render(unsigned int cycleNum)

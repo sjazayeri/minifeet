@@ -10,7 +10,7 @@ from state import State
 from cycle import Cycle
 import random
 
-cycle_length = 1
+cycle_length = 0.1
 game_duration = 200
 
 indexi = [0 , 1.0/3 , -1.0/3 , 2.0/3 , -2.0/3]

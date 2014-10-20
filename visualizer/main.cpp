@@ -40,6 +40,7 @@ int main( int argc, char* args[] )
 	//Setting start time for further use
 	globData.startTime = SDL_GetTicks();
 
+	SDL_Delay(2000);
 	//Main Loop
 	while( !globData.quitFlag )
 	{
@@ -109,15 +110,15 @@ int main( int argc, char* args[] )
 		loopEndTime = SDL_GetTicks();
 
 		// calculating delay
-		loopLen = loopEndTime - loopStartTime;
-		if (loopLen < 0) {
-			// if hardware can not handle programm
-			cerr << "FATAL ERROR" << endl;
-			globData.quitFlag = true;
-		}
-		else {
-			SDL_Delay( globData.cycleLen - loopLen );
-		}
+		// loopLen = loopEndTime - loopStartTime;
+		// if (loopLen < 0) {
+		// 	// if hardware can not handle programm
+		// 	cerr << "FATAL ERROR" << endl;
+		// 	globData.quitFlag = true;
+		// }
+		// else {
+			SDL_Delay( globData.cycleLen );
+		// }
 	}
 
 	//Free resources and close SDL
