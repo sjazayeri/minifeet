@@ -1,9 +1,10 @@
 #include "../Player.h"
 
-Player::Player(string _name, vector<LTexture*> _pngFiles)
+Player::Player(string _name, vector<LTexture*> _pngFiles, bool firstDir)
 {
 	name = _name;
 	mood = _pngFiles;
+	direction = firstDir;
 }
 
 void Player::setNewXY(int _newX, int _newY)
@@ -18,7 +19,7 @@ void Player::setNewXY(int _newX, int _newY)
 	dy = (newY-oldY)/CYCLEPROP;
 	if(direction == 1 && dy>0)
 		direction = 0;
-	else if (direction =0 && dy<0)
+	else if (direction == 0 && dy<0)
 		direction = 1;
 }
 
@@ -37,49 +38,24 @@ LTexture* Player::setMood(unsigned int cycleNum)
 	LTexture* returnTexture = NULL;
 
 	// if his face was visible
-	if (direction)
-		switch (state) {
-			case 0:
-			case 1:
-			case 2:
-			case 6:
-			case 7:
-			case 8:
-				returnTexture = mood[0];
-				break;
-			case 3:
-			case 4:
-			case 5:
-				returnTexture = mood[1];
-				break;
-			case 9:
-			case 10:
-			case 11:
-				returnTexture = mood[2];
-				break;
-		}
+	if (direction) {
+		if ( (0 <= state && state <= 2) || (6 <= state && state <= 8))
+			returnTexture = mood[0];
+		else if (3 <= state && state <= 5)
+			returnTexture = mood[1];
+		else if (9 <= state && state <= 11)
+			returnTexture = mood[2];
+	}
 
 	// if his back was visible
-	if (!direction)
-		switch (state) {
-			case 0:
-			case 1:
-			case 2:
-			case 6:
-			case 7:
-			case 8:
-				returnTexture = mood[3];
-				break;
-			case 3:
-			case 4:
-			case 5:
-				returnTexture = mood[4];
-				break;
-			case 9:
-			case 10:
-			case 11:
-				returnTexture = mood[5];
-				break;
-		}
+	if (!direction) {
+		if ( (0 <= state && state <= 2) || (6 <= state && state <= 8))
+			returnTexture = mood[3];
+		else if (3 <= state && state <= 5)
+			returnTexture = mood[4];
+		else if (9 <= state && state <= 11)
+			returnTexture = mood[5];
+	}
+
 	return returnTexture;
 }

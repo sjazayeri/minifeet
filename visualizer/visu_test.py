@@ -9,11 +9,10 @@ class Player :
         self.x = x
         self.y = y    
 
-
         
 if __name__ =='__main__':
 
-    players = [] 
+    players = [Player(0,60),Player(-30,40),Player(-30,20),Player(30,40),Player(30,20),Player(0,-50),Player(-30,-30),Player(-30,-10),Player(30,-30),Player(30,-10),Player(0,0)] 
     for i in xrange(11):
         players.append(Player(i , i ))
        
@@ -21,8 +20,8 @@ if __name__ =='__main__':
     try:
         for j in xrange(game_duration):
             for i in range(11):
-                visualizer.stdin.write(`int(players[i].x) + j`+'\n') 
-                visualizer.stdin.write(`int(players[i].y) + j`+'\n') 
+                visualizer.stdin.write(`int(players[i].x)`+'\n') 
+                visualizer.stdin.write(`int(players[i].y)`+'\n') 
                 print 'THIS IS TEST, WROTE %f, %f'%(players[i].x, players[i].y)
             visualizer.stdin.write('0'+'\n')
             time.sleep(cycle_length)

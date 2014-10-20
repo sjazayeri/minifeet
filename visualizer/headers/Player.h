@@ -11,7 +11,7 @@ class LTexture;
 class Player : public MovingObj
 {
 public:
-	Player(string _name, vector<LTexture*> _pngFiles);
+	Player(string _name, vector<LTexture*> _pngFiles, bool firstDir = true);
 	
 	virtual void setNewXY(int _newX, int _newY);
 	virtual void render(unsigned int graphicalCycleNum);

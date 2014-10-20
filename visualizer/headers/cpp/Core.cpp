@@ -290,11 +290,11 @@ bool initGame(SharedData* gData)
 	temp->loadFromFile("./assets/ball.png");
 	//
 	gData->movingObjs.push_back(new Ball(temp));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
@@ -303,6 +303,7 @@ bool initGame(SharedData* gData)
 	getInputs(gData);
 	setNewData(gData);
 	clog << "end of initial data" << endl;
+
 	return true;
 }
 
