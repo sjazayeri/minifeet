@@ -36,10 +36,12 @@ class Vector:
 
     def angle(self):
         rv = 0
-        if self.y==0:
-            rv = 0
+        if self.x==0:
+            rv = math.pi/2
+            if self.y < 0:
+                rv+=math.pi
         else:
-            rv = math.atan(1.0*self.x/self.y)
+            rv = math.atan(1.0*self.y/self.x)
         if self.x < 0:
             rv += math.pi
         return rv
