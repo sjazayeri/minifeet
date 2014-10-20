@@ -233,7 +233,7 @@ bool getInputs(SharedData* gData)
 	for(int i=0; i<10;i++)
 	{
 		cin >>_x >>_y;
-		clog << i<<" x,y = " << _x << " " << _y << endl; 
+		cerr << i<<"GET:: " << _x << "-" << _y << endl; 
 		//converting positions
 		//I wish that works
 		_x = 6*_x +270;
@@ -243,11 +243,11 @@ bool getInputs(SharedData* gData)
 		gData->playersPos.push_back(temPos);
 	}
 	cin >> _x >> _y;
-	clog << "ball x,y = " << _x << " " << _y << endl; 
+	cerr << "BALL:: " << _x << "-" << _y << endl; 
 	gData->ballPos = make_pair((int)_x,(int)_y);
 	cin >> gData->gameState ;
-	clog << ":::STATE:::" << gData->gameState << endl;
-	clog << "gCycleNum = " << gData->cycleNum << endl;
+	cerr << "STATE:: " << gData->gameState << endl;
+	cerr << "CYCLE:: " << gData->cycleNum << endl;
 
 	return true;
 }
@@ -304,7 +304,7 @@ bool initGame(SharedData* gData)
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	getInputs(gData);
 	setNewData(gData);
-	clog << "end of initial data" << endl;
+	cerr << "end of initial data" << endl;
 
 	return true;
 }

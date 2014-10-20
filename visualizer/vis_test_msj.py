@@ -1,5 +1,6 @@
 import time
 import subprocess as sp
+from sys import stderr
 
 cycle_length = 0.1
 game_duration = 2000
@@ -20,9 +21,11 @@ if __name__ =='__main__':
     visualizer = sp.Popen('./a.out', stdin=sp.PIPE)
     for j in xrange(game_duration):
         for i in range(11):
-            if players[i].x > 50 or players[i].x < -50:
-                layers[i].dir = -players[i].dir/10
-            players[i].x = players[i].x+players[i].dir
+            # print >>stderr, 'THIS IS THE TESTER PLAYER %d: %f, %f'%(i, players[i].x, players[i].y)
+            if players[i].y > 50 or players[i].y < -50:
+                #print >>stderr, 'THIS IS FROM THE EFFING INSIDE'
+                players[i].dir = -players[i].dir
+            players[i].y = players[i].y+players[i].dir
             visualizer.stdin.write(`players[i].x`+'\n') 
             visualizer.stdin.write(`players[i].y`+'\n') 
             print 'THIS IS TEST, WROTE %f, %f'%(players[i].x, players[i].y)
