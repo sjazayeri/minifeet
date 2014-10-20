@@ -15,10 +15,15 @@ void Player::setNewXY(int _newX, int _newY)
 	y = oldY;
 	newX = _newX;
 	newY = _newY;
-	dx = (newX-oldX)/CYCLEPROP;
-	dy = (newY-oldY)/CYCLEPROP;
-	cerr << "SET:::oldX--newX" << oldX << newX << _newX << endl;
-	// cerr << "SET:::dx--dy" << dx << dy << endl;
+	dx = (double)(newX-oldX)/CYCLEPROP;
+	dy = (double)(newY-oldY)/CYCLEPROP;
+	
+	#ifdef _DEBUG
+	cerr << "SET:::oldX--newX " << oldX << "-" << newX << endl;
+	cerr << "SET:::oldY-newY " << oldY << "-" << newY << endl;
+	cerr << "SET:::dx--dy " << dx << "-" << dy << endl;
+	#endif
+
 	if(dy>0)
 		direction = 1;
 	else if (dy<0)
@@ -31,11 +36,20 @@ void Player::render(unsigned int cycleNum)
 
 	texture = setMood(cycleNum);
 
-	texture->render(x, y);
+	int renderX = x - (texture->getWidth() / 2);
+	int renderY = y - (4 * texture->getHeight() / 5);
+	texture->render(renderX, renderY);
 }
 
 LTexture* Player::setMood(unsigned int cycleNum)
 {
+	if (dy == 0.000){
+		if (direction)
+			return mood[0];
+		else
+			return mood[3];
+	}
+
 	int speedScale = 5;
 	int state = cycleNum % (4 * speedScale);
 	LTexture* returnTexture = NULL;

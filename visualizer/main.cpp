@@ -40,7 +40,6 @@ int main( int argc, char* args[] )
 	//Setting start time for further use
 	globData.startTime = SDL_GetTicks();
 
-	SDL_Delay(2000);
 	//Main Loop
 	while( !globData.quitFlag )
 	{

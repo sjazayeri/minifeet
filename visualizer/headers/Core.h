@@ -1,5 +1,6 @@
 #ifndef CORE_
 #define CORE_
+// #define _DEBUG
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>

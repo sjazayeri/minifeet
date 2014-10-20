@@ -233,7 +233,11 @@ bool getInputs(SharedData* gData)
 	for(int i=0; i<10;i++)
 	{
 		cin >>_x >>_y;
+
+		#ifdef _DEBUG
 		cerr << i<<"GET:: " << _x << "-" << _y << endl; 
+		#endif
+
 		//converting positions
 		//I wish that works
 		_x = 6*_x +270;
@@ -243,13 +247,20 @@ bool getInputs(SharedData* gData)
 		gData->playersPos.push_back(temPos);
 	}
 	cin >> _x >> _y;
+
+	#ifdef _DEBUG
 	cerr << "BALL:: " << _x << "-" << _y << endl;
+	#endif
+
 	_x = 6*_x +270;
 	_y = -6*_y +360;
 	gData->ballPos = make_pair((int)_x,(int)_y);
 	cin >> gData->gameState ;
+
+	#ifdef _DEBUG
 	cerr << "STATE:: " << gData->gameState << endl;
 	cerr << "CYCLE:: " << gData->cycleNum << endl;
+	#endif
 
 	return true;
 }
@@ -292,7 +303,7 @@ bool initGame(SharedData* gData)
 	//I think it should be loaded in loading media but ...
 	LTexture* temp = new LTexture(gData);
 	temp->loadFromFile("../visualizer/assets/ball.png");
-	//
+	
 	gData->movingObjs.push_back(new Ball(temp));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
@@ -304,10 +315,8 @@ bool initGame(SharedData* gData)
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
-	// getInputs(gData);
-	// setNewData(gData);
-	cerr << "end of initial data" << endl;
-
+	getInputs(gData);
+	setNewData(gData);
 	return true;
 }
 

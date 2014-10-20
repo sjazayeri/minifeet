@@ -20,5 +20,7 @@ void Ball::setNewXY(int _newX, int _newY)
 
 void Ball::render(unsigned int cycleNum)
 {
-	texture->render(x, y);
+	int renderX = x - (texture->getWidth() / 2);
+	int renderY = y - (texture->getHeight() / 2);
+	texture->render(renderX, renderY);
 }

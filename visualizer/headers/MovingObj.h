@@ -20,7 +20,8 @@ public:
 	int newY = 0;
 	int oldX = 0;
 	int oldY = 0;
-	double dx, dy;
+	double dx = 0;
+	double dy = 0;
 };
 
 #endif
