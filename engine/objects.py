@@ -5,7 +5,7 @@ import select
 import math
 from proxy import Proxy
 
-player_size = 3
+player_size = 0.2
 
 class MovingObj(object):
     def __init__(self, ground):
