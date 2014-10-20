@@ -66,7 +66,7 @@ bool loadMedia(SharedData* gData)
 
 	LTexture* temp = new LTexture(gData);
 	//loading png file of bolanYellow
-	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-m.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b1-front-m.png"))
 	{
 		printf( "Failed to load b1-front-m.png!\n" );
 		success = false;
@@ -76,7 +76,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-r.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b1-front-r.png"))
 	{
 		printf( "Failed to load b1-front-r.png!\n" );
 		success = false;
@@ -86,7 +86,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b1-front-l.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b1-front-l.png"))
 	{
 		printf( "Failed to load b1-front-l.png!\n" );
 		success = false;
@@ -96,7 +96,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-m.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b1-back-m.png"))
 	{
 		printf( "Failed to load b1-back-m.png!\n" );
 		success = false;
@@ -106,7 +106,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-r.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b1-back-r.png"))
 	{
 		printf( "Failed to load b1-back-r.png!\n" );
 		success = false;
@@ -116,7 +116,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b1-back-l.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b1-back-l.png"))
 	{
 		printf( "Failed to load b1-back-l.png!\n" );
 		success = false;
@@ -128,7 +128,7 @@ bool loadMedia(SharedData* gData)
 	
 	//loading png file of bolanRed
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b2-front-m.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b2-front-m.png"))
 	{
 		printf( "Failed to load b2-front-m.png!\n" );
 		success = false;
@@ -138,7 +138,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b2-front-r.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b2-front-r.png"))
 	{
 		printf( "Failed to load b2-front-r.png!\n" );
 		success = false;
@@ -148,7 +148,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b2-front-l.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b2-front-l.png"))
 	{
 		printf( "Failed to load b2-front-l.png!\n" );
 		success = false;
@@ -158,7 +158,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-m.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b2-back-m.png"))
 	{
 		printf( "Failed to load b2-back-m.png!\n" );
 		success = false;
@@ -168,7 +168,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-r.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b2-back-r.png"))
 	{
 		printf( "Failed to load b2-back-r.png!\n" );
 		success = false;
@@ -178,7 +178,7 @@ bool loadMedia(SharedData* gData)
 		gData->bolanRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("./assets/characters/bolan/b2-back-l.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/bolan/b2-back-l.png"))
 	{
 		printf( "Failed to load b2-back-l.png!\n" );
 		success = false;
@@ -191,7 +191,7 @@ bool loadMedia(SharedData* gData)
 
 	//Load field
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile( "./assets/field1.jpg" ))
+	if( !temp->loadFromFile( "../visualizer/assets/field1.jpg" ))
 	{
 		printf( "Failed to load field!\n" );
 		success = false;
@@ -246,6 +246,7 @@ bool getInputs(SharedData* gData)
 	clog << "ball x,y = " << _x << " " << _y << endl; 
 	gData->ballPos = make_pair((int)_x,(int)_y);
 	cin >> gData->gameState ;
+	clog << ":::STATE:::" << gData->gameState << endl;
 	clog << "gCycleNum = " << gData->cycleNum << endl;
 
 	return true;
@@ -288,7 +289,7 @@ bool initGame(SharedData* gData)
 {
 	//I think it should be loaded in loading media but ...
 	LTexture* temp = new LTexture(gData);
-	temp->loadFromFile("./assets/ball.png");
+	temp->loadFromFile("../visualizer/assets/ball.png");
 	//
 	gData->movingObjs.push_back(new Ball(temp));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
@@ -342,6 +343,6 @@ void renderAll(SharedData* gData)
 
 	// return;
 
-	for (int i = 0; i < gData->movingObjs.size(); i++)
-		gData->movingObjs[i]->render(gData->cycleNum);
+	// for (int i = 0; i < gData->movingObjs.size(); i++)
+		gData->movingObjs[1]->render(gData->cycleNum);
 }
