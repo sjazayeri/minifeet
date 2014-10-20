@@ -17,7 +17,7 @@ public:
 	int x, y;
 	int newX,newY;
 	int oldX, oldY;
-	int dx, dy;
+	double dx, dy;
 };
 
 #endif

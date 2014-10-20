@@ -17,6 +17,8 @@ void Player::setNewXY(int _newX, int _newY)
 	newY = _newY;
 	dx = (newX-oldX)/CYCLEPROP;
 	dy = (newY-oldY)/CYCLEPROP;
+	cerr << "SET:::oldX--newX" << oldX << newX << _newX << endl;
+	cerr << "SET:::dx--dy" << dx << dy << endl;
 	if(direction == 1 && dy>0)
 		direction = 0;
 	else if (direction == 0 && dy<0)
@@ -34,28 +36,28 @@ void Player::render(unsigned int cycleNum)
 
 LTexture* Player::setMood(unsigned int cycleNum)
 {
-	int state = cycleNum % 12;
+	int speedScale = 5;
+	int state = cycleNum % (4 * speedScale);
 	LTexture* returnTexture = NULL;
 
 	// if his face was visible
 	if (direction) {
-		if ( (0 <= state && state <= 2) || (6 <= state && state <= 8))
+		if ( (0 <= state && state <= speedScale - 1) || (2*speedScale <= state && state <= 3*speedScale - 1))
 			returnTexture = mood[0];
-		else if (3 <= state && state <= 5)
+		else if (speedScale <= state && state <= 2*speedScale - 1)
 			returnTexture = mood[1];
-		else if (9 <= state && state <= 11)
+		else if (3*speedScale <= state && state <= 4*speedScale - 1)
 			returnTexture = mood[2];
 	}
 
 	// if his back was visible
-	if (!direction) {
-		if ( (0 <= state && state <= 2) || (6 <= state && state <= 8))
+	else if (!direction) {
+		if ( (0 <= state && state <= speedScale - 1) || (2*speedScale <= state && state <= 3*speedScale - 1))
 			returnTexture = mood[3];
-		else if (3 <= state && state <= 5)
+		else if (speedScale <= state && state <= 2*speedScale - 1)
 			returnTexture = mood[4];
-		else if (9 <= state && state <= 11)
+		else if (3*speedScale <= state && state <= 4*speedScale - 1)
 			returnTexture = mood[5];
 	}
-
 	return returnTexture;
 }

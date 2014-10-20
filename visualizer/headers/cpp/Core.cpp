@@ -227,8 +227,9 @@ void close(SharedData* gData)
 
 bool getInputs(SharedData* gData)
 {
+	gData->playersPos.clear();
 	pair<int,int> temPos;
-	int _x,_y;
+	double _x,_y;
 	for(int i=0; i<10;i++)
 	{
 		cin >>_x >>_y;
@@ -238,12 +239,12 @@ bool getInputs(SharedData* gData)
 		_x = 6*_x +270;
 		_y = -6*_y +360;
 		//end of correcting positions
-		temPos = make_pair (_x,_y);
+		temPos = make_pair ((int)_x,(int)_y);
 		gData->playersPos.push_back(temPos);
 	}
 	cin >> _x >> _y;
 	clog << "ball x,y = " << _x << " " << _y << endl; 
-	gData->ballPos = make_pair(_x,_y);
+	gData->ballPos = make_pair((int)_x,(int)_y);
 	cin >> gData->gameState ;
 	clog << "gCycleNum = " << gData->cycleNum << endl;
 
