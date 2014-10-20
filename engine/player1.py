@@ -15,6 +15,6 @@ if __name__=='__main__':
         ballpos = Vector(*map(float, raw_input().split(' ')))
         game_state = int(raw_input())
         #print >>stderr, 'GOT DATA AT %f'%(time.time())
-        print 'move %d %d'%(ballpos.x, ballpos.y)
+        print 'move %f %f'%(ballpos.x, ballpos.y)
         stdout.flush()
        # print >>stderr, 'SENT COMMAND AT %f'%(time.time())

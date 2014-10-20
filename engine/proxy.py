@@ -44,8 +44,8 @@ class Proxy:
 
         #print >>stderr, buffer_content
         command = ''.join(buffer_content).rstrip()
-        print >>stderr, 'PLAYER: %d, %d: '%(self.player.team,
-                                            self.player.number)+command
+        #print >>stderr, 'PLAYER: %d, %d: '%(self.player.team,
+        #                                    self.player.number)+command
         if command:
             self.goal = command
         return self.translate(self.goal)

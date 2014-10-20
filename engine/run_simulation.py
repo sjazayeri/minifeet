@@ -33,11 +33,12 @@ class Simulator(object):
 
     def send_data(self):
         for i in range(10):
-            self.visualizer.stdin.write(`self.state.players[i].pos.x`+' ') 
-            self.visualizer.stdin.write(`self.state.players[i].pos.y`+'\n') 
-        self.visualizer.stdin.write(`self.state.ball.pos.x`+' ') 
-        self.visualizer.stdin.write(`self.state.ball.pos.y`+'\n')
-        self.visualizer.stdin.write(`self.state.gameState`+'\n') 
+            self.visualizer.stdin.write(`int(self.state.players[i].pos.x)`+' ') 
+            self.visualizer.stdin.write(`int(self.state.players[i].pos.y)`+'\n')
+            print >>sys.stderr, 'THIS IS RS, PLAYER %d: %d, %d'%(i, int(self.state.players[i].pos.x), int(self.state.players[i].pos.y)) 
+        self.visualizer.stdin.write(`int(self.state.ball.pos.x)`+' ') 
+        self.visualizer.stdin.write(`int(self.state.ball.pos.y)`+'\n')
+        self.visualizer.stdin.write(`self.state.game_state`+'\n') 
         
     def player_move(self, i , coefficient=1.0/100):
         self.players[i].move(coefficient)
