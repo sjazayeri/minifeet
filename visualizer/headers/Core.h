@@ -27,8 +27,8 @@ typedef struct _SharedData
 
 	// Storages the number of next cycle
 	// use this to calculate when you have to change moods
-	unsigned int cycleNum = 1;
-	unsigned int logicCycleNum = 1;
+	unsigned int cycleNum = 0;
+	unsigned int logicCycleNum = 0;
 	// AMiGH: Remmember we should reset it, When? i don't know
 	// ps: i do NOT go to any english class :))
 

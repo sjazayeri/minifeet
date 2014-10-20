@@ -17,13 +17,15 @@ if __name__ =='__main__':
     for i in xrange(11):
         players.append(Player(i , i ))
        
-    visualizer = sp.Popen('your file name', stdin=sp.PIPE)
-    for i in xrange(game_duration):
-        
-        for i in range(11):
-            visualizer.stdin.write(`players[i].x`+' ') 
-            visualizer.stdin.write(`players[i].y`+'\n') 
-        
-        time.sleep(cycle_length)
-        
+    visualizer = sp.Popen('./a.out', stdin=sp.PIPE)
+    try:
+        for j in xrange(game_duration):
+            for i in range(11):
+                visualizer.stdin.write(`int(players[i].x) + j`+'\n') 
+                visualizer.stdin.write(`int(players[i].y) + j`+'\n') 
+                print 'THIS IS TEST, WROTE %f, %f'%(players[i].x, players[i].y)
+            visualizer.stdin.write('0'+'\n')
+            time.sleep(cycle_length)
+    except IOError:
+        print 'err in vis'
     visualizer.terminate()

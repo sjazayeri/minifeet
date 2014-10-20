@@ -23,14 +23,13 @@ int main( int argc, char* args[] )
 		return -1;
 	}
 
+	// initial game logic and read zero cycle data
 	if(!initGame(&globData))
 	{
 		printf( "Failed to initialize Game!\n" );
 		return -1;
 	}
 
-	// initial game logic and read zero cycle data
-	initGame(&globData);
 	
 	//For X Button
 	SDL_Event e;
@@ -71,14 +70,18 @@ int main( int argc, char* args[] )
 				//		if needed, terminate program
 				//		or render goal screen
 			handleState(globData.gameState);
+			clog << "handle state" << endl;
 			
 			// Sending new data to players and ball
 			setNewData(&globData);
+			clog << "setNewData" << endl;
+
 		}
 
 		// Moving movable objects!
 		for (int i = 0; i < globData.movingObjs.size(); i++)
 			globData.movingObjs[i]->move();
+		clog << "move" << endl;
 
 		// Clear Screen
 		SDL_SetRenderDrawColor( globData.gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -87,8 +90,10 @@ int main( int argc, char* args[] )
 		// Rendering Green Field
 		globData.field->render(0,0);
 		
+		clog << "start renderAll" << endl;
 		// Rendering all other elements on gRenderer
-		// renderAll(&globData);
+		renderAll(&globData);
+		clog << "renderAll" << endl;
 
 		// Setting graphical cycle number
 		globData.cycleNum++;
