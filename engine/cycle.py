@@ -11,7 +11,7 @@ class Cycle:
                          'nop':lambda s:None}
         self.state = None
         self.max_ball_dist = 2
-        self.BallVelUnit = 10
+        self.BallVelUnit = 1
         self.PlayerVel = 5
         
     def update_players(self,state):

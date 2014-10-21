@@ -70,18 +70,27 @@ int main( int argc, char* args[] )
 				//		if needed, terminate program
 				//		or render goal screen
 			handleState(globData.gameState);
+			
+			#ifdef _DEBUG
 			clog << "handle state" << endl;
+			#endif
 			
 			// Sending new data to players and ball
 			setNewData(&globData);
+			
+			#ifdef _DEBUG
 			clog << "setNewData" << endl;
+			#endif
 
 		}
 
 		// Moving movable objects!
 		for (int i = 0; i < globData.movingObjs.size(); i++)
 			globData.movingObjs[i]->move();
+			
+		#ifdef _DEBUG
 		clog << "move" << endl;
+		#endif
 
 		// Clear Screen
 		SDL_SetRenderDrawColor( globData.gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -90,16 +99,25 @@ int main( int argc, char* args[] )
 		// Rendering Green Field
 		globData.field->render(0,0);
 		
+		#ifdef _DEBUG
 		clog << "start renderAll" << endl;
+		#endif
+		
 		// Rendering all other elements on gRenderer
 		renderAll(&globData);
+		
+		#ifdef _DEBUG
 		clog << "renderAll" << endl;
+		#endif
 
 		// Setting graphical cycle number
 		globData.cycleNum++;
 		if (globData.cycleNum == 20000) {
 			globData.cycleNum = 0;
+			
+			#ifdef _DEBUG
 			clog << "Graphical Cycle Counter Reset" << endl;
+			#endif
 		}
 
 		//Update screen

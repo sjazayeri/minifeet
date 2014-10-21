@@ -60,12 +60,12 @@ class Simulator(object):
             self.ball.pos.x= -width-x
             
         if y>(length/2) :
-            self.state.update( self.referee.is_goal(ball , ground) )
+            self.state.update( self.referee.is_goal(self.ball , self.ground) )
             self.ball.vel.y= -self.ball.vel.y
             self.ball.pos.y= length-y
             
         if y<(-(length/2)) :
-            self.state.update( self.referee.is_goal(ball , ground) )
+            self.state.update( self.referee.is_goal(self.ball , self.ground) )
             self.ball.vel.y= -length-y
             self.ball.pos.y=-self.ball.vel.y       
          
