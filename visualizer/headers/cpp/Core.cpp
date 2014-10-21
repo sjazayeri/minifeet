@@ -81,7 +81,11 @@ bool loadMedia(SharedData* gData)
 		printf("Failed to load Bald!\n");
 		success = false;
 	}
-
+	if(!loadPejman(gData))
+	{
+		printf("Failed to load pejman!\n");
+		success = false;
+	}
 
 	//Load field
 	temp = new LTexture(gData);
@@ -354,6 +358,7 @@ bool loadPejman(SharedData* gData)
 	// {	
 	// 	gData->pejmanRed.push_back(temp);
 	// }
+	clog << "PEJMAN "<<success << " " << gData->pejmanYellow.size()<<endl;
 	return success;
 }
 
@@ -714,12 +719,12 @@ bool initGame(SharedData* gData)
 	
 	gData->movingObjs.push_back(new Ball(temp));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
+	gData->movingObjs.push_back(new Player("nokami",gData->nokamiYellow, false));
+	gData->movingObjs.push_back(new Player("pejman",gData->pejmanYellow, false));
+	gData->movingObjs.push_back(new Player("bald",gData->baldYellow, false));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
+	gData->movingObjs.push_back(new Player("nokami",gData->nokamiRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
