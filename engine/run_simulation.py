@@ -17,7 +17,7 @@ indexi = [0 , 1.0/3 , -1.0/3 , 2.0/3 , -2.0/3]
 indexj = [1 , 2.0/3 , 2.0/3 , 1.0/3 , 1.0/3 ]
 
 class Simulator(object):
-    def __init__(self ,progs, visualizer,gwidth = 90 , glength = 120 , gfriction = 1):
+    def __init__(self ,progs, visualizer,gwidth = 90, glength = 120 , gfriction = 1):
         self.cycle = Cycle()
         self.referee = Referee()
         self.ground = Ground(glength , gwidth ,gfriction )
@@ -46,28 +46,38 @@ class Simulator(object):
     def ball_move(self , coefficient=1.0/100):
         self.ball.move(coefficient)
         
-        x = self.ball.pos.x 
-        y = self.ball.pos.y
         width = self.ground.width
         length = self.ground.length
-        
-        if x>(width/2) :
-            self.ball.vel.x= -self.ball.vel.x
-            self.ball.pos.x= width-x
+        while True:
+            x = self.ball.pos.x 
+            y = self.ball.pos.y
+            if x <= width/2 and x >= -width/2 and y <= length/2 and y >= -length/2:
+                break
+
+            print >>sys.stderr, 'BALL IS OUTSIDE GROUND, VELOCITY IS: %f, %f'%(self.ball.vel.x, self.ball.vel.y)
+                
+            if x>(width/2) :
+                self.ball.vel.x= -self.ball.vel.x
+                self.ball.pos.x= width-x
+                print >>sys.stderr, 'THE BALL WENT TOO RIGHT, NEW X: %f'%(self.ball.pos.x)
        
-        if x<-(width/2) :
-            self.ball.vel.x= -self.ball.vel.x
-            self.ball.pos.x= -width-x
+            if x<-(width/2) :
+                self.ball.vel.x= -self.ball.vel.x
+                self.ball.pos.x= -width-x
+                print >>sys.stderr, 'THE BALL WENT TOO LEFT, NEW X: %f'%(self.ball.pos.x)
             
-        if y>(length/2) :
-            self.state.update( self.referee.is_goal(self.ball , self.ground) )
-            self.ball.vel.y= -self.ball.vel.y
-            self.ball.pos.y= length-y
+            if y>(length/2) :
+                self.state.update( self.referee.is_goal(self.ball , self.ground) )
+                self.ball.vel.y= -self.ball.vel.y
+                self.ball.pos.y= length-y
+                print >>sys.stderr, 'THE BALL WENT TOO UP, NEW Y: %f'%(self.ball.pos.y)
             
-        if y<(-(length/2)) :
-            self.state.update( self.referee.is_goal(self.ball , self.ground) )
-            self.ball.vel.y= -length-y
-            self.ball.pos.y=-self.ball.vel.y       
+            if y<(-(length/2)) :
+                self.state.update( self.referee.is_goal(self.ball , self.ground) )
+                self.ball.pos.y= -length-y
+                self.ball.vel.y=-self.ball.vel.y
+                print >>sys.stderr, 'THE BALL WENT TOO DOWN, NEW Y: %f'%(self.ball.pos.y)
+
          
     def check_pos(self , coefficient=1.0/100):
         a = range(10)    

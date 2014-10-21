@@ -18,7 +18,7 @@ if __name__=='__main__':
         game_state = int(raw_input())
         #print >>stderr, 'GOT DATA AT %f'%(time.time())
         if (ballpos-selfpos).len()<2:
-            balldest = ballpos+Vector(10, 10)
+            balldest = ballpos+Vector(-10, 10)
             print 'kick %f %f %f'%(balldest.x, balldest.y, 100.0)
         else:
             print 'move %f %f'%(ballpos.x, ballpos.y)

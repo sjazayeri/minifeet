@@ -4,8 +4,9 @@ import subprocess as sp
 import select
 import math
 from proxy import Proxy
+from sys import stderr
 
-player_size = 1
+player_size = 0.5
 
 class MovingObj(object):
     def __init__(self, ground):
@@ -48,11 +49,20 @@ class Player(MovingObj):
             
 class Ball (MovingObj) :
     def move (self,coefficient=1):
-        if(self.ground.friction.len() >= (self.vel.len() * coefficient)):
+        #pv = self.vel
+        if(self.ground.friction.len()*coefficient >= (self.vel.len() * coefficient)):
             self.vel=Vector(0 , 0)
+            #if self.pv.len()>0:
+            #    print >>stderr, 'ZEROED BALL VELOCITY'
+            #    raw_input()
             return
-        self.pos.x = self.pos.x + (self.vel.x * coefficient) + math.copysign(self.ground.friction.x , self.vel.x )
-        self.pos.y = self.pos.y + (self.vel.y * coefficient) + math.copysign(self.ground.friction.y , self.vel.y )
+        print >>stderr, 'MOVING BALL, INIT VEL: %f, %f'%(self.vel.x, self.vel.y)    
+        self.vel.x -= math.copysign(self.ground.friction.x*coefficient,
+                                    self.vel.x)
+        self.vel.y -= math.copysign(self.ground.friction.y*coefficient,
+                                    self.vel.y)
+        self.pos += self.vel*coefficient
+        print >>stderr, 'DONE MOVING, FINAL VEL: %f, %f' %(self.vel.x, self.vel.y)
 
 class Ground(object):
     def __init__(self, length=0, width =0, friction=0, gate_length=0):
