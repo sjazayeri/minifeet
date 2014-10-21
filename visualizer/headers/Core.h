@@ -48,6 +48,12 @@ typedef struct _SharedData
 	vector<MovingObj*> movingObjs;
 	vector<LTexture*> bolanYellow;
 	vector<LTexture*> bolanRed;
+	vector<LTexture*> nokamiYellow;
+	vector<LTexture*> nokamiRed;
+	vector<LTexture*> pejmanYellow;
+	vector<LTexture*> pejmanRed;
+	vector<LTexture*> baldYellow;
+	vector<LTexture*> baldanRed;
 	LTexture* field;
 
 } SharedData;
@@ -57,7 +63,11 @@ typedef struct _SharedData
 bool init(SharedData* gData);
 //Loads media
 bool loadMedia(SharedData* gData);
-//Frees media and shuts down SDL
+bool loadBolan(SharedData* gData);
+bool loadNokami(SharedData* gData);
+bool loadPejman(SharedData* gData);
+bool loadBald(SharedData* gData);
+
 void close(SharedData* gData);
 
 bool getInputs(SharedData* gData);
