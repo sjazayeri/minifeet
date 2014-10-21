@@ -54,6 +54,8 @@ typedef struct _SharedData
 	vector<LTexture*> pejmanRed;
 	vector<LTexture*> baldYellow;
 	vector<LTexture*> baldRed;
+	vector<LTexture*> noaYellow;
+	vector<LTexture*> noaRed;
 	LTexture* field;
 
 } SharedData;
@@ -67,6 +69,7 @@ bool loadBolan(SharedData* gData);
 bool loadNokami(SharedData* gData);
 bool loadPejman(SharedData* gData);
 bool loadBald(SharedData* gData);
+bool loadNoa(SharedData* gData);
 
 void close(SharedData* gData);
 

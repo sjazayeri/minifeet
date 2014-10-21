@@ -86,7 +86,11 @@ bool loadMedia(SharedData* gData)
 		printf("Failed to load pejman!\n");
 		success = false;
 	}
-
+	if(!loadNoa(gData))
+	{
+		printf("Failed to load  Noa! \n");
+		success = false;
+	}
 	//Load field
 	temp = new LTexture(gData);
 	if( !temp->loadFromFile( "../visualizer/assets/field1.jpg" ))
@@ -99,6 +103,135 @@ bool loadMedia(SharedData* gData)
 		gData->field = temp;
 	}
 	
+	return success;
+}
+
+bool loadNoa(SharedData* gData)
+{
+	LTexture* temp = new LTexture(gData);
+	bool success = true;
+
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s1-front-m.png"))
+	{
+		printf( "Failed to load s1-front-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaYellow.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s1-front-r.png"))
+	{
+		printf( "Failed to load s1-front-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaYellow.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s1-front-l.png"))
+	{
+		printf( "Failed to load s1-front-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaYellow.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s1-back-m.png"))
+	{
+		printf( "Failed to load s1-back-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaYellow.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s1-back-r.png"))
+	{
+		printf( "Failed to load s1-back-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaYellow.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s1-back-l.png"))
+	{
+		printf( "Failed to load s1-back-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaYellow.push_back(temp);
+	}
+	
+	//loading png file of noaRed
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s2-front-m.png"))
+	{
+		printf( "Failed to load s2-front-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s2-front-r.png"))
+	{
+		printf( "Failed to load s2-front-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s2-front-l.png"))
+	{
+		printf( "Failed to load s2-front-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s2-back-m.png"))
+	{
+		printf( "Failed to load s2-back-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s2-back-r.png"))
+	{
+		printf( "Failed to load s2-back-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/noa/s2-back-l.png"))
+	{
+		printf( "Failed to load s2-back-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->noaRed.push_back(temp);
+	}
 	return success;
 }
 
@@ -720,13 +853,13 @@ bool initGame(SharedData* gData)
 	gData->movingObjs.push_back(new Ball(temp));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
 	gData->movingObjs.push_back(new Player("nokami",gData->nokamiYellow, false));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
+	gData->movingObjs.push_back(new Player("noa",gData->noaYellow, false));
 	gData->movingObjs.push_back(new Player("pejman",gData->pejmanYellow, false));
 	gData->movingObjs.push_back(new Player("bald",gData->baldYellow, false));
 	
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("nokami",gData->nokamiRed));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
+	gData->movingObjs.push_back(new Player("noa",gData->noaRed));
 	gData->movingObjs.push_back(new Player("pejman",gData->pejmanRed));
 	gData->movingObjs.push_back(new Player("bald",gData->baldRed));
 	
