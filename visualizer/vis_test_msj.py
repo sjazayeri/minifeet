@@ -16,7 +16,7 @@ if __name__ =='__main__':
 
     players = [] 
     for i in xrange(11):
-        players.append(Player((i-2)*2 , (i-5)*3))
+        players.append(Player((i-2)*4 , (i-5)*3))
        
     visualizer = sp.Popen('./a.out', stdin=sp.PIPE)
     for j in xrange(game_duration):
