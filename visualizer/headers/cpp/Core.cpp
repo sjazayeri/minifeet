@@ -168,66 +168,66 @@ bool loadBald(SharedData* gData)
 	}
 	
 	//loading png file of baldRed
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-m.png"))
-	// {
-	// 	printf( "Failed to load k2-front-m.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->baldRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-r.png"))
-	// {
-	// 	printf( "Failed to load k2-front-r.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->baldRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-l.png"))
-	// {
-	// 	printf( "Failed to load k2-front-l.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->baldRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-m.png"))
-	// {
-	// 	printf( "Failed to load k2-back-m.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->baldRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-r.png"))
-	// {
-	// 	printf( "Failed to load k2-back-r.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->baldRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-l.png"))
-	// {
-	// 	printf( "Failed to load k2-back-l.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->baldRed.push_back(temp);
-	// }
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-m.png"))
+	{
+		printf( "Failed to load k2-front-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->baldRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-r.png"))
+	{
+		printf( "Failed to load k2-front-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->baldRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-l.png"))
+	{
+		printf( "Failed to load k2-front-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->baldRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-m.png"))
+	{
+		printf( "Failed to load k2-back-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->baldRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-r.png"))
+	{
+		printf( "Failed to load k2-back-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->baldRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-l.png"))
+	{
+		printf( "Failed to load k2-back-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->baldRed.push_back(temp);
+	}
 	return success;
 }
 
@@ -297,67 +297,67 @@ bool loadPejman(SharedData* gData)
 		gData->pejmanYellow.push_back(temp);
 	}
 	
-	//loading png file of pejmanRed
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-front-m.png"))
-	// {
-	// 	printf( "Failed to load p2-front-m.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->pejmanRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-front-r.png"))
-	// {
-	// 	printf( "Failed to load p2-front-r.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->pejmanRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-front-l.png"))
-	// {
-	// 	printf( "Failed to load p2-front-l.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->pejmanRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-back-m.png"))
-	// {
-	// 	printf( "Failed to load p2-back-m.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->pejmanRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-back-r.png"))
-	// {
-	// 	printf( "Failed to load p2-back-r.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->pejmanRed.push_back(temp);
-	// }
-	// temp = new LTexture(gData);
-	// if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-back-l.png"))
-	// {
-	// 	printf( "Failed to load p2-back-l.png!\n" );
-	// 	success = false;
-	// }
-	// else
-	// {	
-	// 	gData->pejmanRed.push_back(temp);
-	// }
+	// loading png file of pejmanRed
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-front-m.png"))
+	{
+		printf( "Failed to load p2-front-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->pejmanRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-front-r.png"))
+	{
+		printf( "Failed to load p2-front-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->pejmanRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-front-l.png"))
+	{
+		printf( "Failed to load p2-front-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->pejmanRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-back-m.png"))
+	{
+		printf( "Failed to load p2-back-m.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->pejmanRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-back-r.png"))
+	{
+		printf( "Failed to load p2-back-r.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->pejmanRed.push_back(temp);
+	}
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile("../visualizer/assets/characters/pejman/p2-back-l.png"))
+	{
+		printf( "Failed to load p2-back-l.png!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->pejmanRed.push_back(temp);
+	}
 	clog << "PEJMAN "<<success << " " << gData->pejmanYellow.size()<<endl;
 	return success;
 }
@@ -720,14 +720,16 @@ bool initGame(SharedData* gData)
 	gData->movingObjs.push_back(new Ball(temp));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
 	gData->movingObjs.push_back(new Player("nokami",gData->nokamiYellow, false));
+	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
 	gData->movingObjs.push_back(new Player("pejman",gData->pejmanYellow, false));
 	gData->movingObjs.push_back(new Player("bald",gData->baldYellow, false));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
+	
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("nokami",gData->nokamiRed));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
-	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
+	gData->movingObjs.push_back(new Player("pejman",gData->pejmanRed));
+	gData->movingObjs.push_back(new Player("bald",gData->baldRed));
+	
 	getInputs(gData);
 	setNewData(gData);
 	return true;

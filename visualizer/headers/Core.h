@@ -53,7 +53,7 @@ typedef struct _SharedData
 	vector<LTexture*> pejmanYellow;
 	vector<LTexture*> pejmanRed;
 	vector<LTexture*> baldYellow;
-	vector<LTexture*> baldanRed;
+	vector<LTexture*> baldRed;
 	LTexture* field;
 
 } SharedData;
