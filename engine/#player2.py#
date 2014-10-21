@@ -2,7 +2,7 @@
 from geometry import Vector, epsilon
 from sys import stderr, stdout, exit
 import time
-from random import randrange
+from random import randrangeu
 
 max_ball_dist = 2
 

@@ -40,10 +40,10 @@ class Player(MovingObj):
         if self.pos.x<-(width/2) :
             self.pos.x=-width/2
             
-    def is_overlap(self , pos2):
-        global player_size
+    def is_overlap(self, r1, r2, pos2):
+        #global player_size
         diff = pos2 - self.pos
-        if( diff.len() < player_size ):
+        if( diff.len() < r1+r2):
             return True
         return False
             
@@ -56,16 +56,16 @@ class Ball (MovingObj) :
             #    print >>stderr, 'ZEROED BALL VELOCITY'
             #    raw_input()
             return
-        print >>stderr, 'MOVING BALL, INIT VEL: %f, %f'%(self.vel.x, self.vel.y)    
+        #print >>stderr, 'MOVING BALL, INIT VEL: %f, %f'%(self.vel.x, self.vel.y)    
         self.vel.x -= math.copysign(self.ground.friction.x*coefficient,
                                     self.vel.x)
         self.vel.y -= math.copysign(self.ground.friction.y*coefficient,
                                     self.vel.y)
         self.pos += self.vel*coefficient
-        print >>stderr, 'DONE MOVING, FINAL VEL: %f, %f' %(self.vel.x, self.vel.y)
+        #print >>stderr, 'DONE MOVING, FINAL VEL: %f, %f' %(self.vel.x, self.vel.y)
 
 class Ground(object):
-    def __init__(self, length=0, width =0, friction=0, gate_length=0):
+    def __init__(self, length=0, width =0, friction=0, gate_length=8):
         self.length = length
         self.width = width
         self.friction = Vector(friction ,friction )
