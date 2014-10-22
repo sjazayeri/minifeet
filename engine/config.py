@@ -19,3 +19,4 @@ max_ball_dist = 2
 ball_vel_unit = 10
 player_vel = 5
 
+max_read = 1024
