@@ -74,7 +74,7 @@ Vector get_position(int number, Vector ballpos)
     Vector pos(0, 0);
     if (number == 0)
     {
-        pos = Vector(-43, 0);
+        pos = Vector(0, -43);
     }
     else if (number == 1)
     {
