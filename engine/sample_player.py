@@ -58,17 +58,17 @@ class Player():
         stdout.flush()
 
     def get_ball_receiver(self, players, ballpos):
-	min_dist = 10000
-	receiver = 0
-	for i in range(5):
-		pos = self.get_position(i, ballpos)
-		if (pos-ballpos).len() < min_dist:
-			min_dist = (pos-ballpos).len()
-			receiver = i
-        return i
+        min_dist = 10000
+        receiver = 0
+        for i in range(5):
+            pos = self.get_position(i, ballpos)
+            if (pos - ballpos).len() < min_dist:
+                min_dist = (pos - ballpos).len()
+                receiver = i
+        return receiver
 
     def kick_action(self, ballpos):
-	if int(random() * 2) == 1:
+        if int(random() * 2) == 1:
             self.kick(Vector(10, 50), 1)
         else:
             self.kick(ballpos + Vector(10, 10), 1)
