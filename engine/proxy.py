@@ -73,6 +73,9 @@ class Proxy(object):
         if((dest-self.player.pos).len() < epsilon):
             self.goal = 'nop'
             return 'nop'
+        print >>stderr, 'PLAYER %d, %d FROM %f, %f TO %f, %f'%(self.player.team, self.player.number,
+                                                               self.player.pos.x, self.player.pos.y,
+                                                               x, y)
         rv = 'move %f %f'%((dest-self.player.pos).angle(), (dest-self.player.pos).len())
         #print >>stderr, rv
         return rv

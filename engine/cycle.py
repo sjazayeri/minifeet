@@ -9,7 +9,7 @@ from sys import stderr, stdout
 class Cycle:
     def __init__(self):
         self.commands = {'kick':self.kick, 'move':self.move,
-                         'nop':lambda s:None}
+                         'nop':self.nop}
         self.state = None
         self.max_ball_dist = 2
         self.BallVelUnit = 5
@@ -42,3 +42,6 @@ class Cycle:
         vel=min(distance,self.PlayerVel)
         #print >>stderr, 'PLAYER %d, %d: %f, %f'
         p.vel=Vector(vel*math.cos(angle),vel*math.sin(angle))
+
+    def nop(self, p):
+        p.vel = Vector(0, 0)
