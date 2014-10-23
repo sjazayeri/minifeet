@@ -3,6 +3,7 @@ from geometry import Vector, epsilon
 from sys import stderr, stdout, exit
 from utils import *
 import time
+from random import random
 
 
 class Player():
@@ -18,10 +19,10 @@ class Player():
             game_state = int(raw_input())
             # print >>stderr, 'GOT DATA AT %f'%(time.time())
 
-            ball_reveiver = self.get_ball_receiver(players, ballpos)
-            if self.number == ball_reveiver:
+            ball_receiver = self.get_ball_receiver(players, ballpos)
+            if self.number == ball_receiver:
                 if (selfpos - ballpos).len() < 2:
-                    self.kick_action()
+                    self.kick_action(ballpos)
                 else:
                     self.move(ballpos)
             else:
@@ -69,8 +70,11 @@ class Player():
 			receiver = i
         return i
 
-    def kick_action(self):
-        self.kick(Vector(10, 50), 1)
+    def kick_action(self, ballpos):
+	if int(random() * 2) == 1:
+            self.kick(Vector(10, 50), 1)
+        else:
+            self.kick(ballpos + Vector(10, 10), 1)
 
 
 if __name__ == '__main__':

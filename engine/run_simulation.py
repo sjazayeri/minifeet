@@ -131,14 +131,14 @@ class Simulator(object):
             if c.rsteps:
                 q.append(c)
             if no_change==20:
-                print >>sys.stderr, 'breaking'
-                for p in self.players:
-                    print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(p.team,
-                                                                 p.number,
-                                                                 p.pos.x,
-                                                                 p.pos.y)
-                print >>sys.stderr, 'BALL: %f, %f'%(self.ball.pos.x,
-                                                    self.ball.pos.y)
+                #print >>sys.stderr, 'breaking'
+                #for p in self.players:
+                #    print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(p.team,
+                #                                                 p.number,
+                #                                                 p.pos.x,
+                #                                                 p.pos.y)
+                #print >>sys.stderr, 'BALL: %f, %f'%(self.ball.pos.x,
+                #                                    self.ball.pos.y)
                 break
 
         # while True:

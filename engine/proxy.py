@@ -48,6 +48,7 @@ class Proxy(object):
         #                                    self.player.number)+command
         if command:
             self.goal = command
+            print >>stderr, 'PLAYER %d, %d: %s'%(self.player.team, self.player.number, command)
         return self.translate(self.goal)
 
     def translate(self, goal):
@@ -73,4 +74,5 @@ class Proxy(object):
             self.goal = 'nop'
             return 'nop'
         rv = 'move %f %f'%((dest-self.player.pos).angle(), (dest-self.player.pos).len())
+        #print >>stderr, rv
         return rv

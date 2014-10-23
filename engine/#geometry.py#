@@ -2,7 +2,7 @@
 calculations"""
 import math
 
-epsilon = 0.5
+epsilon = 0.25
 
 class Vector:
     """A vector in the cartesian plane

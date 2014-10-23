@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <cstdlib>
 
 using namespace std;
 
@@ -139,11 +140,13 @@ void kick(Vector target, float power)
 
 void kick_action()
 {
+    int a = rand() % 40 - 20;
     kick(Vector(10, 60), 1);
 }
 
 int main()
 {
+    srand(time(NULL));
     int number, game_state;
     cin >> team >> number;
     while (true)
