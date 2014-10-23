@@ -94,8 +94,6 @@ Vector get_position(int number, Vector ballpos)
     }
     if (ballpos.y > 0)
         pos.y += ballpos.y * 3 / 4;
-    if (team == 1)
-        pos.y = pos.y - 1;
 
     return pos;
 }
