@@ -6,8 +6,9 @@ import select
 from math import atan
 from sys import stderr
 import time
+import config
 
-class Proxy:
+class Proxy(object):
     """Proxy(program_path, team, number) -> create communicator"""
     def __init__(self, ppath, player):
         self.player = player
@@ -20,7 +21,6 @@ class Proxy:
         self.poller.register(self.process.stdout, select.POLLIN)
         self.process.stdin.write('%d %d\n'%(self.player.team,
                                           self.player.number))
-        self.max_read = 1024
         
     def terminate(self):
         """terminates the player process"""
@@ -39,7 +39,7 @@ class Proxy:
         """returns the command for the current cycle as a string"""
         #print >>stderr, 'GC CALLED AT %f'%(time.time())
         buffer_content = []
-        while self.poller.poll(0) and len(buffer_content) < self.max_read:
+        while self.poller.poll(0) and len(buffer_content) < config.max_read:
             buffer_content += self.process.stdout.read(1)
 
         #print >>stderr, buffer_content
@@ -52,13 +52,16 @@ class Proxy:
 
     def translate(self, goal):
         args = goal.split(' ')
+        rv = None
         try:
-            return self.dic[args[0]](*map(float, args[1:]))
+            rv = self.dic[args[0]](*map(float, args[1:]))
         except TypeError:
-            return 'nop'
+            rv = 'nop'
+        except ValueError:
+            rv = 'nop'    
+        return rv
         
     def kick(self, x, y, force):
-        #angle = atan((x - self.pos.x) / (y - self.pos.y))
         angle = (Vector(x, y)-self.player.pos).angle()
         print 'kick %f %f'%(angle, force)
         self.goal = 'nop'
@@ -69,10 +72,5 @@ class Proxy:
         if((dest-self.player.pos).len() < epsilon):
             self.goal = 'nop'
             return 'nop'
-        #rv = 'move '+`(dest-self.player.pos).angle()`+
         rv = 'move %f %f'%((dest-self.player.pos).angle(), (dest-self.player.pos).len())
-        #print >>stderr, 'PLAYER %d, %d AT %f %f: '%(self.player.team,
-        #                                            self.player.number,
-        #                                            self.player.pos.x,
-        #                                            self.player.pos.y)+rv
         return rv
