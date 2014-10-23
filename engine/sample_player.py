@@ -23,13 +23,13 @@ class Player():
                 else:
                     self.move(ballpos)
             else:
-                position = self.get_position(self.number, ballpos)
+                position = self.get_target_position(self.number, ballpos)
                 if (selfpos - position).len() > 2:
                     self.move(position)
 
             # print >>stderr, 'SENT COMMAND AT %f'%(time.time())
 
-    def get_position(self, number, ballpos):
+    def get_target_position(self, number, ballpos):
         pos = Vector(0, 0)
         if number == 0:
             pos = Vector(0, -45)
@@ -61,7 +61,7 @@ class Player():
         min_dist = 10000
         receiver = 0
         for i in range(5):
-            pos = self.get_position(i, ballpos)
+            pos = self.get_target_position(i, ballpos)
             if (pos - ballpos).len() < min_dist:
                 min_dist = (pos - ballpos).len()
                 receiver = i
