@@ -17,3 +17,4 @@ def get_ballpos(team):
         if team == 0:
             ballpos.x *= -1
             ballpos.y *= -1
+        return ballpos
