@@ -13,7 +13,7 @@ import random
 from collections import deque
 
 cycle_length = 0.1
-game_duration = 200
+game_duration = 2000
 
 indexi = [0 , 1.0/3 , -1.0/3 , 2.0/3 , -2.0/3]
 indexj = [1 , 2.0/3 , 2.0/3 , 1.0/3 , 1.0/3 ]
@@ -107,9 +107,10 @@ class Simulator(object):
         for p in self.players:
             p.rsteps = config.steps_per_cycle
         no_change = 0
+        #print >>sys.stderr, 'move called'
+        #player_size = random.choice([0.3, 0.4, 0.5])
         while len(q):
             c = q.popleft()
-            #self.player_move(q)
             #print >>sys.stderr, 'moving %d, %d, %d'%(c.team, c.number, c.rsteps)
             c.move(coefficient)
             c.rsteps-=1
@@ -129,12 +130,38 @@ class Simulator(object):
                 no_change+=1
             if c.rsteps:
                 q.append(c)
-            if no_change==len(self.players):
+            if no_change==20:
+                print >>sys.stderr, 'breaking'
+                for p in self.players:
+                    print >>sys.stderr, 'PLAYER %d, %d: %f, %f'%(p.team,
+                                                                 p.number,
+                                                                 p.pos.x,
+                                                                 p.pos.y)
+                print >>sys.stderr, 'BALL: %f, %f'%(self.ball.pos.x,
+                                                    self.ball.pos.y)
                 break
-            
-            
-        
-        
+
+        # while True:
+        #     change = False
+        #     for p in self.players:
+        #         if not p.rsteps:
+        #             continue
+        #         p.move(coefficient)
+        #         p.rsteps-=1
+        #         change = True
+        #         for other in self.players:
+        #             if other==p:
+        #                 continue
+        #             if p.is_overlap(config.player_size, config.player_size,
+        #                             other.pos):
+        #                 p.move(-coefficient)
+        #                 change = False
+        #                 break
+        #     if not change:
+        #         break
+
+                        
+                        
     def goto_kickoff(self):
         self.ball.pos = Vector(0, 0)
         self.ball.vel = Vector(0, 0)
@@ -149,6 +176,7 @@ class Simulator(object):
         global cycle_length
         print self.state.game_state
         for i in xrange(game_duration):
+            print >>sys.stderr, 'CYCLE #%d'%(i)
             self.referee.update_state()
             self.send_data()
             #self.state.update()
