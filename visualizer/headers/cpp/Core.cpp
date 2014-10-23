@@ -76,9 +76,9 @@ bool loadMedia(SharedData* gData)
 		success = false;
 	}
 
-	if(!loadBald(gData))
+	if(!loadmasih(gData))
 	{
-		printf("Failed to load Bald!\n");
+		printf("Failed to load masih!\n");
 		success = false;
 	}
 	if(!loadPejman(gData))
@@ -235,131 +235,131 @@ bool loadNoa(SharedData* gData)
 	return success;
 }
 
-bool loadBald(SharedData* gData)
+bool loadmasih(SharedData* gData)
 {
 	LTexture* temp = new LTexture(gData);
 	bool success = true;
 
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k1-front-m.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k1-front-m.png"))
 	{
 		printf( "Failed to load k1-front-m.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldYellow.push_back(temp);
+		gData->masihYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k1-front-r.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k1-front-r.png"))
 	{
 		printf( "Failed to load k1-front-r.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldYellow.push_back(temp);
+		gData->masihYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k1-front-l.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k1-front-l.png"))
 	{
 		printf( "Failed to load k1-front-l.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldYellow.push_back(temp);
+		gData->masihYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k1-back-m.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k1-back-m.png"))
 	{
 		printf( "Failed to load k1-back-m.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldYellow.push_back(temp);
+		gData->masihYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k1-back-r.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k1-back-r.png"))
 	{
 		printf( "Failed to load k1-back-r.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldYellow.push_back(temp);
+		gData->masihYellow.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k1-back-l.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k1-back-l.png"))
 	{
 		printf( "Failed to load k1-back-l.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldYellow.push_back(temp);
+		gData->masihYellow.push_back(temp);
 	}
 	
-	//loading png file of baldRed
+	//loading png file of masihRed
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-m.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k2-front-m.png"))
 	{
 		printf( "Failed to load k2-front-m.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldRed.push_back(temp);
+		gData->masihRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-r.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k2-front-r.png"))
 	{
 		printf( "Failed to load k2-front-r.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldRed.push_back(temp);
+		gData->masihRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-front-l.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k2-front-l.png"))
 	{
 		printf( "Failed to load k2-front-l.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldRed.push_back(temp);
+		gData->masihRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-m.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k2-back-m.png"))
 	{
 		printf( "Failed to load k2-back-m.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldRed.push_back(temp);
+		gData->masihRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-r.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k2-back-r.png"))
 	{
 		printf( "Failed to load k2-back-r.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldRed.push_back(temp);
+		gData->masihRed.push_back(temp);
 	}
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile("../visualizer/assets/characters/bald/k2-back-l.png"))
+	if( !temp->loadFromFile("../visualizer/assets/characters/masih/k2-back-l.png"))
 	{
 		printf( "Failed to load k2-back-l.png!\n" );
 		success = false;
 	}
 	else
 	{	
-		gData->baldRed.push_back(temp);
+		gData->masihRed.push_back(temp);
 	}
 	return success;
 }
@@ -855,13 +855,13 @@ bool initGame(SharedData* gData)
 	gData->movingObjs.push_back(new Player("nokami",gData->nokamiYellow, false));
 	gData->movingObjs.push_back(new Player("noa",gData->noaYellow, false));
 	gData->movingObjs.push_back(new Player("pejman",gData->pejmanYellow, false));
-	gData->movingObjs.push_back(new Player("bald",gData->baldYellow, false));
+	gData->movingObjs.push_back(new Player("masih",gData->masihYellow, false));
 	
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanRed));
 	gData->movingObjs.push_back(new Player("nokami",gData->nokamiRed));
 	gData->movingObjs.push_back(new Player("noa",gData->noaRed));
 	gData->movingObjs.push_back(new Player("pejman",gData->pejmanRed));
-	gData->movingObjs.push_back(new Player("bald",gData->baldRed));
+	gData->movingObjs.push_back(new Player("masih",gData->masihRed));
 	
 	getInputs(gData);
 	setNewData(gData);
