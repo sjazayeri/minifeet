@@ -74,15 +74,15 @@ Vector get_position(int number, Vector ballpos)
     Vector pos(0, 0);
     if (number == 0)
     {
-        pos = Vector(0, -43);
+        pos = Vector(0, -59);
     }
     else if (number == 1)
     {
-        pos = Vector(-25, -35);
+        pos = Vector(-20, -38);
     }
     else if (number == 2)
     {
-        pos = Vector(25, -35);
+        pos = Vector(20, -38);
     }
     else if (number == 3)
     {
@@ -139,7 +139,7 @@ void kick(Vector target, float power)
 
 void kick_action()
 {
-    kick(Vector(0, 45), 1);
+    kick(Vector(0, 60), 1);
 }
 
 int main()
@@ -167,7 +167,8 @@ int main()
         else
         {
             Vector position = get_position(number, ballpos);
-            move(position);
+            if (selfpos.dist(position) > 2)
+            	move(position);
         }
     }
     return 0;
