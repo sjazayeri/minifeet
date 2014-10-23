@@ -12,10 +12,7 @@ class Player():
         while True:
             players = get_players(self.team)
             selfpos = players[5 * self.team + self.number]
-            ballpos = Vector(*map(float, raw_input().split(' ')))
-            if self.team == 0:
-                ballpos.x *= -1
-                ballpos.y *= -1
+            ballpos = get_ballpos(self.team)
             game_state = int(raw_input())
             # print >>stderr, 'GOT DATA AT %f'%(time.time())
 

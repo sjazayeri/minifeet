@@ -70,6 +70,18 @@ vector<Vector> get_players()
     return res;
 }
 
+Vector get_ballpos()
+{
+	Vector ballpos;
+	cin >> ballpos.x >> ballpos.y;
+	if (team == 0)
+	{
+		ballpos.x *= -1;
+		ballpos.y *= -1;
+	}
+	return ballpos;
+}
+
 Vector get_position(int number, Vector ballpos)
 {
     Vector pos(0, 0);
@@ -153,13 +165,7 @@ int main()
     {
         vector <Vector> players = get_players();
         Vector selfpos = players[5*team+number];
-        Vector ballpos;
-        cin >> ballpos.x >> ballpos.y;
-	if (team == 0)
-	{
-		ballpos.x *= -1;
-		ballpos.y *= -1;
-	}
+        Vector ballpos = get_ballpos();
         cin >> game_state;
 
         int ball_reveiver = get_ball_receiver(players, ballpos);
