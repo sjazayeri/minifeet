@@ -59,7 +59,7 @@ vector<Vector> get_players()
     {
         float a, b;
         cin >> a >> b;
-        if (team == 1)
+        if (team == 0)
         {
             a *= -1;
             b *= -1;
@@ -74,15 +74,15 @@ Vector get_position(int number, Vector ballpos)
     Vector pos(0, 0);
     if (number == 0)
     {
-        pos = Vector(0, -59);
+        pos = Vector(0, -40);
     }
     else if (number == 1)
     {
-        pos = Vector(-20, -38);
+        pos = Vector(-20, -33);
     }
     else if (number == 2)
     {
-        pos = Vector(20, -38);
+        pos = Vector(20, -33);
     }
     else if (number == 3)
     {
@@ -92,8 +92,8 @@ Vector get_position(int number, Vector ballpos)
     {
         pos = Vector(10, 0);
     }
-    if (ballpos.y > 0)
-        pos.y += ballpos.y * 3 / 4;
+//    if (ballpos.y > 0)
+//        pos.y += ballpos.y * 3 / 4;
 
     return pos;
 }
@@ -117,7 +117,7 @@ int get_ball_receiver(vector<Vector> players, Vector ballpos)
 
 void move(Vector pos)
 {
-    if (team == 1)
+    if (team == 0)
     {
         pos.x *= -1;
         pos.y *= -1;
@@ -128,7 +128,7 @@ void move(Vector pos)
 
 void kick(Vector target, float power)
 {
-    if (team == 1)
+    if (team == 0)
     {
         target.x *= -1;
         target.y *= -1;
@@ -139,7 +139,7 @@ void kick(Vector target, float power)
 
 void kick_action()
 {
-    kick(Vector(0, 60), 1);
+    kick(Vector(10, 60), 1);
 }
 
 int main()
@@ -152,6 +152,11 @@ int main()
         Vector selfpos = players[5*team+number];
         Vector ballpos;
         cin >> ballpos.x >> ballpos.y;
+	if (team == 0)
+	{
+		ballpos.x *= -1;
+		ballpos.y *= -1;
+	}
         cin >> game_state;
 
         int ball_reveiver = get_ball_receiver(players, ballpos);
