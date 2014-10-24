@@ -5,6 +5,8 @@
 
 using namespace std;
 
+int team, number;
+
 class Vector{
 public:
     float x, y;
@@ -12,7 +14,7 @@ public:
 
     float dist(Vector other)
     {
-        return sqrt((x - other.x) * (x - other.x) - (y - other.y) * (y - other.y));
+        return sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
     }
 
     float len()
@@ -51,7 +53,8 @@ public:
     }
 };
 
-int team;
+vector<Vector> gplayers;
+Vector last_cycle_dest(0, 0);
 
 vector<Vector> get_players()
 {
@@ -128,6 +131,17 @@ int get_ball_receiver(vector<Vector> players, Vector ballpos)
 	return receiver;
 }
 
+
+float get_closest_op_dist(){
+    //int other = 1-team;
+    //cerr<<'heh'<<endl;
+    float cmindist = 10e4;
+    for(int i = 0; i <10; i++){
+        cmindist = min(cmindist, (gplayers[team*5+number]-gplayers[i]).len());
+    }
+    return cmindist;
+}
+
 void move(Vector pos)
 {
     if (team == 0)
@@ -135,6 +149,11 @@ void move(Vector pos)
         pos.x *= -1;
         pos.y *= -1;
     }
+    if((pos-last_cycle_dest).len() < 0.3 && get_closest_op_dist() < 3){
+        pos = pos+Vector((rand()%2)*(-rand()%2), (rand()%2)*(-rand()%2));
+        cerr<<"stuck"<<" "<<team<<" "<<number<<endl;    
+    }
+    last_cycle_dest = pos;
     cout << "move " << pos.x << " " << pos.y << endl;
     cout.flush();
 }
@@ -156,14 +175,18 @@ void kick_action()
     kick(Vector(10, 60), 1);
 }
 
+
 int main()
 {
     srand(time(NULL));
-    int number, game_state;
+    int game_state;
     cin >> team >> number;
     while (true)
     {
         vector <Vector> players = get_players();
+        gplayers.clear();
+        gplayers = players;
+        //cerr<<get_closest_op_dist(players, team, number)<<endl;
         Vector selfpos = players[5*team+number];
         Vector ballpos = get_ballpos();
         cin >> game_state;
