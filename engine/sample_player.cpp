@@ -82,7 +82,7 @@ Vector get_ballpos()
 	return ballpos;
 }
 
-Vector get_position(int number, Vector ballpos)
+Vector get_target_position(int number, Vector ballpos)
 {
     Vector pos(0, 0);
     if (number == 0)
@@ -118,7 +118,7 @@ int get_ball_receiver(vector<Vector> players, Vector ballpos)
 	int receiver = 0;
 	for (int i = 0; i <= 4; i++)
 	{
-		Vector pos = get_position(i, ballpos);
+		Vector pos = get_target_position(i, ballpos);
 		if (pos.dist(ballpos) < min_dist)
 		{
 			min_dist = pos.dist(ballpos);
@@ -180,7 +180,7 @@ int main()
         }
         else
         {
-            Vector position = get_position(number, ballpos);
+            Vector position = get_target_position(number, ballpos);
             if (selfpos.dist(position) > 2)
             	move(position);
         }
