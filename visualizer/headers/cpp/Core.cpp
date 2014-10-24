@@ -1,7 +1,5 @@
 #include "../Core.h"
 
-// LTexture gSpriteSheetTexture;
-// LTexture bolan[3];
 
 bool init(SharedData* gData)
 {
@@ -93,7 +91,7 @@ bool loadMedia(SharedData* gData)
 	}
 	//Load field
 	temp = new LTexture(gData);
-	if( !temp->loadFromFile( "../visualizer/assets/field1.jpg" ))
+	if( !temp->loadFromFile( "../visualizer/assets/field.png" ))
 	{
 		printf( "Failed to load field!\n" );
 		success = false;
@@ -103,6 +101,18 @@ bool loadMedia(SharedData* gData)
 		gData->field = temp;
 	}
 	
+	//Load gate
+	temp = new LTexture(gData);
+	if( !temp->loadFromFile( "../visualizer/assets/gate.png" ))
+	{
+		printf( "Failed to load gate!\n" );
+		success = false;
+	}
+	else
+	{	
+		gData->gate = temp;
+	}
+
 	return success;
 }
 
@@ -786,8 +796,8 @@ bool getInputs(SharedData* gData)
 
 		//converting positions
 		//I wish that works
-		_x = 6*_x +270;
-		_y = -6*_y +360;
+		_x = 5*_x + 5*45 + 45;
+		_y = -5*_y + 5*60 + 60;
 		//end of correcting positions
 		temPos = make_pair ((int)_x,(int)_y);
 		gData->playersPos.push_back(temPos);
@@ -798,8 +808,8 @@ bool getInputs(SharedData* gData)
 	cerr << "BALL:: " << _x << "-" << _y << endl;
 	#endif
 
-	_x = 6*_x +270;
-	_y = -6*_y +360;
+	_x = 5*_x + 5*45 + 45;
+	_y = -5*_y + 5*60 + 60;
 	gData->ballPos = make_pair((int)_x,(int)_y);
 	cin >> gData->gameState ;
 
