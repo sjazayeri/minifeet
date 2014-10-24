@@ -48,6 +48,12 @@ bool init(SharedData* gData)
 					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 					success = false;
 				}
+				 //Initialize SDL_ttf 
+				if( TTF_Init() == -1 ) 
+				{
+					printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() ); 
+					success = false; 
+				}
 			}
 		}
 	}
@@ -113,6 +119,29 @@ bool loadMedia(SharedData* gData)
 		gData->gate = temp;
 	}
 
+	gData->gFont = TTF_OpenFont( "../visualizer/assets/astri.ttf", 28 );
+	if( gData->gFont == NULL )
+	{
+		printf( "Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError() );
+		success = false;
+	}
+	else
+	{
+		gData->scoreT1 = new LTexture(gData);
+		gData->scoreT2 = new LTexture(gData);
+		gData->gtime = new LTexture(gData);
+	}
+	// else
+	// {
+	// 	//Render text
+	// 	gData->scoreT1 = new LTexture(gData);
+	// 	SDL_Color textColor = { 0, 0, 0 };
+	// 	if( !gData->scoreT1->loadFromRenderedText( "The quick brown fox jumps over the lazy dog", textColor))
+	// 	{
+	// 		printf( "Failed to render text texture!\n" );
+	// 		success = false;
+	// 	}
+	// }
 	return success;
 }
 
@@ -821,27 +850,45 @@ bool getInputs(SharedData* gData)
 	return true;
 }
 
-void handleState(int state)
+void handleState(int state,SharedData* gData)
 {
+	stringstream ss2;
+	ss2 << 1000 - gData->cycleNum/5;
+	SDL_Color textColort = { 255, 255, 255 };
+	gData->gtime->loadFromRenderedText(ss2.str(),textColort);
 	if (state == 0)
 	{
+		gData->lState = 0;
 		//defualt 
-	}
-	else if (state == 1)
-	{
-		// team1_goal
-	}
-	else if (state == 2)
-	{
-		// team2_goal
-	}
-	else if (state == 3)
-	{
-		// offside
 	}
 	else if (state == 4)
 	{
-		// kickoff
+		// team1_goal
+		//Render text
+		if(gData->lState == 0)
+		{
+			stringstream ss;
+			ss.str()="";
+			gData->score1++;
+			ss << gData->score1;
+			SDL_Color textColor = { 255, 0, 0 };
+			gData->scoreT1->loadFromRenderedText(ss.str(), textColor);
+		}
+		gData->lState = 4;
+	}
+	else if (state == 5)
+	{
+		// team2_goal
+		if (gData->lState ==0)
+		{
+			stringstream ss1;
+			gData->score2++;
+			ss1.str()="";
+			ss1 << gData->score2;
+			SDL_Color textColor = { 255, 255, 0 };
+			gData->scoreT2->loadFromRenderedText( ss1.str(), textColor);
+		}
+		gData->lState = 5;
 	}
 }
 
@@ -858,8 +905,11 @@ bool initGame(SharedData* gData)
 {
 	//I think it should be loaded in loading media but ...
 	LTexture* temp = new LTexture(gData);
+	SDL_Color textColorR = { 255,0,0 };
+	SDL_Color textColorY = { 255,255,0};
 	temp->loadFromFile("../visualizer/assets/ball.png");
-	
+	gData->scoreT1->loadFromRenderedText("0", textColorR);
+	gData->scoreT2->loadFromRenderedText("0", textColorY);
 	gData->movingObjs.push_back(new Ball(temp));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
 	gData->movingObjs.push_back(new Player("nokami",gData->nokamiYellow, false));
@@ -880,38 +930,42 @@ bool initGame(SharedData* gData)
 
 void renderAll(SharedData* gData)
 {
-	// vector<int> sortedObjs;
+	vector<int> sortedObjs;
 
-	// //sorting players and ball
-	// vector<int> mvIndex;
-	// for (int i = 0; i < gData->movingObjs.size(); i++)
-	// 	mvIndex.push_back(i);
-
-	// while ( mvIndex.size() != 0 ) {\
-	// 	int i = 0;
-	// 	int min = mvIndex[i];
-
-	// 	for (int j = 0; j < mvIndex.size(); j++) {
-	// 		if (gData->movingObjs[mvIndex[j]]->y < gData->movingObjs[mvIndex[i]]->y)
-	// 			min = mvIndex[j];
-	// 		else if (gData->movingObjs[mvIndex[j]]->y == gData->movingObjs[mvIndex[i]]->y)
-	// 			if (gData->movingObjs[mvIndex[j]]->x < gData->movingObjs[mvIndex[i]]->x)
-	// 				min = mvIndex[j];
-	// 			else if (gData->movingObjs[mvIndex[j]]->x == gData->movingObjs[mvIndex[i]]->x)
-	// 				if (gData->movingObjs[mvIndex[j]]->name == "ballony")
-	// 					min = mvIndex[j];
-	// 	}
-
-	// 	sortedObjs.push_back(min);
-	// 	mvIndex.erase(mvIndex.begin() + min);
-	// }
-
-	// // rendering all
-	// for (int i = 0; i < sortedObjs.size(); i++)
-	// 	gData->movingObjs[sortedObjs[i]]->render(gData->cycleNum);
-
-	// return;
-
+	//sorting players and ball
+	vector<int> mvIndex;
 	for (int i = 0; i < gData->movingObjs.size(); i++)
-		gData->movingObjs[i]->render(gData->cycleNum);
+		mvIndex.push_back(i);
+
+	while ( mvIndex.size() != 0 ) {
+		int i = 0;
+		int min = mvIndex[i];
+
+		for (int j = 0; j < mvIndex.size(); j++) {
+			if (gData->movingObjs[mvIndex[j]]->y < gData->movingObjs[mvIndex[i]]->y){
+				min = mvIndex[j];
+				i = j;
+			}
+			else if (gData->movingObjs[mvIndex[j]]->y == gData->movingObjs[mvIndex[i]]->y)
+				if (gData->movingObjs[mvIndex[j]]->x < gData->movingObjs[mvIndex[i]]->x) {
+					min = mvIndex[j];
+					i = j;
+				}
+				else if (gData->movingObjs[mvIndex[j]]->x == gData->movingObjs[mvIndex[i]]->x)
+					if (gData->movingObjs[mvIndex[j]]->name == "ballony") {
+						min = mvIndex[j];
+						i = j;
+					}
+		}
+
+		sortedObjs.push_back(min);
+		mvIndex.erase(mvIndex.begin() + i);
+	}
+
+	// rendering all
+	for (int i = 0; i < sortedObjs.size(); i++)
+		gData->movingObjs[sortedObjs[i]]->render(gData->cycleNum);
+
+	return;
+
 }

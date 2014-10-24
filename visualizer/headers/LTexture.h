@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include <SDL2/SDL_ttf.h>
 using namespace std;
 
 typedef struct _SharedData SharedData;
@@ -25,10 +26,8 @@ class LTexture
 		//Loads image at specified path
 		bool loadFromFile( std::string path );
 		
-		#ifdef _SDL_TTF_H
 		//Creates image from font string
 		bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
-		#endif
 
 		//Creates blank texture
 		bool createBlank( int width, int height, SDL_TextureAccess = SDL_TEXTUREACCESS_STREAMING );

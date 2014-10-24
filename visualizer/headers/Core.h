@@ -5,12 +5,14 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <ctime>
 #include "Player.h"
 #include "Ball.h"
 #include <vector>
 #include <utility>
+#include <SDL2/SDL_ttf.h>
 
 class Ball;
 class Player;
@@ -23,6 +25,8 @@ typedef struct _SharedData
 	//The gWindow renderer
 	SDL_Renderer* gRenderer = NULL;
 
+	//Globally used font 
+	TTF_Font *gFont = NULL;
 	// When first cycle runs
 	Uint32 startTime;
 
@@ -58,7 +62,12 @@ typedef struct _SharedData
 	vector<LTexture*> noaRed;
 	LTexture* field;
 	LTexture* gate;
-
+	LTexture* scoreT1;
+	LTexture* scoreT2;
+	LTexture* gtime;
+	int score1=0;
+	int score2=0;
+	int lState;
 } SharedData;
 
 
@@ -76,7 +85,7 @@ void close(SharedData* gData);
 
 bool getInputs(SharedData* gData);
 
-void handleState(int state);
+void handleState(int state,SharedData* gData);
 
 void setNewData(SharedData* gData);
 
