@@ -65,7 +65,7 @@ class Ball (MovingObj) :
         #print >>stderr, 'DONE MOVING, FINAL VEL: %f, %f' %(self.vel.x, self.vel.y)
 
 class Ground(object):
-    def __init__(self, length=0, width =0, friction=0, gate_length=8):
+    def __init__(self, length=0, width =0, friction=0, gate_length=20):
         self.length = length
         self.width = width
         self.friction = Vector(friction ,friction )
