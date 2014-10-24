@@ -68,6 +68,7 @@ class Player():
         opp = 1 - self.team
         res = 10000
         for i in range(0, 5):
+            print >>stderr, 'stuck'
             p = self._players[5*opp+i]
             if (p-self.self_pos).len() < res:
                 res = (p-self.self_pos).len()

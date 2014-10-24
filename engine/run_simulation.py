@@ -13,7 +13,7 @@ import random
 from collections import deque
 
 cycle_length = 0.1
-game_duration = 2000
+game_duration = 1000
 
 indexi = [0 , 1.0/3 , -1.0/3 , 2.0/3 , -2.0/3]
 indexj = [1 , 2.0/3 , 2.0/3 , 1.0/3 , 1.0/3 ]
@@ -178,18 +178,30 @@ class Simulator(object):
     def simulate(self) :
         global cycle_length
         #print self.state.game_state
+        prev_locs = [Vector(0, 0) for i in xrange(10)]
         for i in xrange(game_duration):
             #print >>sys.stderr, 'CYCLE #%d'%(i)
             self.state.kicked = False
             self.referee.update_state()
             self.send_data()
             #self.state.update()
+            
+            
             for j in xrange(10):
                 self.players[j].comm.send_state(self.state)
             #print >>sys.stderr, 'DOOOOOOOOOOOOOOOOOOOOOOONE SENDING DATA AT %f'%(time.time())
             time.sleep(cycle_length)
             self.cycle.update_players(self.state)
             self.move()
+            soc = 0
+            for (i, p) in enumerate(self.players):
+                soc += (p.pos-prev_locs[i]).len()
+
+
+            if soc < 1 and self.state.game_state!=state.kickoff_team1 and self.state.game_state!=state.kickoff_team2:
+                self.ball.vel += Vector(random.choice([-1, 1])*5, random.choice([-1, 1])*5)
+                print 'accel'
+            prev_locs = [Vector(p.pos.x, p.pos.y) for p in self.players]
             if self.state.game_state==state.team1_goal:
                 self.state.game_state = state.kickoff_team2
                 self.goto_kickoff()
