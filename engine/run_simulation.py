@@ -102,6 +102,9 @@ class Simulator(object):
         #for t in xrange(steps_per_cycle):
         coefficient = 1.0/config.steps_per_cycle
         q = deque(self.players)
+        if self.state.kicked:
+            if self.ball.vel.len() < 4:
+                self.ball.vel = Vector(2*random.choice([-1, 1]), 2*random.choice([-1, 1]))
         for t in xrange(config.steps_per_cycle):
             self.ball_move(coefficient)
         for p in self.players:
@@ -174,9 +177,10 @@ class Simulator(object):
             
     def simulate(self) :
         global cycle_length
-        print self.state.game_state
+        #print self.state.game_state
         for i in xrange(game_duration):
-            print >>sys.stderr, 'CYCLE #%d'%(i)
+            #print >>sys.stderr, 'CYCLE #%d'%(i)
+            self.state.kicked = False
             self.referee.update_state()
             self.send_data()
             #self.state.update()

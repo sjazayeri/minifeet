@@ -17,6 +17,7 @@ class State :
         self.last_kicked=last_kicked
         self.team1_goals=team1_goals
         self.team2_goals=team2_goals
+        self.kicked = False
           
     def update(self, gs):
         self.game_state = gs
