@@ -12,7 +12,7 @@ class Cycle:
                          'nop':self.nop}
         self.state = None
         self.max_ball_dist = 2
-        self.BallVelUnit = 5
+        self.BallVelUnit = 10
         self.PlayerVel = 5
         
     def update_players(self, cstate):
@@ -31,6 +31,7 @@ class Cycle:
         if math.fabs((p.pos-self.state.ball.pos).len()-self.max_ball_dist) > 0:
             #print 'PLAYER %d, %d KICKED TO %f, WITH FORCE %f'%(p.team, p.number, angle, force)
             self.state.last_kicked=p
+            self.state.kicked = True
             #state.ball.vel=self.BallVelUnit*strength
             #state.ball.angle=angle
             force = min(force, 1)

@@ -28,19 +28,30 @@ class Proxy(object):
 
     def send_state(self, state):
         """sends the current state to the player"""
-        for p in state.players:
-            self.process.stdin.write('%d %d\n'%(p.pos.x, p.pos.y))
-        self.process.stdin.write('%d %d\n'%(state.ball.pos.x,
-                                            state.ball.pos.y))
-        self.process.stdin.write(`state.game_state`+'\n')
+        try:
+            for p in state.players:
+                self.process.stdin.write('%d %d\n'%(p.pos.x, p.pos.y))
+
+            self.process.stdin.write('%d %d\n'%(state.ball.pos.x,
+                                                    state.ball.pos.y))
+            self.process.stdin.write(`state.game_state`+'\n')
+            
+        except IOError:
+            pass
+            
         #self.process.stdin.flush()
         
     def get_command(self):
         """returns the command for the current cycle as a string"""
         #print >>stderr, 'GC CALLED AT %f'%(time.time())
         buffer_content = []
-        while self.poller.poll(0) and len(buffer_content) < config.max_read:
-            buffer_content += self.process.stdout.read(1)
+        try:
+            cntr=0
+            while self.poller.poll(0) and cntr < config.max_read:
+                buffer_content += self.process.stdout.read(1)
+                cntr+=1
+        except EOFError:
+            return 'nop'
 
         #print >>stderr, buffer_content
         command = ''.join(buffer_content).rstrip()
@@ -48,7 +59,7 @@ class Proxy(object):
         #                                    self.player.number)+command
         if command:
             self.goal = command
-            print >>stderr, 'PLAYER %d, %d: %s'%(self.player.team, self.player.number, command)
+            #print >>stderr, 'PLAYER %d, %d: %s'%(self.player.team, self.player.number, command)
         return self.translate(self.goal)
 
     def translate(self, goal):
@@ -64,7 +75,7 @@ class Proxy(object):
         
     def kick(self, x, y, force):
         angle = (Vector(x, y)-self.player.pos).angle()
-        print 'kick %f %f'%(angle, force)
+        #print 'kick %f %f'%(angle, force)
         self.goal = 'nop'
         return 'kick %f %f' % (angle, force)
 
@@ -73,9 +84,9 @@ class Proxy(object):
         if((dest-self.player.pos).len() < epsilon):
             self.goal = 'nop'
             return 'nop'
-        print >>stderr, 'PLAYER %d, %d FROM %f, %f TO %f, %f'%(self.player.team, self.player.number,
-                                                               self.player.pos.x, self.player.pos.y,
-                                                               x, y)
+        #print >>stderr, 'PLAYER %d, %d FROM %f, %f TO %f, %f'%(self.player.team, self.player.number,
+        #                                                       self.player.pos.x, self.player.pos.y,
+         #                                                      x, y)
         rv = 'move %f %f'%((dest-self.player.pos).angle(), (dest-self.player.pos).len())
         #print >>stderr, rv
         return rv
