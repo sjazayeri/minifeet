@@ -13,6 +13,8 @@
 #include <vector>
 #include <utility>
 #include <SDL2/SDL_ttf.h>
+#include <fstream>
+using namespace std;
 
 class Ball;
 class Player;
@@ -65,6 +67,9 @@ typedef struct _SharedData
 	LTexture* scoreT1;
 	LTexture* scoreT2;
 	LTexture* gtime;
+
+	string nameR, nameY;
+
 	int score1=0;
 	int score2=0;
 	int lState;

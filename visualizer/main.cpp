@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 int main( int argc, char* args[] )
@@ -124,7 +125,7 @@ int main( int argc, char* args[] )
 			#endif
 		}
 		globData.scoreT1->render(0,0);
-		globData.scoreT2->render(520,0);
+		globData.scoreT2->render(430,0);
 		globData.gtime->render(250,680);
 
 		//Update screen

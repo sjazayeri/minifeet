@@ -870,7 +870,7 @@ void handleState(int state,SharedData* gData)
 			stringstream ss;
 			ss.str()="";
 			gData->score1++;
-			ss << gData->score1;
+			ss << gData->score1 << "  " << gData->nameR;
 			SDL_Color textColor = { 255, 0, 0 };
 			gData->scoreT1->loadFromRenderedText(ss.str(), textColor);
 		}
@@ -884,7 +884,7 @@ void handleState(int state,SharedData* gData)
 			stringstream ss1;
 			gData->score2++;
 			ss1.str()="";
-			ss1 << gData->score2;
+			ss1 << gData->nameY << "  " << gData->score2;
 			SDL_Color textColor = { 255, 255, 0 };
 			gData->scoreT2->loadFromRenderedText( ss1.str(), textColor);
 		}
@@ -903,13 +903,22 @@ void setNewData(SharedData* gData)
 
 bool initGame(SharedData* gData)
 {
+	fstream fs;
+	fs.open("../visualizer/names",std::fstream::in | std::fstream::out | std::fstream::app);
+	if (!fs.is_open())
+		cerr << "names  prob" << endl;
+	fs >> gData->nameR;
+	fs >> gData->nameY;
+	fs.close();
+
+
 	//I think it should be loaded in loading media but ...
 	LTexture* temp = new LTexture(gData);
 	SDL_Color textColorR = { 255,0,0 };
 	SDL_Color textColorY = { 255,255,0};
 	temp->loadFromFile("../visualizer/assets/ball.png");
-	gData->scoreT1->loadFromRenderedText("0", textColorR);
-	gData->scoreT2->loadFromRenderedText("0", textColorY);
+	gData->scoreT1->loadFromRenderedText(string("0  " + gData->nameR), textColorR);
+	gData->scoreT2->loadFromRenderedText(string(gData->nameY + "  0"), textColorY);
 	gData->movingObjs.push_back(new Ball(temp));
 	gData->movingObjs.push_back(new Player("bolan",gData->bolanYellow, false));
 	gData->movingObjs.push_back(new Player("nokami",gData->nokamiYellow, false));
