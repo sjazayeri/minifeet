@@ -105,7 +105,10 @@ int main( int argc, char* args[] )
 		
 		// Rendering all other elements on gRenderer
 		renderAll(&globData);
-		
+
+		// rendering down gate
+		globData.gate->render(270 - 68, 720 - 60 - 26);
+
 		#ifdef _DEBUG
 		clog << "renderAll" << endl;
 		#endif
@@ -126,16 +129,7 @@ int main( int argc, char* args[] )
 		// stoping timer
 		loopEndTime = SDL_GetTicks();
 
-		// calculating delay
-		// loopLen = loopEndTime - loopStartTime;
-		// if (loopLen < 0) {
-		// 	// if hardware can not handle programm
-		// 	cerr << "FATAL ERROR" << endl;
-		// 	globData.quitFlag = true;
-		// }
-		// else {
-			SDL_Delay( globData.cycleLen );
-		// }
+		SDL_Delay( globData.cycleLen );
 	}
 
 	//Free resources and close SDL

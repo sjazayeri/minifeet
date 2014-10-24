@@ -57,6 +57,7 @@ typedef struct _SharedData
 	vector<LTexture*> noaYellow;
 	vector<LTexture*> noaRed;
 	LTexture* field;
+	LTexture* gate;
 
 } SharedData;
 
